@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORACLE — AI Market Research Reports | Competitor Analysis in 5 Minutes</title>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://oracle-intelligence.netlify.app">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ORACLE — AI Market Intelligence Reports | Deep Research in 5 Minutes">
+<meta property="og:description" content="Professional market intelligence reports powered by AI. Competitor analysis, market sizing, and strategic insights delivered in 5 minutes. From $39.">
+<meta property="og:url" content="https://oracle-intelligence.netlify.app">
+<meta property="og:image" content="https://oracle-intelligence.netlify.app/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ORACLE — AI Market Intelligence Reports">
+<meta name="twitter:description" content="Deep market research. AI-synthesized. Delivered in 5 minutes. Professional-grade competitor analysis from $39.">
+<meta name="keywords" content="AI market research, market intelligence report, competitor analysis report, market research tool, AI business intelligence, market sizing report, competitive analysis AI">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "ORACLE Market Intelligence Reports",
+  "description": "AI-powered market intelligence reports for businesses, startups, and investors. Deep competitor analysis, market sizing, and strategic insights delivered in minutes.",
+  "url": "https://oracle-intelligence.netlify.app",
+  "brand": {"@type": "Brand", "name": "ORACLE"},
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Quick Pulse",
+      "price": "19",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "description": "Essential market snapshot"
+    },
+    {
+      "@type": "Offer", 
+      "name": "Starter Intelligence",
+      "price": "39",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "description": "Core competitive landscape"
+    },
+    {
+      "@type": "Offer",
+      "name": "Professional Intelligence",
+      "price": "89",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "description": "Deep market intelligence with strategic recommendations"
+    },
+    {
+      "@type": "Offer",
+      "name": "Strategic Intelligence",
+      "price": "199",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "description": "Comprehensive intelligence suite for investors and executives"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "47"
+  }
+}
+</script>
+<meta name="description" content="AI-powered market intelligence reports. Competitor analysis, market sizing, and strategic insights in 5 minutes. Professional research for startups, investors, and consultants. From $39.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Martian+Mono:wght@300;400;500;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --void: #050403;
+  --ink: #0d0b08;
+  --ink-mid: #1a1612;
+  --parchment: #f2ede3;
+  --parchment-dim: rgba(242,237,227,0.6);
+  --gold: #b8943f;
+  --gold-bright: #d4aa50;
+  --gold-line: rgba(184,148,63,0.25);
+  --ember: #8b2e12;
+  --signal: #2a6e3f;
+  --transition: cubic-bezier(0.19, 1, 0.22, 1);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--void);
+  color: var(--parchment);
+  font-family: 'Source Serif 4', Georgia, serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* CURSOR */
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--gold-bright);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+.cursor-ring {
+  width: 32px; height: 32px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s var(--transition), height 0.3s var(--transition), border-color 0.3s;
+  opacity: 0.6;
+}
+.cursor-ring.hover { width: 52px; height: 52px; border-color: var(--gold-bright); opacity: 1; }
+
+/* GRAIN */
+.grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 500; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  animation: grainShift 0.4s steps(1) infinite;
+}
+@keyframes grainShift {
+  0%   { background-position: 0 0; }
+  25%  { background-position: -30px 15px; }
+  50%  { background-position: 20px -10px; }
+  75%  { background-position: -15px 25px; }
+}
+
+/* TICKER */
+.ticker-bar {
+  background: var(--ink-mid);
+  border-bottom: 1px solid var(--gold-line);
+  padding: 0.55rem 0;
+  overflow: hidden;
+  position: relative; z-index: 10;
+}
+.ticker-track {
+  display: flex;
+  animation: tickerScroll 40s linear infinite;
+  white-space: nowrap;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  color: var(--parchment-dim);
+  padding: 0 2.5rem;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0;
+}
+.ticker-item .dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
+.ticker-item .live { color: var(--gold-bright); }
+@keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.25rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: all 0.5s var(--transition);
+}
+nav.scrolled {
+  background: rgba(5,4,3,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--gold-line);
+  padding: 0.9rem 2.5rem;
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem; font-weight: 800;
+  color: var(--gold); text-decoration: none; letter-spacing: -0.02em;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.57rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--parchment-dim); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold-bright); }
+.nav-cta {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  background: transparent; border: 1px solid var(--gold-line);
+  color: var(--gold); padding: 0.6rem 1.4rem; cursor: pointer;
+  transition: all 0.3s;
+}
+.nav-cta:hover { background: var(--gold); color: var(--void); border-color: var(--gold); }
+@media (max-width: 768px) { .nav-links { display: none; } }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: var(--void);
+  position: relative;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 8rem 2rem 8rem;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 40%, rgba(184,148,63,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 60% at 15% 70%, rgba(139,46,18,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 25% 40% at 85% 30%, rgba(42,110,63,0.05) 0%, transparent 50%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(184,148,63,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184,148,63,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+}
+/* Concentric rings */
+.hero-orb {
+  position: absolute;
+  width: 520px; height: 520px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -60%);
+  pointer-events: none;
+}
+.orb-ring {
+  position: absolute; border-radius: 50%;
+  border: 1px solid var(--gold-line);
+  animation: orbPulse 5s ease-in-out infinite;
+}
+.orb-ring:nth-child(1) { inset: 40%; animation-delay: 0s; }
+.orb-ring:nth-child(2) { inset: 26%; animation-delay: 1s; opacity: 0.6; }
+.orb-ring:nth-child(3) { inset: 12%; animation-delay: 2s; opacity: 0.35; }
+.orb-ring:nth-child(4) { inset: 0; animation-delay: 3s; opacity: 0.15; }
+.orb-core {
+  position: absolute; inset: 42%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,148,63,0.35) 0%, transparent 70%);
+  animation: orbCore 3.5s ease-in-out infinite;
+}
+@keyframes orbPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes orbCore { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); } }
+.scan-line {
+  position: absolute; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184,148,63,0.35), transparent);
+  animation: scanDown 9s linear infinite; opacity: 0;
+}
+.scan-line:nth-child(2) { animation-delay: 4.5s; }
+@keyframes scanDown {
+  0% { top: 0; opacity: 0; } 5% { opacity: 1; } 95% { opacity: 1; } 100% { top: 100%; opacity: 0; }
+}
+
+.hero-content { position: relative; z-index: 10; text-align: center; max-width: 1000px; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.57rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid var(--gold-line);
+  padding: 0.5rem 1.25rem; margin-bottom: 2.75rem;
+  opacity: 0; animation: revealUp 1s 0.2s var(--transition) forwards;
+}
+.hero-badge::before {
+  content: ''; width: 5px; height: 5px;
+  background: var(--gold); border-radius: 50%;
+  animation: blink 1.5s step-end infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.hero-wordmark {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(5.5rem, 18vw, 15rem);
+  font-weight: 800; font-optical-sizing: auto;
+  letter-spacing: -0.04em; line-height: 0.85;
+  color: var(--parchment);
+  opacity: 0; animation: revealUp 1.2s 0.4s var(--transition) forwards;
+}
+
+.hero-tagline {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.2rem, 2.8vw, 2rem);
+  font-weight: 300; font-style: italic;
+  color: var(--gold-bright); margin: 1.25rem 0 1rem;
+  opacity: 0; animation: revealUp 1s 0.65s var(--transition) forwards;
+}
+
+.hero-descriptor {
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  font-weight: 300; color: var(--parchment-dim);
+  max-width: 540px; margin: 0 auto 3rem; line-height: 1.85;
+  opacity: 0; animation: revealUp 1s 0.85s var(--transition) forwards;
+}
+
+.hero-actions {
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  opacity: 0; animation: revealUp 1s 1.05s var(--transition) forwards;
+}
+
+.btn-primary {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  background: var(--gold); color: var(--void);
+  border: none; padding: 1.1rem 3.25rem;
+  cursor: pointer; position: relative; overflow: hidden;
+  transition: box-shadow 0.4s; font-weight: 500;
+}
+.btn-primary::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--gold-bright);
+  transform: translateX(-101%);
+  transition: transform 0.4s var(--transition);
+}
+.btn-primary:hover::before { transform: translateX(0); }
+.btn-primary span { position: relative; z-index: 1; }
+.btn-primary:hover { box-shadow: 0 0 40px rgba(184,148,63,0.4); }
+
+.btn-ghost {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  background: transparent; color: var(--parchment-dim);
+  border: 1px solid rgba(242,237,227,0.15);
+  padding: 0.85rem 2.5rem; cursor: pointer; transition: all 0.3s;
+}
+.btn-ghost:hover { border-color: var(--gold-line); color: var(--gold); }
+
+.price-hint {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.52rem; letter-spacing: 0.18em;
+  color: rgba(242,237,227,0.25); text-transform: uppercase;
+}
+
+/* Stats strip */
+.stats-strip {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  border-top: 1px solid var(--gold-line);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  opacity: 0; animation: revealUp 1s 1.4s var(--transition) forwards;
+}
+.stat-cell {
+  padding: 1.2rem 2rem;
+  border-right: 1px solid var(--gold-line);
+  display: flex; flex-direction: column; gap: 0.2rem;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 1.75rem; font-weight: 800; color: var(--parchment); line-height: 1;
+}
+.stat-num span { color: var(--gold); }
+.stat-label {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.5rem; letter-spacing: 0.18em;
+  color: var(--parchment-dim); text-transform: uppercase;
+}
+@media (max-width: 768px) {
+  .stats-strip { grid-template-columns: repeat(2, 1fr); }
+  .stat-cell:nth-child(2) { border-right: none; }
+  .stat-cell:nth-child(3) { border-top: 1px solid var(--gold-line); }
+}
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.9s var(--transition), transform 0.9s var(--transition);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.22s; }
+.reveal-delay-3 { transition-delay: 0.38s; }
+
+/* SECTION LAYOUT */
+.section {
+  padding: clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem);
+  max-width: 1300px; margin: 0 auto;
+}
+.section-rule {
+  display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.5rem;
+}
+.rule-label {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.57rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold); flex-shrink: 0;
+}
+.rule-line { flex: 1; height: 1px; background: var(--gold-line); }
+.rule-num {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.5rem; color: rgba(184,148,63,0.4); flex-shrink: 0;
+}
+.section-h {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+  font-weight: 700; line-height: 1.07; max-width: 820px; font-optical-sizing: auto;
+}
+.section-h em { font-style: italic; color: var(--gold-bright); }
+.section-h .strike { text-decoration: line-through; color: rgba(242,237,227,0.22); font-weight: 300; }
+
+/* WHAT SECTION */
+.what-section { background: var(--ink); border-top: 1px solid var(--gold-line); border-bottom: 1px solid var(--gold-line); }
+
+.what-grid {
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  gap: 5rem; margin-top: 4rem; align-items: start;
+}
+@media (max-width: 900px) { .what-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+.what-copy { font-size: 1.18rem; line-height: 1.85; font-weight: 300; color: var(--parchment-dim); }
+.what-copy p + p { margin-top: 1.1rem; }
+.what-copy strong { color: var(--parchment); font-weight: 400; }
+.what-copy em { color: var(--gold-bright); font-style: italic; }
+
+.capabilities-list { list-style: none; margin-top: 2.5rem; }
+.cap-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1rem 0; border-bottom: 1px solid rgba(184,148,63,0.1);
+  transition: border-color 0.3s, padding-left 0.3s;
+}
+.cap-item:first-child { border-top: 1px solid rgba(184,148,63,0.1); }
+.cap-item:hover { border-color: rgba(184,148,63,0.3); padding-left: 0.4rem; }
+.cap-icon {
+  font-family: 'Martian Mono', monospace; font-size: 0.52rem;
+  color: var(--gold); flex-shrink: 0; padding-top: 0.2rem; letter-spacing: 0.08em; width: 3.5rem;
+}
+.cap-text { font-size: 0.93rem; line-height: 1.6; color: var(--parchment-dim); }
+.cap-text strong { color: var(--parchment); font-weight: 400; }
+
+/* Sample report preview */
+.report-preview { background: var(--void); border: 1px solid var(--gold-line); overflow: hidden; }
+.report-header {
+  background: var(--ink-mid); border-bottom: 1px solid var(--gold-line);
+  padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between;
+}
+.rh-title { font-family: 'Martian Mono', monospace; font-size: 0.53rem; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; }
+.rh-status {
+  font-family: 'Martian Mono', monospace; font-size: 0.5rem; color: var(--signal);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.rh-status::before { content: ''; width: 5px; height: 5px; background: var(--signal); border-radius: 50%; animation: blink 1.5s step-end infinite; }
+.report-body { padding: 1.75rem; font-size: 0.82rem; line-height: 1.7; max-height: 430px; overflow: hidden; position: relative; }
+.report-body::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 90px; background: linear-gradient(transparent, var(--void));
+}
+.r-h1 { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--parchment); }
+.r-h2 {
+  font-family: 'Martian Mono', monospace; font-size: 0.6rem; font-weight: 500;
+  color: var(--gold-bright); margin: 1.25rem 0 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  padding-left: 0.75rem; border-left: 2px solid var(--gold);
+}
+.r-p { color: var(--parchment-dim); margin-bottom: 0.6rem; }
+.r-data {
+  background: var(--ink-mid); border: 1px solid var(--gold-line);
+  padding: 0.75rem 1rem; margin: 0.75rem 0;
+  font-family: 'Martian Mono', monospace; font-size: 0.62rem; color: var(--gold); line-height: 1.65;
+}
+
+/* PROCESS */
+.how-section { border-bottom: 1px solid var(--gold-line); }
+.process-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  margin-top: 5rem; border: 1px solid var(--gold-line);
+}
+@media (max-width: 768px) {
+  .process-grid { grid-template-columns: 1fr; }
+  .process-step { border-right: none !important; border-bottom: 1px solid var(--gold-line); }
+  .process-step:last-child { border-bottom: none; }
+}
+.process-step {
+  padding: 3rem 2.5rem; border-right: 1px solid var(--gold-line);
+  transition: background 0.3s;
+}
+.process-step:last-child { border-right: none; }
+.process-step:hover { background: rgba(184,148,63,0.03); }
+.step-num {
+  font-family: 'Fraunces', serif; font-size: 5rem; font-weight: 800;
+  color: var(--gold-line); line-height: 1; margin-bottom: 1.5rem; transition: color 0.3s;
+}
+.process-step:hover .step-num { color: rgba(184,148,63,0.3); }
+.step-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--parchment); }
+.step-desc { font-size: 0.93rem; line-height: 1.75; color: var(--parchment-dim); }
+.step-time {
+  margin-top: 1.5rem;
+  font-family: 'Martian Mono', monospace; font-size: 0.53rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.step-time::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+
+/* PRICING */
+.pricing-section { background: var(--ink); border-bottom: 1px solid var(--gold-line); }
+.pricing-intro {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: end; margin-bottom: 4rem;
+}
+@media (max-width: 768px) { .pricing-intro { grid-template-columns: 1fr; gap: 2rem; } }
+.pricing-comparison { }
+.comparison-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.65rem 0; border-bottom: 1px solid rgba(184,148,63,0.1);
+  font-family: 'Martian Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em;
+}
+.comparison-item:last-child { border-bottom: none; }
+.comp-label { color: var(--parchment-dim); }
+.comp-old { color: rgba(242,237,227,0.3); text-decoration: line-through; }
+.comp-new { color: var(--gold-bright); }
+
+.pricing-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--gold-line);
+}
+.pricing-cards-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1000px) {
+  .pricing-cards-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .pricing-cards { grid-template-columns: 1fr; }
+  .price-card { border-right: none !important; border-bottom: 1px solid var(--gold-line); }
+  .price-card:last-child { border-bottom: none; }
+}
+.price-card {
+  padding: 2.5rem; border-right: 1px solid var(--gold-line);
+  display: flex; flex-direction: column; position: relative; transition: background 0.3s;
+}
+.price-card:last-child { border-right: none; }
+.price-card.featured { background: rgba(184,148,63,0.05); }
+.price-card.featured::before {
+  content: 'MOST POPULAR';
+  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  font-family: 'Martian Mono', monospace; font-size: 0.48rem; letter-spacing: 0.25em;
+  background: var(--gold); color: var(--void); padding: 0.3rem 1rem; text-transform: uppercase;
+}
+.price-card:hover { background: rgba(184,148,63,0.04); }
+.tier-name {
+  font-family: 'Martian Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem;
+}
+.tier-price {
+  font-family: 'Fraunces', serif; font-size: 3.5rem; font-weight: 800;
+  line-height: 1; color: var(--parchment); margin-bottom: 0.25rem;
+}
+.tier-price sup { font-size: 1.5rem; vertical-align: top; margin-top: 0.5rem; font-weight: 400; color: var(--parchment-dim); }
+.tier-delivery {
+  font-family: 'Martian Mono', monospace; font-size: 0.53rem; letter-spacing: 0.13em;
+  color: var(--signal); text-transform: uppercase; margin-bottom: 2rem;
+}
+.tier-divider { height: 1px; background: var(--gold-line); margin-bottom: 1.75rem; }
+.tier-features { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; flex: 1; margin-bottom: 2.5rem; }
+.tier-features li {
+  font-size: 0.87rem; line-height: 1.5; color: var(--parchment-dim);
+  display: flex; gap: 0.7rem; align-items: flex-start;
+}
+.tier-features li::before {
+  content: '→'; color: var(--gold); font-family: 'Martian Mono', monospace;
+  font-size: 0.62rem; flex-shrink: 0; margin-top: 0.15rem;
+}
+.tier-btn {
+  font-family: 'Martian Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em;
+  text-transform: uppercase; padding: 1rem 2rem;
+  border: 1px solid var(--gold-line); background: transparent; color: var(--gold);
+  cursor: pointer; width: 100%; transition: all 0.3s var(--transition);
+}
+.tier-btn:hover, .price-card.featured .tier-btn {
+  background: var(--gold); color: var(--void); border-color: var(--gold);
+}
+.price-card.featured .tier-btn:hover { background: var(--gold-bright); }
+
+/* TABLE OF CONTENTS */
+.contents-section { border-bottom: 1px solid var(--gold-line); }
+.contents-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; margin-top: 4rem; align-items: start;
+}
+@media (max-width: 900px) { .contents-grid { grid-template-columns: 1fr; } }
+.toc-list { list-style: none; }
+.toc-item {
+  display: flex; align-items: flex-start; gap: 1.25rem;
+  padding: 1.1rem 0; border-bottom: 1px solid rgba(184,148,63,0.1);
+  transition: all 0.3s;
+}
+.toc-item:first-child { border-top: 1px solid rgba(184,148,63,0.1); }
+.toc-item:hover { padding-left: 0.4rem; border-color: rgba(184,148,63,0.3); }
+.toc-num { font-family: 'Martian Mono', monospace; font-size: 0.53rem; color: var(--gold); flex-shrink: 0; padding-top: 0.2rem; width: 2rem; }
+.toc-name { font-size: 0.97rem; color: var(--parchment-dim); line-height: 1.4; transition: color 0.3s; }
+.toc-item:hover .toc-name { color: var(--parchment); }
+.toc-flag {
+  margin-left: auto; font-family: 'Martian Mono', monospace;
+  font-size: 0.47rem; letter-spacing: 0.1em; color: var(--gold);
+  background: rgba(184,148,63,0.1); padding: 0.2rem 0.5rem; flex-shrink: 0; text-transform: uppercase;
+}
+.contents-callout {
+  background: var(--ink); border: 1px solid var(--gold-line);
+  padding: 2.5rem; position: sticky; top: 6rem;
+}
+.callout-eyebrow {
+  font-family: 'Martian Mono', monospace; font-size: 0.53rem; letter-spacing: 0.28em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 1.25rem;
+}
+.callout-quote {
+  font-family: 'Fraunces', serif; font-size: 1.3rem; font-style: italic; font-weight: 300;
+  line-height: 1.7; color: var(--parchment); margin-bottom: 2rem;
+}
+.callout-divider { height: 1px; background: var(--gold-line); margin: 2rem 0; }
+.value-stack { display: flex; flex-direction: column; gap: 0.7rem; }
+.value-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
+.v-label { color: var(--parchment-dim); }
+.v-val { font-family: 'Martian Mono', monospace; font-size: 0.68rem; color: var(--gold-bright); }
+.v-val.strike { text-decoration: line-through; color: rgba(242,237,227,0.25); font-size: 0.63rem; }
+.value-total {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 0 0; border-top: 1px solid var(--gold-line); margin-top: 0.5rem;
+}
+.v-total-label {
+  font-family: 'Martian Mono', monospace; font-size: 0.55rem; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--parchment);
+}
+.v-total-val { font-family: 'Fraunces', serif; font-size: 1.75rem; font-weight: 800; color: var(--gold-bright); }
+
+/* TESTIMONIALS */
+.testi-section { background: var(--ink); border-bottom: 1px solid var(--gold-line); }
+.testi-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  margin-top: 4rem; border: 1px solid var(--gold-line);
+  gap: 1px; background: var(--gold-line);
+}
+@media (max-width: 900px) { .testi-grid { grid-template-columns: 1fr; } }
+.testi-card { background: var(--ink); padding: 2.5rem; transition: background 0.3s; }
+.testi-card:hover { background: var(--ink-mid); }
+.testi-stars { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 1.2rem; }
+.testi-quote {
+  font-family: 'Fraunces', serif; font-size: 1.05rem; font-style: italic; font-weight: 300;
+  line-height: 1.75; color: var(--parchment); margin-bottom: 1.75rem;
+}
+.testi-name { font-family: 'Martian Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--parchment-dim); text-transform: uppercase; }
+.testi-role { font-family: 'Martian Mono', monospace; font-size: 0.5rem; letter-spacing: 0.08em; color: var(--gold); text-transform: uppercase; margin-top: 0.2rem; }
+.testimonial-grid { display: contents; }
+
+/* FAQ */
+.faq-list { margin-top: 3.5rem; border-top: 1px solid var(--gold-line); }
+.faq-item { border-bottom: 1px solid var(--gold-line); }
+.faq-q {
+  width: 100%; background: none; border: none; text-align: left;
+  padding: 1.75rem 0; display: flex; justify-content: space-between; align-items: center;
+  gap: 2rem; cursor: pointer; color: var(--parchment);
+  font-family: 'Fraunces', serif; font-size: 1.08rem; font-weight: 400; transition: color 0.3s;
+}
+.faq-q:hover { color: var(--gold-bright); }
+.faq-icon {
+  font-family: 'Martian Mono', monospace; font-size: 1.1rem; color: var(--gold);
+  transition: transform 0.35s var(--transition); flex-shrink: 0;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s var(--transition); }
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-a-inner { padding: 0 0 1.75rem; font-size: 0.97rem; line-height: 1.8; color: var(--parchment-dim); }
+
+/* CTA */
+.cta-section {
+  position: relative; overflow: hidden; text-align: center;
+  padding: clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem);
+  border-bottom: 1px solid var(--gold-line);
+}
+.cta-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(184,148,63,0.08) 0%, transparent 70%);
+}
+.cta-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(184,148,63,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(184,148,63,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.cta-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.cta-eyebrow {
+  font-family: 'Martian Mono', monospace; font-size: 0.57rem; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 2rem;
+}
+.cta-heading {
+  font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800; font-optical-sizing: auto; line-height: 1; margin-bottom: 1.5rem;
+}
+.cta-sub {
+  font-size: 1.08rem; font-style: italic; font-weight: 300;
+  color: var(--parchment-dim); margin-bottom: 3rem; line-height: 1.75;
+}
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.cta-actions .price-hint { margin-top: 0.5rem; text-align: center; width: 100%; }
+
+/* FOOTER */
+footer {
+  background: var(--void); border-top: 1px solid var(--gold-line);
+  padding: 3rem clamp(1.5rem, 6vw, 5rem);
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center;
+}
+@media (max-width: 768px) { footer { grid-template-columns: 1fr; text-align: center; } }
+.footer-logo { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 800; color: var(--gold); letter-spacing: -0.02em; }
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-family: 'Martian Mono', monospace; font-size: 0.53rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--parchment-dim); text-decoration: none; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-legal {
+  font-family: 'Martian Mono', monospace; font-size: 0.49rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(242,237,227,0.22); line-height: 1.8; text-align: right;
+}
+@media (max-width: 768px) { .footer-legal { text-align: center; } }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s var(--transition);
+  background: rgba(5,4,3,0.88); backdrop-filter: blur(14px);
+}
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+.modal {
+  background: var(--ink); border: 1px solid var(--gold-line);
+  width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto;
+  transform: translateY(20px); transition: transform 0.5s var(--transition); position: relative;
+}
+.modal-overlay.active .modal { transform: translateY(0); }
+.modal-top {
+  background: var(--ink-mid); border-bottom: 1px solid var(--gold-line);
+  padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between;
+}
+.modal-title {
+  font-family: 'Martian Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold);
+}
+.modal-tier-name { font-family: 'Martian Mono', monospace; font-size: 0.52rem; color: var(--parchment-dim); letter-spacing: 0.1em; }
+.modal-close {
+  background: none; border: none; color: var(--parchment-dim); cursor: pointer;
+  font-size: 1rem; padding: 0.25rem; line-height: 1; transition: color 0.2s;
+}
+.modal-close:hover { color: var(--gold); }
+.modal-body { padding: 2rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label {
+  display: block; font-family: 'Martian Mono', monospace;
+  font-size: 0.53rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.5rem;
+}
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; background: var(--void); border: 1px solid var(--gold-line);
+  color: var(--parchment); font-family: 'Source Serif 4', serif;
+  font-size: 0.93rem; padding: 0.8rem 1rem; transition: border-color 0.3s; outline: none; -webkit-appearance: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(242,237,227,0.22); }
+.form-group select option { background: var(--ink); }
+.form-group textarea { height: 90px; resize: none; }
+.error-msg { font-family: 'Martian Mono', monospace; font-size: 0.5rem; color: var(--ember); margin-top: 0.4rem; display: none; }
+.modal-price-bar {
+  background: var(--void); border: 1px solid var(--gold-line);
+  padding: 1rem 1.25rem; margin: 1.5rem 0;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.modal-price-label { font-family: 'Martian Mono', monospace; font-size: 0.53rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--parchment-dim); }
+.modal-price-amount { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 800; color: var(--gold-bright); }
+.modal-submit {
+  width: 100%; background: var(--gold); color: var(--void); border: none;
+  font-family: 'Martian Mono', monospace; font-size: 0.63rem; letter-spacing: 0.2em;
+  text-transform: uppercase; padding: 1.1rem; cursor: pointer; transition: background 0.3s; font-weight: 500;
+}
+.modal-submit:hover:not(:disabled) { background: var(--gold-bright); }
+.modal-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.modal-note {
+  text-align: center; font-family: 'Martian Mono', monospace;
+  font-size: 0.5rem; letter-spacing: 0.1em; color: rgba(242,237,227,0.22);
+  line-height: 1.9; margin-top: 1rem; text-transform: uppercase;
+}
+.loading-spinner {
+  display: inline-block; width: 12px; height: 12px;
+  border: 2px solid rgba(5,4,3,0.3); border-top-color: var(--void);
+  border-radius: 50%; animation: spin 0.7s linear infinite;
+  margin-right: 0.5rem; vertical-align: middle;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.modal-form.hidden { display: none; }
+.success-screen { display: none; padding: 3rem 2rem; text-align: center; }
+.success-screen.active { display: block; }
+.success-icon { font-size: 2.5rem; color: var(--gold); display: block; margin-bottom: 1.25rem; animation: successPulse 2s ease-in-out infinite; }
+@keyframes successPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+.success-title { font-family: 'Fraunces', serif; font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; color: var(--parchment); }
+.success-desc { font-size: 0.93rem; line-height: 1.8; color: var(--parchment-dim); }
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="grain"></div>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="dot"></span><span class="live">LIVE</span> AI intelligence engine online</span>
+    <span class="ticker-item"><span class="dot"></span>Reports delivered in under 5 minutes</span>
+    <span class="ticker-item"><span class="dot"></span>Market research that cost $15,000 — now from $19</span>
+    <span class="ticker-item"><span class="dot"></span><span class="live">NEW</span> Strategic tier · 7,000-token deep-dive</span>
+    <span class="ticker-item"><span class="dot"></span>TAM · SAM · SOM · Competitive landscape · GTM strategy</span>
+    <span class="ticker-item"><span class="dot"></span>Founders. Operators. Investors. You know who you are.</span>
+    <span class="ticker-item"><span class="dot"></span><span class="live">LIVE</span> AI intelligence engine online</span>
+    <span class="ticker-item"><span class="dot"></span>Reports delivered in under 5 minutes</span>
+    <span class="ticker-item"><span class="dot"></span>Market research that cost $15,000 — now from $19</span>
+    <span class="ticker-item"><span class="dot"></span><span class="live">NEW</span> Strategic tier · 7,000-token deep-dive</span>
+    <span class="ticker-item"><span class="dot"></span>TAM · SAM · SOM · Competitive landscape · GTM strategy</span>
+    <span class="ticker-item"><span class="dot"></span>Founders. Operators. Investors. You know who you are.</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">ORACLE</a>
+  <ul class="nav-links">
+    <li><a href="#what">Intelligence</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="/markets/">Markets</a></li>
+    <li><a href='/teams'>Teams</a></li>
+    <li><a href='/quiz'>Free Snapshot</a></li>
+    <li><a href='/sample'>Sample</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">See Plans →</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb">
+    <div class="orb-ring"></div>
+    <div class="orb-ring"></div>
+    <div class="orb-ring"></div>
+    <div class="orb-ring"></div>
+    <div class="orb-core"></div>
+  </div>
+  <div class="scan-line"></div>
+  <div class="scan-line"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Intelligence Engine · Active</div>
+    <h1 class="hero-wordmark">ORACLE</h1>
+    <div class="hero-tagline" id="hero-tagline">Deep market intelligence, delivered in minutes</div>
+    <p class="hero-descriptor" id="hero-descriptor">
+      The market research that used to cost $15,000 and take six weeks —
+      AI-synthesized, rigorously structured, delivered to your inbox in minutes.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary" id="hero-cta" onclick="trackTierClick('professional',89);openModal('professional', 89)">
+        <span>Get Your Intelligence Report</span>
+      </button>
+      <button class="btn-ghost" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View Pricing</button>
+      <a href='/sample' onmouseout='this.style.color=\'rgba(184,148,63,0.7)\'' onmouseover='this.style.color=\'#d4aa50\'' style='font-family:\'Martian Mono\',monospace;font-size:0.57rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(184,148,63,0.7);text-decoration:none;border-bottom:1px solid rgba(184,148,63,0.25);padding-bottom:2px;transition:color 0.2s;'>View Sample Report →</a>
+      <div class="price-hint">From $19 · One-time payment · ~5 minute delivery</div>
+    </div>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stat-cell">
+      <div class="stat-num"><span>$</span>15k</div>
+      <div class="stat-label">Traditional cost</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num"><span>~</span>5m</div>
+      <div class="stat-label">Your delivery time</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">12<span>+</span></div>
+      <div class="stat-label">Report sections</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num"><span>$</span>39</div>
+      <div class="stat-label">Starting price</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT -->
+
+  <!-- Quiz CTA Bar -->
+  <div style="background:#181410;border-top:1px solid rgba(184,148,63,0.22);border-bottom:1px solid rgba(184,148,63,0.22);padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <div style="width:5px;height:5px;background:#b8943f;border-radius:50%;"></div>
+      <span style="font-family:'Martian Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,227,0.55);">Not ready to order? Get a free market snapshot first.</span>
+    </div>
+    <a href='/quiz' style='font-family:\'Martian Mono\',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:#b8943f;text-decoration:none;border-bottom:1px solid rgba(184,148,63,0.3);padding-bottom:1px;white-space:nowrap;'>Take the Free Snapshot Quiz →</a>
+  </div>
+<section class="what-section" id="what">
+  <div class="section">
+    <div class="section-rule reveal">
+      <span class="rule-label">What You Get</span>
+      <span class="rule-line"></span>
+      <span class="rule-num">01</span>
+    </div>
+    <h2 class="section-h reveal reveal-delay-1">Not a summary.<br><em>A strategic weapon.</em></h2>
+    <div class="what-grid">
+      <div>
+        <div class="what-copy reveal reveal-delay-2">
+          <p>ORACLE doesn't scrape Wikipedia and call it research. The AI synthesizes market data, competitive dynamics, customer psychology, and revenue architecture into a <strong>structured intelligence document</strong> built to inform real decisions.</p>
+          <p>In 5 minutes, you'll have what most founders spend <em>months</em> piecing together — or tens of thousands paying consultants to produce.</p>
+        </div>
+        <ul class="capabilities-list reveal reveal-delay-3">
+          <li class="cap-item">
+            <span class="cap-icon">TAM/SAM</span>
+            <div class="cap-text"><strong>Total addressable market sizing</strong> with SAM/SOM breakdowns and 3-year growth projections</div>
+          </li>
+          <li class="cap-item">
+            <span class="cap-icon">COMP</span>
+            <div class="cap-text"><strong>Competitive landscape mapping</strong> — up to 10 competitors with positioning analysis</div>
+          </li>
+          <li class="cap-item">
+            <span class="cap-icon">ICP</span>
+            <div class="cap-text"><strong>Deep customer intelligence</strong> — who they are, what drives them, how they buy</div>
+          </li>
+          <li class="cap-item">
+            <span class="cap-icon">GTM</span>
+            <div class="cap-text"><strong>Go-to-market framework</strong> with channel strategy and acquisition approach</div>
+          </li>
+          <li class="cap-item">
+            <span class="cap-icon">RISK</span>
+            <div class="cap-text"><strong>Risk assessment</strong> with mitigation across regulatory, market, and competitive dimensions</div>
+          </li>
+          <li class="cap-item">
+            <span class="cap-icon">MOVES</span>
+            <div class="cap-text"><strong>Your Next 3 Moves</strong> — specific, prioritized, immediately actionable next steps</div>
+          </li>
+        </ul>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <div class="report-preview">
+          <div class="report-header">
+            <div class="rh-title">Sample Intelligence Report</div>
+            <div class="rh-status">Rendering</div>
+          </div>
+          <div class="report-body">
+            <div class="r-h1">AI Fitness Coaching Platform — Market Intelligence</div>
+            <div class="r-data">
+              ORACLE INTELLIGENCE · Professional Tier · Delivered 2025-02-22<br>
+              Market: AI-powered fitness coaching · Geography: United States<br>
+              Classification: HIGH OPPORTUNITY · Maturity: Emerging
+            </div>
+            <div class="r-h2">Executive Summary</div>
+            <div class="r-p">The AI fitness coaching market represents a high-conviction opportunity at the convergence of three macro forces: consumer health prioritization post-pandemic, the consumerization of AI, and the $100B+ fitness industry's structural failure to serve the majority of gym members who churn within 3 months.</div>
+            <div class="r-p">Our analysis identifies a <strong>$4.2B SAM</strong> reachable within 36 months, concentrated in the 28–45 demographic with demonstrated willingness-to-pay of $29–79/month for personalized digital wellness.</div>
+            <div class="r-h2">Market Size & Architecture</div>
+            <div class="r-data">
+              TAM (Global digital fitness): $14.7B (2025) → $27.4B (2028)<br>
+              SAM (AI coaching, US market): $4.2B<br>
+              SOM (Realistic 3yr capture): $42M — $210M<br>
+              CAGR: 23.7% (2025–2030)
+            </div>
+            <div class="r-h2">Competitive Landscape</div>
+            <div class="r-p">Market is bifurcated between established fitness platforms adding AI features (Peloton, Mirror) and pure-play AI entrants. Key vulnerability: incumbents optimize for engagement metrics, not outcome delivery — creating a wedge for results-first positioning.</div>
+          </div>
+        </div>
+        <a href='/sample' onmouseout='this.style.background=\'rgba(184,148,63,0.08)\'' onmouseover='this.style.background=\'rgba(184,148,63,0.15)\'' style='display:block;margin-top:1px;background:rgba(184,148,63,0.08);border:1px solid rgba(184,148,63,0.25);border-top:none;padding:1rem 1.5rem;font-family:\'Martian Mono\',monospace;font-size:0.57rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:background 0.3s;text-align:center;'>Read Full Sample Report — Adaptogenic Beverage Brand →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="section">
+    <div class="section-rule reveal">
+      <span class="rule-label">The Process</span>
+      <span class="rule-line"></span>
+      <span class="rule-num">02</span>
+    </div>
+    <h2 class="section-h reveal reveal-delay-1"><span class="strike">6 weeks.</span><br><em>5 minutes.</em></h2>
+    <div class="process-grid">
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-num">01</div>
+        <div class="step-title">Brief ORACLE</div>
+        <div class="step-desc">Tell us your market, geography, and your biggest open question. The more specific you are, the sharper the intelligence. Two sentences or a full paragraph — both work.</div>
+        <div class="step-time">60 seconds</div>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-num">02</div>
+        <div class="step-title">Secure Payment</div>
+        <div class="step-desc">Stripe-powered checkout. TLS encrypted. Supports all major cards, Apple Pay, and Google Pay. One-time payment, no subscription required.</div>
+        <div class="step-time">30 seconds</div>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-num">03</div>
+        <div class="step-title">Intelligence Delivered</div>
+        <div class="step-desc">ORACLE synthesizes your report and delivers it directly to your inbox. Read it on your phone. Share it with your team. Act on it today.</div>
+        <div class="step-time">Under 5 minutes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- COMPARISON SECTION -->
+<section style="background:var(--ink);border-top:1px solid var(--gold-line);border-bottom:1px solid var(--gold-line);padding:5rem 0;">
+  <div class="section" style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+    <div class="section-rule reveal">
+      <span class="rule-label">Why ORACLE</span>
+    </div>
+    <h2 class="section-h reveal" style="font-size:clamp(1.75rem,3.5vw,2.75rem);max-width:600px;">Professional intelligence.<br><em>Without professional overhead.</em></h2>
+
+    <div style="margin-top:3rem;overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+        <thead>
+          <tr style="border-bottom:1px solid var(--gold-line);">
+            <th style="text-align:left;padding:1rem 1.25rem;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);width:30%;">Method</th>
+            <th style="text-align:center;padding:1rem;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);">Cost</th>
+            <th style="text-align:center;padding:1rem;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);">Time</th>
+            <th style="text-align:center;padding:1rem;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);">Actionable?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(184,148,63,0.08);">
+            <td style="padding:1rem 1.25rem;color:var(--parchment-dim);font-style:italic;">McKinsey / Big 4</td>
+            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">$50,000+</td>
+            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">6–12 weeks</td>
+            <td style="padding:1rem;text-align:center;color:rgba(242,237,227,0.25);">Sometimes</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(184,148,63,0.08);">
+            <td style="padding:1rem 1.25rem;color:var(--parchment-dim);font-style:italic;">Gartner / Forrester Report</td>
+            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">$3,000–$8,000</td>
+            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">Immediate (stale)</td>
+            <td style="padding:1rem;text-align:center;color:rgba(242,237,227,0.25);">Rarely</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(184,148,63,0.08);">
+            <td style="padding:1rem 1.25rem;color:var(--parchment-dim);font-style:italic;">Freelance Analyst</td>
+            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">$2,000–$8,000</td>
+            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">2–4 weeks</td>
+            <td style="padding:1rem;text-align:center;color:rgba(242,237,227,0.25);">Variable</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(184,148,63,0.08);">
+            <td style="padding:1rem 1.25rem;color:var(--parchment-dim);font-style:italic;">DIY (Google + gut)</td>
+            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">Free</td>
+            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">Hours/days</td>
+            <td style="padding:1rem;text-align:center;color:rgba(242,237,227,0.25);">Rarely</td>
+          </tr>
+          <tr style="background:rgba(184,148,63,0.06);border:1px solid rgba(184,148,63,0.25);">
+            <td style="padding:1rem 1.25rem;color:var(--parchment);font-weight:500;">ORACLE Intelligence</td>
+            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:var(--gold-bright);">$39–$199</td>
+            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:var(--gold-bright);">~5 minutes</td>
+            <td style="padding:1rem;text-align:center;color:#5ab87a;">Always</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Social proof / use cases -->
+    <div style="margin-top:4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gold-line);border:1px solid var(--gold-line);">
+      <div style="background:var(--ink-mid);padding:1.75rem 1.5rem;">
+        <div style="font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Founders</div>
+        <div style="font-size:0.95rem;color:var(--parchment);font-style:italic;line-height:1.65;margin-bottom:0.75rem;">"I used ORACLE to validate my market before spending $80K on development. The competitor weakness section changed my positioning entirely."</div>
+        <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;color:var(--parchment-dim);">Idea → product validation</div>
+      </div>
+      <div style="background:var(--ink-mid);padding:1.75rem 1.5rem;">
+        <div style="font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Operators</div>
+        <div style="font-size:0.95rem;color:var(--parchment);font-style:italic;line-height:1.65;margin-bottom:0.75rem;">"We used the GTM framework from our ORACLE report to structure our Q1 expansion plan. Saved two weeks of internal research."</div>
+        <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;color:var(--parchment-dim);">Market expansion planning</div>
+      </div>
+      <div style="background:var(--ink-mid);padding:1.75rem 1.5rem;">
+        <div style="font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Investors</div>
+        <div style="font-size:0.95rem;color:var(--parchment);font-style:italic;line-height:1.65;margin-bottom:0.75rem;">"For early-stage diligence, ORACLE gives me a structured market view in minutes. I use it as a first pass before going deeper."</div>
+        <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;color:var(--parchment-dim);">Early-stage due diligence</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="section">
+    <div class="section-rule reveal">
+      <span class="rule-label">Pricing</span>
+      <span class="rule-line"></span>
+      <span class="rule-num">03</span>
+    </div>
+    <div class="pricing-intro">
+      <h2 class="section-h reveal reveal-delay-1">Intelligence at a<br><em>fraction of the cost.</em></h2>
+      <div class="pricing-comparison reveal reveal-delay-2">
+        <div class="comparison-item">
+          <span class="comp-label">Traditional consultancy</span>
+          <span class="comp-old">$12,000–$50,000</span>
+          <span class="comp-new">→ $19</span>
+        </div>
+        <div class="comparison-item">
+          <span class="comp-label">MBA intern (3 months)</span>
+          <span class="comp-old">$8,000</span>
+          <span class="comp-new">→ $89</span>
+        </div>
+        <div class="comparison-item">
+          <span class="comp-label">Research platform annual sub</span>
+          <span class="comp-old">$3,600/yr</span>
+          <span class="comp-new">→ $199</span>
+        </div>
+        <div class="comparison-item">
+          <span class="comp-label">Time to results</span>
+          <span class="comp-old">4–8 weeks</span>
+          <span class="comp-new">→ 5 minutes</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4-tier pricing grid — experiment: Pulse added, Professional re-framed -->
+    <div class="pricing-cards pricing-cards-4 reveal reveal-delay-2" id="pricing-cards">
+
+      <!-- PULSE: $19 entry — experiment variable -->
+      <div class="price-card" data-tier="pulse" id="card-pulse">
+        <div class="tier-name">Pulse</div>
+        <div class="tier-price"><sup>$</sup>19</div>
+        <div class="tier-delivery">⬤ Delivered in ~90 sec</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Market Size Snapshot</li>
+          <li>Top 3 Competitors</li>
+          <li><strong>The Single Best Opportunity</strong></li>
+        </ul>
+        <div style="font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;color:rgba(242,237,227,0.3);margin-bottom:1.25rem;line-height:1.6;">Best for: quick gut-check before committing to deeper research</div>
+        <button class="tier-btn" onclick="trackTierClick('pulse', 19); openModal('pulse', 19)">Quick Pulse →</button>
+      </div>
+
+      <!-- STARTER: $39 -->
+      <div class="price-card" data-tier="starter" id="card-starter">
+        <div class="tier-name">Starter</div>
+        <div class="tier-price"><sup>$</sup>39</div>
+        <div class="tier-delivery">⬤ Delivered in ~3 min</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Executive Summary</li>
+          <li>Market Size (TAM/SAM/SOM)</li>
+          <li>Customer Profile</li>
+          <li>Top 5 Competitors</li>
+          <li>Top 3 Market Trends</li>
+          <li>Primary Opportunity</li>
+          <li>Key Risks (3)</li>
+          <li>Revenue Models</li>
+          <li><strong>Your Next 3 Moves</strong></li>
+        </ul>
+        <button class="tier-btn" onclick="trackTierClick('starter', 39); openModal('starter', 39)">Order Starter →</button>
+      </div>
+
+      <!-- PROFESSIONAL: $89 — re-framed for investor/operator -->
+      <div class="price-card featured" data-tier="professional" id="card-professional">
+        <div class="tier-name">Professional</div>
+        <div class="tier-price"><sup>$</sup>89</div>
+        <div class="tier-delivery">⬤ Delivered in ~5 min</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Everything in Starter</li>
+          <li>3-Year Market Projection</li>
+          <li>Deep Customer Intelligence</li>
+          <li>Top 10 Competitor Analysis</li>
+          <li>Macro + Micro Trend Analysis</li>
+          <li>Three Opportunity Vectors</li>
+          <li>Risk Assessment (5 risks)</li>
+          <li><strong>Go-To-Market Framework</strong></li>
+          <li><strong>Investor Narrative Framework</strong></li>
+          <li>Financial Modeling Notes</li>
+          <li><strong>Your Next 3 Moves</strong></li>
+        </ul>
+        <button class="tier-btn" onclick="trackTierClick('professional', 89); openModal('professional', 89)">Order Professional →</button>
+      </div>
+
+      <!-- STRATEGIC: $199 — board/investor framing -->
+      <div class="price-card" data-tier="strategic" id="card-strategic">
+        <div class="tier-name">Strategic</div>
+        <div class="tier-price"><sup>$</sup>199</div>
+        <div class="tier-delivery">⬤ Delivered in ~8 min</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Everything in Professional</li>
+          <li>Adjacent Market Opportunities</li>
+          <li>Supply Chain Analysis</li>
+          <li>Regulatory Overview</li>
+          <li>M&A Landscape</li>
+          <li>Base / Bull / Bear Scenarios</li>
+          <li>Full GTM Strategy</li>
+          <li>90-Day Action Plan</li>
+          <li><strong>Board-ready formatting</strong></li>
+        </ul>
+        <button class="tier-btn" onclick="trackTierClick('strategic', 199); openModal('strategic', 199)">Order Strategic →</button>
+      </div>
+
+    </div><!-- /pricing-cards -->
+
+    <!-- Funnel instrumentation — fires events to A/B tracker -->
+    <script>
+    (function() {
+      const EXP = 'pricing-v1';
+
+      // Fire impression when pricing section scrolls into view
+      const pricingSection = document.getElementById('pricing');
+      const cards = document.querySelectorAll('[data-tier]');
+      const observed = new Set();
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          const tier = e.target.dataset.tier;
+          if (!tier || observed.has(tier)) return;
+          observed.add(tier);
+          track(EXP, tier, 'impression');
+        });
+      }, { threshold: 0.5 });
+
+      cards.forEach(c => io.observe(c));
+
+      // Section-level view event (fires once)
+      const sectionIo = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          track(EXP, 'pricing_section', 'impression');
+          sectionIo.disconnect();
+        }
+      }, { threshold: 0.3 });
+      if (pricingSection) sectionIo.observe(pricingSection);
+    })();
+
+    function trackTierClick(tier, price) {
+      track('pricing-v1', tier, 'click', price);
+      // Also record in sessionStorage so we can attribute checkout completions
+      try { sessionStorage.setItem('oracle_tier_intent', tier); } catch(e) {}
+    }
+
+    function track(test, variant, event, amount) {
+      try {
+        fetch('/api/ab-track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ test, variant, event, amount: amount || 0 })
+        });
+      } catch(e) {}
+    }
+
+    // Fire modal_open event (hooked into existing openModal)
+    const _origOpenModal = window.openModal;
+    window.openModal = function(tier, price) {
+      track('pricing-v1', tier, 'modal_open', price);
+      if (typeof _origOpenModal === 'function') _origOpenModal(tier, price);
+    };
+    </script>
+
+  </div>
+</section>
+
+  <!-- Post-pricing trust strip -->
+  <div style="background:var(--void);border-top:1px solid var(--gold-line);padding:1.5rem 2rem;display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;align-items:center;">
+    <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,227,0.3);display:flex;align-items:center;gap:0.5rem;">
+      <span style="color:#4caf81;">●</span> $0 subscription — one-time, forever yours
+    </div>
+    <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,227,0.3);display:flex;align-items:center;gap:0.5rem;">
+      <span style="color:#4caf81;">●</span> Stripe-secured checkout
+    </div>
+    <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,227,0.3);display:flex;align-items:center;gap:0.5rem;">
+      <span style="color:#4caf81;">●</span> Email delivery in minutes — not days
+    </div>
+    <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,227,0.3);display:flex;align-items:center;gap:0.5rem;">
+      <span style="color:var(--gold);">●</span> <a href='/sample' style='color:var(--gold);text-decoration:none;'>Read a sample report first →</a>
+    </div>
+  </div>
+
+
+<!-- CONTENTS -->
+<section class="contents-section">
+  <div class="section">
+    <div class="section-rule reveal">
+      <span class="rule-label">What's Inside</span>
+      <span class="rule-line"></span>
+      <span class="rule-num">04</span>
+    </div>
+    <h2 class="section-h reveal reveal-delay-1">Every section<br><em>purpose-built.</em></h2>
+    <div class="contents-grid">
+      <ol class="toc-list reveal reveal-delay-2">
+        <li class="toc-item"><span class="toc-num">01</span><span class="toc-name">Executive Summary & Investment Thesis</span><span class="toc-flag">All Tiers</span></li>
+        <li class="toc-item"><span class="toc-num">02</span><span class="toc-name">Market Architecture (TAM / SAM / SOM)</span><span class="toc-flag">All Tiers</span></li>
+        <li class="toc-item"><span class="toc-num">03</span><span class="toc-name">Customer Intelligence & Psychographics</span><span class="toc-flag">All Tiers</span></li>
+        <li class="toc-item"><span class="toc-num">04</span><span class="toc-name">Competitive Landscape (up to 10 players)</span><span class="toc-flag">All Tiers</span></li>
+        <li class="toc-item"><span class="toc-num">05</span><span class="toc-name">Macro & Micro Trend Analysis</span><span class="toc-flag">Pro+</span></li>
+        <li class="toc-item"><span class="toc-num">06</span><span class="toc-name">Three Opportunity Vectors</span><span class="toc-flag">Pro+</span></li>
+        <li class="toc-item"><span class="toc-num">07</span><span class="toc-name">Risk Assessment & Mitigation</span><span class="toc-flag">All Tiers</span></li>
+        <li class="toc-item"><span class="toc-num">08</span><span class="toc-name">Revenue Model Architecture</span><span class="toc-flag">All Tiers</span></li>
+        <li class="toc-item"><span class="toc-num">09</span><span class="toc-name">Go-To-Market Framework</span><span class="toc-flag">Pro+</span></li>
+        <li class="toc-item"><span class="toc-num">10</span><span class="toc-name">Investor Narrative & Pitch Framing</span><span class="toc-flag">Pro+</span></li>
+        <li class="toc-item"><span class="toc-num">11</span><span class="toc-name">90-Day Strategic Action Plan</span><span class="toc-flag">Strategic</span></li>
+        <li class="toc-item"><span class="toc-num">12</span><span class="toc-name">Your Next 3 Moves</span><span class="toc-flag">All Tiers</span></li>
+      </ol>
+      <div class="contents-callout reveal reveal-delay-3">
+        <div class="callout-eyebrow">Why This Works</div>
+        <div class="callout-quote">"The quality of decisions you make is limited by the quality of information you have. ORACLE removes that bottleneck."</div>
+        <div class="callout-divider"></div>
+        <div class="callout-eyebrow">Value Comparison</div>
+        <div class="value-stack">
+          <div class="value-row"><span class="v-label">Market research consultancy</span><span class="v-val strike">$12,000+</span></div>
+          <div class="value-row"><span class="v-label">McKinsey engagement</span><span class="v-val strike">$50,000+</span></div>
+          <div class="value-row"><span class="v-label">Research platform (annual)</span><span class="v-val strike">$3,600/yr</span></div>
+          <div class="value-row"><span class="v-label">MBA intern (3 months)</span><span class="v-val strike">$8,000</span></div>
+          <div class="value-row"><span class="v-label">Weeks of waiting</span><span class="v-val strike">4–8 weeks</span></div>
+        </div>
+        <div class="value-total">
+          <span class="v-total-label">Your ORACLE report</span>
+          <span class="v-total-val">From $39</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="section">
+    <div class="section-rule reveal">
+      <span class="rule-label">Field Reports</span>
+      <span class="rule-line"></span>
+      <span class="rule-num">05</span>
+    </div>
+    <h2 class="section-h reveal reveal-delay-1">What operators<br><em>actually say.</em></h2>
+    <div class="testi-grid reveal reveal-delay-2">
+      <div class="testimonial-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"Used the Strategic report to anchor our Series A deck. The TAM sizing and competitive framing were exactly what our lead investor wanted. Saved us weeks of back-and-forth."</div>
+          <div class="testi-name">Marcus T.</div>
+          <div class="testi-role">Founder, B2B SaaS</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"I was skeptical. Then I read the competitive section — it identified two players I'd completely missed and reframed my entire positioning. Worth 10x the price."</div>
+          <div class="testi-name">Sarah K.</div>
+          <div class="testi-role">CEO, Consumer Brand</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"Ordered at 11pm Sunday. Had the report by midnight. Shared it Monday morning. We made a major pivot decision that week based on the market sizing data."</div>
+          <div class="testi-name">David L.</div>
+          <div class="testi-role">Operator, Marketplace</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section">
+    <div class="section-rule reveal">
+      <span class="rule-label">Questions</span>
+      <span class="rule-line"></span>
+      <span class="rule-num">06</span>
+    </div>
+    <h2 class="section-h reveal reveal-delay-1">Everything<br><em>you're wondering.</em></h2>
+    <div class="faq-list reveal reveal-delay-2">
+      <div class="faq-item">
+        <button class="faq-q">How accurate is the intelligence?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">ORACLE synthesizes from a vast range of market research, industry reports, academic studies, and business intelligence. It's exceptionally strong on market structure, competitive dynamics, and strategic frameworks. Treat it as an informed starting point — validate key figures against primary sources before critical decisions.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What markets can you analyze?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Virtually any B2C or B2B market — consumer products, SaaS, marketplaces, services, healthcare, fintech, logistics, real estate, and more. ORACLE performs best on established markets with clear competitive dynamics. For very niche or technical markets, the Strategic tier is recommended for maximum depth.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long does delivery really take?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Once payment is confirmed, the AI engine begins immediately. Starter reports typically arrive in 2–3 minutes. Professional in 4–6 minutes. Strategic in 6–10 minutes. If you haven't received your report within 20 minutes, email hello@oraclereports.ai and we'll resolve it.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I use this for investor presentations?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — Professional and Strategic tiers include an Investor Narrative section designed specifically for this. Many founders use ORACLE reports to anchor pitch decks and board memos. We recommend validating specific market size figures against publicly available industry sources before formal documents.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is there a refund policy?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Given the nature of custom AI-synthesized documents, we don't offer refunds. If your report fails to deliver, contains major errors, or doesn't cover your specified market, email hello@oraclereports.ai within 24 hours and we'll regenerate it at no charge.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Who is ORACLE for?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Founders validating a market before building. Operators entering a new vertical. Investors doing early due diligence. Executives planning a product launch. Anyone who needs structured market intelligence fast — and doesn't have six weeks or six figures to spend getting it.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-grid"></div>
+  <div class="cta-content reveal">
+    <div class="cta-eyebrow">Intelligence Awaits</div>
+    <h2 class="cta-heading">Your market<br><em style="color:var(--gold-bright)">won't wait.</em></h2>
+    <p class="cta-sub">Every week you delay is a week someone else is reading the market you should be owning.</p>
+    <div class="cta-actions">
+      <button class="btn-primary" onclick="trackTierClick('professional',89);openModal('professional', 89)"><span>Get Professional Report — $89</span></button>
+      <button class="btn-ghost" onclick="trackTierClick('pulse',19);openModal('pulse', 19)">Start with a Pulse — $19</button>
+      <div class="price-hint">One-time payment · No subscription · From $19</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ORACLE</div>
+  <div class="footer-links">
+    <a href="#what">Intelligence</a>
+    <a href="#pricing">Pricing</a>
+    <a href="/markets/">All Markets</a>
+    <a href='/quiz'>Free Snapshot</a>
+    <a href='/teams'>Teams &amp; Agencies</a>
+    <a href='/compare'>Compare</a>
+    <a href='/sample'>Sample Report</a>
+    <a href="mailto:hello@oraclereports.ai">Contact</a>
+  </div>
+  <div class="footer-legal">
+    © 2025 Oracle Reports · hello@oraclereports.ai<br>
+    Reports are AI-synthesized and not financial or legal advice.
+  </div>
+</footer>
+
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="order-modal">
+  <div class="modal">
+    <div class="modal-top">
+      <div>
+        <div class="modal-title">Order Intelligence Report</div>
+        <div class="modal-tier-name" id="modal-subtitle">Professional Market Intelligence</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-form" id="modal-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="f-name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="f-email" placeholder="jane@company.com" required>
+            <div class="error-msg" id="email-error">Invalid email address</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Market / Business to Analyze</label>
+          <input type="text" id="f-business" placeholder="e.g., B2B SaaS for dental practices, plant-based snack brand" required>
+        </div>
+        <div class="form-group">
+          <label>Target Geography</label>
+          <select id="f-geo">
+            <option value="US">United States</option>
+            <option value="NA">North America</option>
+            <option value="EU">Europe</option>
+            <option value="APAC">Asia Pacific</option>
+            <option value="Global">Global</option>
+          </select>
+        </div>
+        <div id="pulse-notice" style="display:none;background:rgba(184,148,63,0.06);border:1px solid rgba(184,148,63,0.2);padding:1rem 1.25rem;margin-bottom:0.75rem;font-family:'Martian Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;line-height:1.8;color:rgba(242,237,227,0.55);">
+          PULSE INCLUDES → Market size snapshot · Top 3 competitors · The single best opportunity<br>
+          <span style="color:rgba(242,237,227,0.3);">~90 second delivery · Perfect for: quick validation before committing to deeper research</span>
+        </div>
+        <div class="form-group">
+          <label>Your Biggest Question (Optional)</label>
+          <textarea id="f-context" placeholder="What do you most need to know? What stage are you at? Any specific angles?"></textarea>
+        </div>
+        <div class="modal-price-bar">
+          <div class="modal-price-label">Total · One-time Payment</div>
+          <div class="modal-price-amount" id="modal-price">$89</div>
+        </div>
+        <button class="modal-submit" id="submit-btn" onclick="submitOrder()">Proceed to Secure Payment →</button>
+        <div class="modal-note">
+          Secured by Stripe · TLS Encrypted · Instant receipt<br>
+          <span id="modal-delivery-note">Report delivered to your inbox in ~5 minutes</span>
+        </div>
+      </div>
+      <div class="success-screen" id="success-screen">
+        <span class="success-icon">✦</span>
+        <div class="success-title">Intelligence Ordered</div>
+        <p class="success-desc">Redirecting to secure payment. Your report arrives in minutes after checkout.<br><br>Thank you for choosing ORACLE.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// CURSOR
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+});
+
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+  el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+});
+
+(function lerpCursor() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(lerpCursor);
+})();
+
+// NAV
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// SCROLL REVEAL
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// MODAL
+let currentTier = 'professional', currentPrice = 89;
+const tierNames = {
+  pulse: 'Market Pulse — Quick Snapshot',
+  starter: 'Starter Intelligence Report',
+  professional: 'Professional Intelligence Report',
+  strategic: 'Strategic Intelligence Package'
+};
+const tierDelivery = {
+  pulse: '~90 seconds · 3 focused sections',
+  starter: '~3 minutes · 9 sections',
+  professional: '~5 minutes · 12 sections',
+  strategic: '~8 minutes · Full strategic package'
+};
+
+function openModal(tier, price) {
+  currentTier = tier; currentPrice = price;
+  document.getElementById('modal-subtitle').textContent = tierNames[tier] || tier;
+  document.getElementById('modal-price').textContent = '$' + price;
+  const noteEl = document.getElementById('modal-delivery-note');
+  if (noteEl) noteEl.textContent = 'Report delivered to your inbox in ' + (tierDelivery[tier] || '~5 minutes');
+  // Show pulse-specific notice
+  const pulseNotice = document.getElementById('pulse-notice');
+  if (pulseNotice) pulseNotice.style.display = tier === 'pulse' ? 'block' : 'none';
+  document.getElementById('order-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('order-modal').classList.remove('active');
+  document.body.style.overflow = '';
+  document.getElementById('success-screen').classList.remove('active');
+  document.getElementById('modal-form').classList.remove('hidden');
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = false; btn.innerHTML = 'Proceed to Secure Payment →';
+}
+
+document.getElementById('order-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('order-modal')) closeModal();
+});
+
+async function submitOrder() {
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const business = document.getElementById('f-business').value.trim();
+  const geo = document.getElementById('f-geo').value;
+  const context = document.getElementById('f-context').value.trim();
+
+  if (!name || !email || !business) { alert('Please fill in all required fields.'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('email-error').style.display = 'block'; return;
+  }
+  document.getElementById('email-error').style.display = 'none';
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="loading-spinner"></span>Creating your session...';
+
+  try {
+    const res = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, business, geo, context, tier: currentTier })
+    });
+    const data = await res.json();
+    if (data.url) {
+      document.getElementById('modal-form').classList.add('hidden');
+      document.getElementById('success-screen').classList.add('active');
+      setTimeout(() => { window.location.href = data.url; }, 1500);
+    } else { throw new Error(data.error || 'Something went wrong'); }
+  } catch (err) {
+    btn.disabled = false;
+    btn.innerHTML = 'Proceed to Secure Payment →';
+    alert('Error: ' + err.message + '\n\nPlease try again or email hello@oraclereports.ai');
+  }
+}
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// A/B TESTING
+const AB_TESTS = {
+  hero_cta: { variants: ["Get Your Intelligence Report", "Unlock Market Intelligence — From $39", "See Your Market Clearly — From $39"] },
+  hero_tagline: { variants: ["Deep market intelligence, delivered in minutes", "The $15,000 research report. Now $39.", "Know your market. Know your competitors. Know your move."] }
+};
+
+function getABVariant(test) {
+  const stored = localStorage.getItem('ab_' + test);
+  if (stored !== null) return parseInt(stored);
+  const v = Math.floor(Math.random() * AB_TESTS[test].variants.length);
+  localStorage.setItem('ab_' + test, String(v)); return v;
+}
+
+function trackAB(test, event, amount) {
+  const vi = getABVariant(test);
+  const variant = AB_TESTS[test]?.variants[vi] || 'control';
+  fetch('/api/ab-track', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ test, variant, event, amount: amount || 0 })
+  }).catch(() => {});
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const ctaEl = document.getElementById('hero-cta');
+  if (ctaEl) { const vi = getABVariant('hero_cta'); ctaEl.querySelector('span').textContent = AB_TESTS.hero_cta.variants[vi]; }
+  const tagEl = document.getElementById('hero-tagline');
+  if (tagEl) { const vi = getABVariant('hero_tagline'); tagEl.textContent = AB_TESTS.hero_tagline.variants[vi]; }
+  trackAB('hero_cta', 'impression');
+  trackAB('hero_tagline', 'impression');
+  loadLiveTestimonials();
+});
+
+// LIVE TESTIMONIALS
+async function loadLiveTestimonials() {
+  try {
+    const res = await fetch('/api/feedback');
+    if (!res.ok) return;
+    const testimonials = await res.json();
+    if (!testimonials || testimonials.length < 1) return;
+    const grid = document.querySelector('.testimonial-grid');
+    if (!grid) return;
+    grid.innerHTML = testimonials.slice(0, 3).map(t => `
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">${t.text}</div>
+        <div class="testi-name">${t.name}</div>
+        <div class="testi-role">${t.role || 'Founder'}</div>
+      </div>
+    `).join('');
+  } catch(e) {}
+}
+
+  // Referral tracking — read ref code from URL, store in localStorage
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get('ref');
+    if (ref) {
+      localStorage.setItem('oracle_ref', ref);
+      // Ping referral tracker
+      fetch('/api/referral', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({type: 'click', code: ref})
+      }).catch(() => {});
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORACLE Sample Report — Functional Adaptogenic Beverage Brand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Martian+Mono:wght@300;400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void: #050403;
+  --ink: #0d0b08;
+  --ink-mid: #181410;
+  --ink-soft: #211d18;
+  --parchment: #f2ede3;
+  --parchment-dim: rgba(242,237,227,0.65);
+  --parchment-ghost: rgba(242,237,227,0.18);
+  --gold: #b8943f;
+  --gold-bright: #d4aa50;
+  --gold-pale: rgba(184,148,63,0.12);
+  --gold-line: rgba(184,148,63,0.22);
+  --ember: #7a2810;
+  --signal: #2a6e3f;
+  --signal-dim: rgba(42,110,63,0.2);
+  --warn: #6b4a10;
+  --warn-dim: rgba(107,74,16,0.2);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; }
+
+body {
+  background: var(--void);
+  color: var(--parchment);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.7;
+}
+
+/* ── SAMPLE BANNER ── */
+.sample-banner {
+  background: var(--gold);
+  color: var(--void);
+  text-align: center;
+  padding: 0.6rem 1rem;
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.sample-banner a {
+  color: var(--void);
+  font-weight: 700;
+  border-bottom: 1px solid rgba(5,4,3,0.4);
+  text-decoration: none;
+  padding-bottom: 1px;
+  transition: opacity 0.2s;
+}
+.sample-banner a:hover { opacity: 0.7; }
+
+/* ── REPORT HEADER ── */
+.report-cover {
+  background: var(--ink);
+  border-bottom: 1px solid var(--gold-line);
+  padding: 4rem clamp(1.5rem, 8vw, 7rem) 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.report-cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 80% at 0% 50%, rgba(184,148,63,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 100% 30%, rgba(122,40,16,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cover-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.cover-oracle {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+}
+.cover-badges {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.badge {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--gold-line);
+  color: var(--gold);
+}
+.badge.tier { background: rgba(184,148,63,0.1); }
+.badge.sample { border-color: rgba(242,237,227,0.2); color: var(--parchment-dim); }
+
+.cover-label {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.57rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.cover-label::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.cover-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: 800;
+  font-optical-sizing: auto;
+  line-height: 1.05;
+  max-width: 820px;
+  margin-bottom: 1.5rem;
+}
+.cover-title em { font-style: italic; color: var(--gold-bright); }
+
+.cover-subtitle {
+  font-size: 1.1rem;
+  color: var(--parchment-dim);
+  font-style: italic;
+  font-weight: 300;
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+
+.cover-datastrip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0;
+  border: 1px solid var(--gold-line);
+  margin-top: 2rem;
+}
+.ds-cell {
+  padding: 1rem 1.5rem;
+  border-right: 1px solid var(--gold-line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.ds-cell:last-child { border-right: none; }
+.ds-label { font-family: 'Martian Mono', monospace; font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.ds-val { font-family: 'Martian Mono', monospace; font-size: 0.75rem; color: var(--parchment); letter-spacing: 0.05em; }
+.ds-val.up { color: #5ab87a; }
+.ds-val.high { color: var(--gold-bright); }
+.ds-val.caution { color: #c9a23a; }
+
+/* ── LAYOUT ── */
+.report-body {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 6vw, 5rem);
+}
+
+/* ── SECTIONS ── */
+.report-section {
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--gold-line);
+}
+.report-section:last-child { border-bottom: none; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+.section-num {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  color: rgba(184,148,63,0.4);
+  flex-shrink: 0;
+}
+.section-label {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.section-rule { flex: 1; height: 1px; background: var(--gold-line); }
+
+.section-h {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  font-optical-sizing: auto;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--parchment);
+}
+.section-h em { font-style: italic; color: var(--gold-bright); }
+
+.prose {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--parchment-dim);
+  max-width: 760px;
+}
+.prose + .prose { margin-top: 1rem; }
+.prose strong { color: var(--parchment); font-weight: 400; }
+.prose em { color: var(--gold-bright); font-style: italic; }
+
+/* ── DATA BLOCKS ── */
+.data-block {
+  background: var(--ink-mid);
+  border: 1px solid var(--gold-line);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.65rem;
+  line-height: 1.8;
+  color: var(--gold);
+}
+.data-block .db-row { display: flex; justify-content: space-between; gap: 2rem; padding: 0.2rem 0; }
+.data-block .db-label { color: var(--parchment-dim); }
+.data-block .db-val { color: var(--gold-bright); text-align: right; }
+.data-block .db-divider { height: 1px; background: var(--gold-line); margin: 0.5rem 0; }
+
+/* ── MARKET SIZE VISUAL ── */
+.market-bars {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.mbar-row { display: flex; align-items: center; gap: 1rem; }
+.mbar-label {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: var(--parchment-dim);
+  width: 4rem;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+.mbar-track {
+  flex: 1;
+  height: 28px;
+  background: rgba(184,148,63,0.07);
+  border: 1px solid var(--gold-line);
+  position: relative;
+  overflow: hidden;
+}
+.mbar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(184,148,63,0.5), rgba(184,148,63,0.2));
+  transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
+}
+.mbar-fill::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--gold);
+}
+.mbar-val {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--gold-bright);
+  width: 5rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── COMPETITOR TABLE ── */
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--gold-line);
+  margin: 2rem 0;
+  font-size: 0.88rem;
+}
+.comp-table th {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.85rem 1rem;
+  text-align: left;
+  background: var(--ink-mid);
+  border-bottom: 1px solid var(--gold-line);
+  font-weight: 400;
+}
+.comp-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgba(184,148,63,0.08);
+  color: var(--parchment-dim);
+  vertical-align: top;
+}
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table tr:hover td { background: rgba(184,148,63,0.03); color: var(--parchment); }
+.comp-name { color: var(--parchment); font-style: italic; }
+.comp-tag {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  display: inline-block;
+  margin-top: 0.2rem;
+}
+.tag-threat { background: rgba(122,40,16,0.25); color: #e07050; border: 1px solid rgba(122,40,16,0.4); }
+.tag-watch { background: rgba(107,74,16,0.25); color: #c9a23a; border: 1px solid rgba(107,74,16,0.4); }
+.tag-weak { background: rgba(42,110,63,0.2); color: #5ab87a; border: 1px solid rgba(42,110,63,0.35); }
+
+/* ── TREND CARDS ── */
+.trend-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--gold-line);
+  border: 1px solid var(--gold-line);
+  margin: 2rem 0;
+}
+@media (max-width: 768px) { .trend-grid { grid-template-columns: 1fr; } }
+.trend-card {
+  background: var(--ink);
+  padding: 1.75rem;
+  transition: background 0.3s;
+}
+.trend-card:hover { background: var(--ink-mid); }
+.trend-icon {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.trend-icon::before {
+  content: '↑';
+  font-size: 0.8rem;
+}
+.trend-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--parchment);
+  margin-bottom: 0.6rem;
+}
+.trend-desc { font-size: 0.87rem; line-height: 1.65; color: var(--parchment-dim); }
+
+/* ── OPPORTUNITY VECTORS ── */
+.opp-card {
+  border: 1px solid var(--gold-line);
+  margin: 1.25rem 0;
+  overflow: hidden;
+}
+.opp-header {
+  background: var(--ink-mid);
+  border-bottom: 1px solid var(--gold-line);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.opp-num {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--gold-line);
+  line-height: 1;
+}
+.opp-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--parchment);
+  flex: 1;
+}
+.opp-size {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--gold-bright);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.opp-body {
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--parchment-dim);
+}
+.opp-body strong { color: var(--parchment); font-weight: 400; }
+
+/* ── RISK TABLE ── */
+.risk-grid { margin: 1.5rem 0; display: flex; flex-direction: column; gap: 0.75rem; }
+.risk-item {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid rgba(184,148,63,0.1);
+  transition: border-color 0.3s;
+}
+.risk-item:hover { border-color: rgba(184,148,63,0.25); }
+.risk-level {
+  width: 1.5rem; height: 1.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+.risk-level.high { background: rgba(122,40,16,0.6); box-shadow: 0 0 8px rgba(122,40,16,0.3); }
+.risk-level.med { background: rgba(107,74,16,0.6); box-shadow: 0 0 8px rgba(107,74,16,0.3); }
+.risk-level.low { background: rgba(42,110,63,0.5); box-shadow: 0 0 8px rgba(42,110,63,0.25); }
+.risk-content { min-width: 0; }
+.risk-title { font-family: 'Source Serif 4', serif; font-size: 0.97rem; color: var(--parchment); margin-bottom: 0.35rem; font-weight: 400; }
+.risk-desc { font-size: 0.85rem; color: var(--parchment-dim); line-height: 1.6; }
+.risk-mit { font-family: 'Martian Mono', monospace; font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--signal); margin-top: 0.35rem; }
+.risk-badge {
+  font-family: 'Martian Mono', monospace; font-size: 0.48rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.25rem 0.6rem; flex-shrink: 0; margin-top: 0.15rem;
+}
+.risk-badge.high { background: rgba(122,40,16,0.2); color: #e07050; border: 1px solid rgba(122,40,16,0.35); }
+.risk-badge.med { background: rgba(107,74,16,0.2); color: #c9a23a; border: 1px solid rgba(107,74,16,0.35); }
+.risk-badge.low { background: rgba(42,110,63,0.15); color: #5ab87a; border: 1px solid rgba(42,110,63,0.3); }
+
+/* ── REVENUE MODELS ── */
+.revenue-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--gold-line);
+  border: 1px solid var(--gold-line);
+  margin: 2rem 0;
+}
+@media (max-width: 600px) { .revenue-grid { grid-template-columns: 1fr; } }
+.rev-card { background: var(--ink); padding: 1.75rem; }
+.rev-model {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.rev-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--parchment);
+  margin-bottom: 0.5rem;
+}
+.rev-desc { font-size: 0.85rem; line-height: 1.65; color: var(--parchment-dim); }
+.rev-metrics {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.rev-metric { display: flex; flex-direction: column; gap: 0.1rem; }
+.rev-metric-val { font-family: 'Martian Mono', monospace; font-size: 0.75rem; color: var(--gold-bright); }
+.rev-metric-lbl { font-family: 'Martian Mono', monospace; font-size: 0.45rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--parchment-dim); }
+
+/* ── GTM ── */
+.gtm-phases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--gold-line);
+  border: 1px solid var(--gold-line);
+  margin: 2rem 0;
+}
+@media (max-width: 768px) { .gtm-phases { grid-template-columns: 1fr; } }
+.gtm-phase { background: var(--ink); padding: 1.75rem; }
+.gtm-phase-num { font-family: 'Martian Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+.gtm-phase-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 600; color: var(--parchment); margin-bottom: 0.35rem; }
+.gtm-phase-time { font-family: 'Martian Mono', monospace; font-size: 0.52rem; color: var(--gold-bright); letter-spacing: 0.1em; margin-bottom: 1rem; }
+.gtm-phase-desc { font-size: 0.85rem; line-height: 1.65; color: var(--parchment-dim); }
+.gtm-phase ul { list-style: none; margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.gtm-phase li { font-size: 0.83rem; color: var(--parchment-dim); display: flex; gap: 0.5rem; }
+.gtm-phase li::before { content: '→'; color: var(--gold); flex-shrink: 0; font-family: 'Martian Mono', monospace; font-size: 0.65rem; margin-top: 0.1rem; }
+
+/* ── ICP ── */
+.icp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin: 2rem 0;
+  align-items: start;
+}
+@media (max-width: 700px) { .icp-grid { grid-template-columns: 1fr; } }
+.icp-profile {
+  border: 1px solid var(--gold-line);
+  overflow: hidden;
+}
+.icp-header {
+  background: var(--ink-mid);
+  border-bottom: 1px solid var(--gold-line);
+  padding: 1.1rem 1.5rem;
+}
+.icp-persona { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--parchment); margin-bottom: 0.2rem; }
+.icp-demo { font-family: 'Martian Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; }
+.icp-body { padding: 1.25rem 1.5rem; }
+.icp-attr { margin-bottom: 0.85rem; }
+.icp-attr-label { font-family: 'Martian Mono', monospace; font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; }
+.icp-attr-val { font-size: 0.87rem; color: var(--parchment-dim); line-height: 1.55; }
+
+.icp-stats {
+  border: 1px solid var(--gold-line);
+  padding: 1.5rem;
+}
+.icp-stats-title { font-family: 'Martian Mono', monospace; font-size: 0.53rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+.icp-stat-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid rgba(184,148,63,0.08); }
+.icp-stat-row:last-child { border-bottom: none; }
+.icp-stat-label { font-size: 0.85rem; color: var(--parchment-dim); }
+.icp-stat-val { font-family: 'Martian Mono', monospace; font-size: 0.68rem; color: var(--gold-bright); }
+
+/* ── INVESTOR NARRATIVE ── */
+.narrative-block {
+  background: var(--ink-mid);
+  border-left: 3px solid var(--gold);
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--parchment);
+}
+.narrative-label {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.5rem;
+  font-style: normal;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+/* ── NEXT 3 MOVES ── */
+.moves-section {
+  background: var(--ink);
+  border: 1px solid var(--gold-line);
+  margin-top: 1.5rem;
+  overflow: hidden;
+}
+.moves-header {
+  background: var(--gold);
+  padding: 1.1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.moves-header-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--void);
+  letter-spacing: -0.01em;
+}
+.moves-header-sub {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(5,4,3,0.6);
+}
+.move-item {
+  padding: 2rem;
+  border-bottom: 1px solid var(--gold-line);
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 1.5rem;
+  transition: background 0.3s;
+}
+.move-item:last-child { border-bottom: none; }
+.move-item:hover { background: rgba(184,148,63,0.03); }
+.move-num {
+  font-family: 'Fraunces', serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--gold-line);
+  line-height: 1;
+}
+.move-content {}
+.move-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--parchment);
+  margin-bottom: 0.5rem;
+}
+.move-body { font-size: 0.95rem; line-height: 1.75; color: var(--parchment-dim); }
+.move-body strong { color: var(--parchment); font-weight: 400; }
+.move-timeline {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.move-timeline::before { content: ''; width: 16px; height: 1px; background: var(--gold); }
+
+/* ── REPORT FOOTER ── */
+.report-footer {
+  background: var(--ink-mid);
+  border-top: 1px solid var(--gold-line);
+  padding: 2rem clamp(1.5rem, 8vw, 7rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 4rem;
+}
+@media (max-width: 768px) { .report-footer { grid-template-columns: 1fr; } }
+.rf-brand { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 800; color: var(--gold); margin-bottom: 0.4rem; }
+.rf-sub { font-family: 'Martian Mono', monospace; font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--parchment-dim); line-height: 1.8; }
+.rf-col-title { font-family: 'Martian Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.rf-col-text { font-size: 0.83rem; line-height: 1.75; color: var(--parchment-dim); }
+
+/* ── CTA BAR ── */
+.cta-bar {
+  background: var(--void);
+  border-top: 1px solid var(--gold-line);
+  padding: 3rem clamp(1.5rem, 8vw, 7rem);
+  text-align: center;
+}
+.cta-bar-eyebrow {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.cta-bar-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+.cta-bar-title em { font-style: italic; color: var(--gold-bright); }
+.cta-bar-sub {
+  font-size: 1rem;
+  color: var(--parchment-dim);
+  font-style: italic;
+  margin-bottom: 2rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+.cta-bar-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-gold {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--void);
+  border: none;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s;
+  font-weight: 500;
+}
+.btn-gold:hover { background: var(--gold-bright); }
+.btn-outline {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--parchment-dim);
+  border: 1px solid rgba(242,237,227,0.2);
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+}
+.btn-outline:hover { border-color: var(--gold-line); color: var(--gold); }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(25px);
+  transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- SAMPLE BANNER -->
+<div class="sample-banner">
+  <span>⬤ Sample Report — Professional Tier</span>
+  <span>This is what you receive in ~5 minutes</span>
+  <a href="index.html">Order your market → From $39</a>
+</div>
+
+<!-- COVER -->
+<div class="report-cover">
+  <div class="cover-meta">
+    <div class="cover-oracle">ORACLE</div>
+    <div class="cover-badges">
+      <div class="badge tier">Professional Tier</div>
+      <div class="badge sample">Sample Report</div>
+    </div>
+  </div>
+
+  <div class="cover-label">Market Intelligence Report</div>
+
+  <h1 class="cover-title">
+    Functional Adaptogenic<br>
+    <em>Beverage Brand</em>
+  </h1>
+  <p class="cover-subtitle">
+    A D2C wellness brand launching stress-relief and cognitive-performance drinks targeting urban professionals aged 25–40.
+  </p>
+
+  <div class="cover-datastrip">
+    <div class="ds-cell">
+      <div class="ds-label">Report Date</div>
+      <div class="ds-val">Feb 22, 2025</div>
+    </div>
+    <div class="ds-cell">
+      <div class="ds-label">Market</div>
+      <div class="ds-val">Functional Beverages</div>
+    </div>
+    <div class="ds-cell">
+      <div class="ds-label">Geography</div>
+      <div class="ds-val">United States</div>
+    </div>
+    <div class="ds-cell">
+      <div class="ds-label">Classification</div>
+      <div class="ds-val high">High Opportunity</div>
+    </div>
+    <div class="ds-cell">
+      <div class="ds-label">Market Maturity</div>
+      <div class="ds-val caution">Early Growth</div>
+    </div>
+    <div class="ds-cell">
+      <div class="ds-label">Tier</div>
+      <div class="ds-val">Professional</div>
+    </div>
+  </div>
+</div>
+
+<div class="report-body">
+
+<!-- 01 EXECUTIVE SUMMARY -->
+<div class="report-section reveal">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-label">Executive Summary</div>
+    <div class="section-rule"></div>
+  </div>
+
+  <h2 class="section-h">The thesis in <em>plain language.</em></h2>
+
+  <div class="prose">
+    The functional beverage market is undergoing a structural shift. Consumers who once reached for energy drinks or alcohol are actively migrating toward beverages that deliver <strong>specific cognitive or emotional outcomes</strong> — calm focus, stress relief, better sleep — without the crash, dependency, or stigma.
+  </div>
+  <div class="prose">
+    The adaptogen segment specifically is at an inflection point: mainstream consumer awareness of ashwagandha, reishi, lion's mane, and rhodiola has crossed the threshold where category education is no longer the primary marketing burden. The question is no longer <em>"what is an adaptogen?"</em> — it's <em>"which brand do I trust?"</em>
+  </div>
+  <div class="prose">
+    This creates a <strong>high-conviction window for a well-positioned entrant</strong>. The incumbents (Recess, Kin Euphorics, TRIP) have established the format but none has achieved dominant distribution or brand loyalty. The category leader has not yet emerged. A brand with superior formulation, distinct identity, and smart initial distribution can build a defensible position in the next 18–24 months.
+  </div>
+
+  <div class="data-block">
+    <div class="db-row"><span class="db-label">Global Functional Beverage Market (2024)</span><span class="db-val">$281.1B</span></div>
+    <div class="db-row"><span class="db-label">US Adaptogenic Drink Segment (2024)</span><span class="db-val">$1.84B</span></div>
+    <div class="db-row"><span class="db-label">Projected US Segment Size (2027)</span><span class="db-val">$3.2B</span></div>
+    <div class="db-row"><span class="db-label">Segment CAGR (2024–2029)</span><span class="db-val">+19.4%</span></div>
+    <div class="db-divider"></div>
+    <div class="db-row"><span class="db-label">ORACLE Classification</span><span class="db-val">High Opportunity · Competitive · Time-Sensitive</span></div>
+    <div class="db-row"><span class="db-label">Recommended Entry Tier</span><span class="db-val">D2C Direct → Specialty Retail (12–18 mo)</span></div>
+  </div>
+</div>
+
+<!-- 02 MARKET SIZE -->
+<div class="report-section reveal">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-label">Market Architecture</div>
+    <div class="section-rule"></div>
+  </div>
+
+  <h2 class="section-h">TAM / SAM / SOM — <em>your realistic slice.</em></h2>
+
+  <div class="prose">
+    The total addressable market encompasses all functional beverages globally — a category that includes sports drinks, enhanced waters, and kombucha. Your actual competitive arena is narrower and more concentrated.
+  </div>
+
+  <div class="market-bars" id="market-bars">
+    <div class="mbar-row">
+      <div class="mbar-label">TAM</div>
+      <div class="mbar-track"><div class="mbar-fill" style="width:0%" data-width="95%"></div></div>
+      <div class="mbar-val">$281.1B</div>
+    </div>
+    <div class="mbar-row">
+      <div class="mbar-label">SAM</div>
+      <div class="mbar-track"><div class="mbar-fill" style="width:0%" data-width="52%"></div></div>
+      <div class="mbar-val">$4.2B</div>
+    </div>
+    <div class="mbar-row">
+      <div class="mbar-label">SOM Y1</div>
+      <div class="mbar-track"><div class="mbar-fill" style="width:0%" data-width="8%"></div></div>
+      <div class="mbar-val">$800K–$2M</div>
+    </div>
+    <div class="mbar-row">
+      <div class="mbar-label">SOM Y3</div>
+      <div class="mbar-track"><div class="mbar-fill" style="width:0%" data-width="18%"></div></div>
+      <div class="mbar-val">$8M–$25M</div>
+    </div>
+  </div>
+
+  <div class="data-block">
+    <div class="db-row"><span class="db-label">TAM — Global functional beverages</span><span class="db-val">$281.1B (2024)</span></div>
+    <div class="db-row"><span class="db-label">SAM — US premium functional + adaptogenic drinks</span><span class="db-val">$4.2B (2024)</span></div>
+    <div class="db-row"><span class="db-label">SOM — Realistic Y1 capture (D2C, Shopify, niche retail)</span><span class="db-val">$800K – $2M ARR</span></div>
+    <div class="db-row"><span class="db-label">SOM — Y3 with regional retail + subscription</span><span class="db-val">$8M – $25M ARR</span></div>
+    <div class="db-divider"></div>
+    <div class="db-row"><span class="db-label">Avg DTC customer LTV (comparable brands)</span><span class="db-val">$280 – $420</span></div>
+    <div class="db-row"><span class="db-label">Avg blended CAC (paid social + influencer)</span><span class="db-val">$38 – $65</span></div>
+    <div class="db-row"><span class="db-label">Gross margin target (DTC beverages, scale)</span><span class="db-val">55% – 68%</span></div>
+  </div>
+
+  <div class="prose">
+    The SAM definition narrows the field to US consumers actively purchasing premium functional beverages — a segment skewing urban, college-educated, and 25–42. Critically, <strong>DTC penetration remains low</strong>: most category volume still moves through brick-and-mortar (Whole Foods, Sprouts, specialty independents). The first major brand to build a sticky DTC subscription engine while simultaneously penetrating retail will compound defensibility on two axes simultaneously.
+  </div>
+</div>
+
+<!-- 03 CUSTOMER INTELLIGENCE -->
+<div class="report-section reveal">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-label">Customer Intelligence</div>
+    <div class="section-rule"></div>
+  </div>
+
+  <h2 class="section-h">Who's buying — and <em>why they switch.</em></h2>
+
+  <div class="icp-grid">
+    <div class="icp-profile">
+      <div class="icp-header">
+        <div class="icp-persona">The Stressed Optimizer</div>
+        <div class="icp-demo">Primary · 28–38 · Urban Professional</div>
+      </div>
+      <div class="icp-body">
+        <div class="icp-attr">
+          <div class="icp-attr-label">Psychographic</div>
+          <div class="icp-attr-val">High-achiever anxious about performance. Tracks sleep, macros, HRV. Reads Andrew Huberman. Wants to be "on" without the cost of stimulants or alcohol.</div>
+        </div>
+        <div class="icp-attr">
+          <div class="icp-attr-label">Trigger</div>
+          <div class="icp-attr-val">Burned out on coffee. Reducing alcohol. Actively searching for a social drink that doesn't compromise recovery or mental clarity.</div>
+        </div>
+        <div class="icp-attr">
+          <div class="icp-attr-label">Channel</div>
+          <div class="icp-attr-val">Discovers via Instagram/TikTok, purchases DTC first, then seeks at Whole Foods. High subscription intent if experience matches promise.</div>
+        </div>
+        <div class="icp-attr">
+          <div class="icp-attr-label">WTP</div>
+          <div class="icp-attr-val">$4–$7 per can. $45–$65/month subscription.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="icp-profile">
+      <div class="icp-header">
+        <div class="icp-persona">The Mindful Host</div>
+        <div class="icp-demo">Secondary · 30–45 · Social Entertainer</div>
+      </div>
+      <div class="icp-body">
+        <div class="icp-attr">
+          <div class="icp-attr-label">Psychographic</div>
+          <div class="icp-attr-val">Hosts dinners, prioritizes guest experience. Has sober or sober-curious friends. Wants a sophisticated non-alcoholic option that doesn't feel like a compromise.</div>
+        </div>
+        <div class="icp-attr">
+          <div class="icp-attr-label">Trigger</div>
+          <div class="icp-attr-val">NA movement normalization. Social pressure to have "real" drink options. Aesthetic appeal of a well-designed can.</div>
+        </div>
+        <div class="icp-attr">
+          <div class="icp-attr-label">Channel</div>
+          <div class="icp-attr-val">Discovers via food media, purchases in-store. High gifting intent — packaging matters significantly for this segment.</div>
+        </div>
+        <div class="icp-attr">
+          <div class="icp-attr-label">WTP</div>
+          <div class="icp-attr-val">$5–$8 per can. Bulk/gifting packs at $60–$90.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="icp-stats">
+    <div class="icp-stats-title">Category Behavior Data</div>
+    <div class="icp-stat-row"><span class="icp-stat-label">Consumers who tried an adaptogenic beverage in past 12 months</span><span class="icp-stat-val">31% of target demo</span></div>
+    <div class="icp-stat-row"><span class="icp-stat-label">Of those, repurchased 3+ times</span><span class="icp-stat-val">54%</span></div>
+    <div class="icp-stat-row"><span class="icp-stat-label">Primary discovery channel (survey, n=2,400)</span><span class="icp-stat-val">Instagram/TikTok (44%)</span></div>
+    <div class="icp-stat-row"><span class="icp-stat-label">Most cited barrier to trial</span><span class="icp-stat-val">Price vs. expected effect (38%)</span></div>
+    <div class="icp-stat-row"><span class="icp-stat-label">Sober-curious adults in US (2024 est.)</span><span class="icp-stat-val">~41M</span></div>
+    <div class="icp-stat-row"><span class="icp-stat-label">Subscription willingness if product works as claimed</span><span class="icp-stat-val">67% of repeat buyers</span></div>
+  </div>
+</div>
+
+<!-- 04 COMPETITIVE LANDSCAPE -->
+<div class="report-section reveal">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-label">Competitive Landscape</div>
+    <div class="section-rule"></div>
+  </div>
+
+  <h2 class="section-h">Who's already in the ring — and <em>where they're exposed.</em></h2>
+
+  <div class="prose">
+    The adaptogenic beverage space has a handful of well-funded players but <strong>no dominant leader</strong>. Distribution is fragmented, brand loyalty is shallow, and most incumbents are competing on aesthetics rather than efficacy proof. This is a vulnerability.
+  </div>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Brand</th>
+        <th>Founded / Raised</th>
+        <th>Positioning</th>
+        <th>Key Weakness</th>
+        <th>Threat Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="comp-name">Recess</span><br><span class="comp-tag tag-threat">Primary Rival</span></td>
+        <td>2018 · $18M raised</td>
+        <td>CBD + adaptogens. "Calm in a can." Strong DTC and social presence.</td>
+        <td>CBD regulatory friction limits retail velocity; no efficacy data</td>
+        <td><span class="comp-tag tag-threat">High</span></td>
+      </tr>
+      <tr>
+        <td><span class="comp-name">Kin Euphorics</span><br><span class="comp-tag tag-threat">Primary Rival</span></td>
+        <td>2019 · $13M raised</td>
+        <td>Alcohol alternative. Evening/social use. Celebrity backing.</td>
+        <td>Premium price ceiling ($8+/can); limited mass retail presence; high CAC</td>
+        <td><span class="comp-tag tag-threat">High</span></td>
+      </tr>
+      <tr>
+        <td><span class="comp-name">TRIP</span><br><span class="comp-tag tag-watch">Watch</span></td>
+        <td>2019 · £11M raised (UK)</td>
+        <td>CBD + botanicals. Clean aesthetic. UK-native entering US.</td>
+        <td>UK brand awareness; distribution nascent in US; no functional differentiator</td>
+        <td><span class="comp-tag tag-watch">Medium</span></td>
+      </tr>
+      <tr>
+        <td><span class="comp-name">Clevr Blends</span><br><span class="comp-tag tag-watch">Watch</span></td>
+        <td>2019 · $5M raised</td>
+        <td>Superfood lattes. Meghan Markle-adjacent buzz.</td>
+        <td>Powders not canned; different use case; Meghan association fading</td>
+        <td><span class="comp-tag tag-watch">Low–Med</span></td>
+      </tr>
+      <tr>
+        <td><span class="comp-name">Sunwink</span><br><span class="comp-tag tag-weak">Fragile</span></td>
+        <td>2018 · $7M raised</td>
+        <td>Herbal tonics. Whole Foods distribution.</td>
+        <td>Shrinking shelf space; repositioning struggles; no social momentum</td>
+        <td><span class="comp-tag tag-weak">Low</span></td>
+      </tr>
+      <tr>
+        <td><span class="comp-name">De Soi</span><br><span class="comp-tag tag-watch">Watch</span></td>
+        <td>2022 · Katy Perry backed</td>
+        <td>Wine-adjacent NA. Premium social/celebratory use.</td>
+        <td>Single occasion use case; limited retail; founder reliance</td>
+        <td><span class="comp-tag tag-watch">Medium</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="prose">
+    <strong>Critical gap identified:</strong> Every major player is competing on aesthetics and lifestyle positioning. None have invested meaningfully in <em>clinical substantiation</em> of adaptogenic efficacy — despite consumer research showing that efficacy proof is the #1 conversion driver among skeptical first-time buyers. A brand that positions on <strong>results, not vibes</strong> has a defensible vector that incumbents cannot quickly replicate.
+  </div>
+</div>
+
+<!-- 05 TRENDS -->
+<div class="report-section reveal">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div class="section-label">Trend Analysis</div>
+    <div class="section-rule"></div>
+  </div>
+
+  <h2 class="section-h">Macro forces <em>working in your favor.</em></h2>
+
+  <div class="trend-grid">
+    <div class="trend-card">
+      <div class="trend-icon">Macro</div>
+      <div class="trend-title">Sober Curiosity Mainstream</div>
+      <div class="trend-desc">NA spirits and beer grew 33% YoY in 2024. "Dry January" participation up 42% since 2020. The cultural permission to not drink has arrived — and it's permanent, not a trend.</div>
+    </div>
+    <div class="trend-card">
+      <div class="trend-icon">Macro</div>
+      <div class="trend-title">Stress as a Product Category</div>
+      <div class="trend-desc">Americans report record stress levels. The "biohacking" consumer now extends into mainstream 28–45 demographics. Cortisol management is no longer niche — it's a $6B+ supplement market seeking better delivery formats.</div>
+    </div>
+    <div class="trend-card">
+      <div class="trend-icon">Macro</div>
+      <div class="trend-title">GLP-1 Dietary Shifts</div>
+      <div class="trend-desc">40M+ Americans on or considering GLP-1 medications are reducing calorie density but still seeking experiential beverages. Low-cal, functional drinks with appetite management claims represent an emerging adjacency.</div>
+    </div>
+    <div class="trend-card">
+      <div class="trend-icon">Micro</div>
+      <div class="trend-title">Ashwagandha Goes Mainstream</div>
+      <div class="trend-desc">Google searches for ashwagandha increased 320% 2020–2024. The ingredient has crossed from supplement to grocery aisle. Consumer familiarity removes the education burden that slowed earlier entrants.</div>
+    </div>
+    <div class="trend-card">
+      <div class="trend-icon">Micro</div>
+      <div class="trend-title">Retail "Better For You" Shelving</div>
+      <div class="trend-desc">Whole Foods, Target, Sprouts and HEB are all expanding dedicated "functional beverage" sections. Buyer appetite for new SKUs in this category is at a 5-year high — and shelf standards are achievable for well-positioned entrants.</div>
+    </div>
+    <div class="trend-card">
+      <div class="trend-icon">Micro</div>
+      <div class="trend-title">Creator Economy Discovery</div>
+      <div class="trend-desc">74% of CPG category growth in 2024 had measurable influencer contribution. Micro-influencers (50K–500K) in wellness outperform celebrity endorsements by 6:1 on CPG CAC. Budget-efficient launch vectors exist.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 OPPORTUNITY VECTORS -->
+<div class="report-section reveal">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div class="section-label">Opportunity Vectors</div>
+    <div class="section-rule"></div>
+  </div>
+
+  <h2 class="section-h">Three doors. <em>Pick the right one first.</em></h2>
+
+  <div class="opp-card">
+    <div class="opp-header">
+      <div class="opp-num">1</div>
+      <div class="opp-title">The Efficacy Wedge — Own "It Actually Works"</div>
+      <div class="opp-size">SAM: $1.2B · Time: Now</div>
+    </div>
+    <div class="opp-body">
+      No incumbent has invested in third-party clinical substantiation. A brand that commissions a peer-reviewed pilot study on cortisol response (ashwagandha + L-theanine combinations have well-documented effect sizes) and markets this aggressively creates a moat competitors can't short-circuit. <strong>Cost: ~$80K for a credible pilot. ROI: conversion rate lift of 15–25%</strong> on skeptical first-time buyers who represent the largest untapped segment. This is not a long-term R&D play — it's a near-term marketing asset with compounding returns.
+    </div>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-header">
+      <div class="opp-num">2</div>
+      <div class="opp-title">B2B Office Wellness — The Trojan Horse Channel</div>
+      <div class="opp-size">SAM: $340M · Time: 6–18 months</div>
+    </div>
+    <div class="opp-body">
+      Corporate wellness budgets are growing post-RTO. Companies buying beverages for office kitchens, wellness programs, and event catering represent a largely untapped B2B channel for adaptogenic brands. <strong>Average B2B order size: $800–$2,400/month.</strong> The secondary effect: employees discover the product at work, become personal DTC customers, and generate organic word-of-mouth in exactly the target demographic. No incumbent has built a dedicated B2B sales motion. A 50-account pilot in one metro can be self-funded within 6 months and serves as a proof point for enterprise wellness partnerships.
+    </div>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-header">
+      <div class="opp-num">3</div>
+      <div class="opp-title">Subscription + Ritual Stack — Recurring Revenue Engine</div>
+      <div class="opp-size">SAM: $280M · Time: 12–24 months</div>
+    </div>
+    <div class="opp-body">
+      The highest-LTV customer in functional beverages is one who builds a daily ritual around the product. Brands that successfully convert trial customers to "morning routine" subscribers see LTV of $380–$520 vs. $85–$140 for non-subscribers. The key is pairing the beverage with a habit stack — a morning protocol that positions the drink as the anchor, not an afterthought. <strong>Implementation: a free 30-day "calm protocol" guide bundled with first subscription box</strong>. This approach (pioneered by athletic supplement brands) has shown 34% improvement in subscription retention at 6 months. In a category where churn is the #1 business risk, this is the highest-ROI retention investment available.
+    </div>
+  </div>
+</div>
+
+<!-- 07 RISK ASSESSMENT -->
+<div class="report-section reveal">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <div class="section-label">Risk Assessment</div>
+    <div class="section-rule"></div>
+  </div>
+
+  <h2 class="section-h">Five risks. <em>All manageable.</em></h2>
+
+  <div class="risk-grid">
+    <div class="risk-item">
+      <div class="risk-level high"></div>
+      <div class="risk-content">
+        <div class="risk-title">Regulatory — FDA Health Claims Enforcement</div>
+        <div class="risk-desc">The FDA has increased scrutiny of functional food/beverage health claims. Brands making specific efficacy claims (e.g., "reduces cortisol by X%") without clinical substantiation face warning letters and potential enforcement. Several competitors have already received FTC attention.</div>
+        <div class="risk-mit">Mitigation: Structure all marketing as structure/function claims ("supports stress response") rather than disease claims. Invest in the pilot study outlined in Opportunity 1 to build defensible evidence base.</div>
+      </div>
+      <div class="risk-badge high">High</div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-level high"></div>
+      <div class="risk-content">
+        <div class="risk-title">Unit Economics — COGS at Low Volume</div>
+        <div class="risk-desc">Premium adaptogenic ingredients (KSM-66 ashwagandha, lion's mane extract at clinical dose, Suntheanine L-theanine) carry significant COGS. At co-packer minimum orders below 50K cans, blended COGS can run $2.20–$2.80/can, compressing margins below sustainability at a $5 retail price.</div>
+        <div class="risk-mit">Mitigation: Launch D2C first where pricing flexibility allows $7–$9 MSRP. Negotiate co-packer terms with volume ramps at 25K, 50K, 100K unit milestones. Model retail channel entry only after unit economics confirm at ≥45% GM.</div>
+      </div>
+      <div class="risk-badge high">High</div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-level med"></div>
+      <div class="risk-content">
+        <div class="risk-title">Consumer Education — Ingredient Skepticism</div>
+        <div class="risk-desc">Despite growing awareness, a significant portion of the target demographic remains skeptical of adaptogenic claims. "Placebo effect" and "expensive water" narratives circulate on social media and can suppress conversion among high-intent but skeptical prospects.</div>
+        <div class="risk-mit">Mitigation: Lead with taste and experience over health claims in top-of-funnel creative. Layer in efficacy education at mid/bottom funnel where intent is established. Leverage third-party editorial coverage (not paid) for credibility.</div>
+      </div>
+      <div class="risk-badge med">Medium</div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-level med"></div>
+      <div class="risk-content">
+        <div class="risk-title">Competitive — Big Beverage Entry</div>
+        <div class="risk-desc">Coca-Cola, PepsiCo, and AB InBev all have active functional beverage incubation programs and M&A appetite in this space. A major player entering with distribution scale could commoditize the category quickly.</div>
+        <div class="risk-mit">Mitigation: Build brand equity and community loyalty before this happens. A brand with 50K+ subscribers and vocal community is far more defensible (and acquirable at premium) than a distribution-first brand. Think brand before volume.</div>
+      </div>
+      <div class="risk-badge med">Medium</div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-level low"></div>
+      <div class="risk-content">
+        <div class="risk-title">Trend Risk — Category Fatigue</div>
+        <div class="risk-desc">Consumer wellness trends have a history of peaking and fading (see: kombucha plateauing, CBD hype cycle). Adaptogen awareness could plateau before mass adoption converts to habit.</div>
+        <div class="risk-mit">Mitigation: This risk is real but lagged — the category is in early growth, not mature. Focus on building habit and subscription depth in existing customers to weather any hype normalization. Recurring customers are recession-resilient.</div>
+      </div>
+      <div class="risk-badge low">Low</div>
+    </div>
+  </div>
+</div>
+
+<!-- 08 REVENUE ARCHITECTURE -->
+<div class="report-section reveal">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div class="section-label">Revenue Architecture</div>
+    <div class="section-rule"></div>
+  </div>
+
+  <h2 class="section-h">How the money <em>actually works.</em></h2>
+
+  <div class="revenue-grid">
+    <div class="rev-card">
+      <div class="rev-model">Model 01</div>
+      <div class="rev-title">DTC Subscription</div>
+      <div class="rev-desc">Monthly 24-can subscriber. Highest margin, highest LTV, most defensible. The north star metric. Build this first.</div>
+      <div class="rev-metrics">
+        <div class="rev-metric"><div class="rev-metric-val">$49–$65</div><div class="rev-metric-lbl">Monthly AOV</div></div>
+        <div class="rev-metric"><div class="rev-metric-val">62%</div><div class="rev-metric-lbl">Gross Margin</div></div>
+        <div class="rev-metric"><div class="rev-metric-val">$380–$520</div><div class="rev-metric-lbl">LTV (18 mo)</div></div>
+      </div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-model">Model 02</div>
+      <div class="rev-title">DTC One-Time / Trial</div>
+      <div class="rev-desc">Sampler packs and variety boxes. Primary acquisition vehicle. Optimized for subscription conversion, not standalone revenue.</div>
+      <div class="rev-metrics">
+        <div class="rev-metric"><div class="rev-metric-val">$32–$45</div><div class="rev-metric-lbl">AOV</div></div>
+        <div class="rev-metric"><div class="rev-metric-val">48%</div><div class="rev-metric-lbl">Gross Margin</div></div>
+        <div class="rev-metric"><div class="rev-metric-val">34%</div><div class="rev-metric-lbl">Sub Convert Rate</div></div>
+      </div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-model">Model 03</div>
+      <div class="rev-title">Specialty Retail</div>
+      <div class="rev-desc">Whole Foods, Sprouts, Erewhon. Lower margin but massive discovery driver. Enter at 18 months with proven velocity data from DTC.</div>
+      <div class="rev-metrics">
+        <div class="rev-metric"><div class="rev-metric-val">$5.99–$7.99</div><div class="rev-metric-lbl">MSRP / Can</div></div>
+        <div class="rev-metric"><div class="rev-metric-val">38–45%</div><div class="rev-metric-lbl">Gross Margin</div></div>
+        <div class="rev-metric"><div class="rev-metric-val">Y2–Y3</div><div class="rev-metric-lbl">Target Entry</div></div>
+      </div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-model">Model 04</div>
+      <div class="rev-title">B2B / Office Wellness</div>
+      <div class="rev-desc">Bulk orders for corporate kitchens, retreats, and wellness programs. High AOV, low CAC, strong brand exposure in target demographic.</div>
+      <div class="rev-metrics">
+        <div class="rev-metric"><div class="rev-metric-val">$800–$2,400</div><div class="rev-metric-lbl">Monthly Order</div></div>
+        <div class="rev-metric"><div class="rev-metric-val">52%</div><div class="rev-metric-lbl">Gross Margin</div></div>
+        <div class="rev-metric"><div class="rev-metric-val">$14K</div><div class="rev-metric-lbl">Avg Annual LTV</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 09 GTM -->
+<div class="report-section reveal">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-label">Go-To-Market Framework</div>
+    <div class="section-rule"></div>
+  </div>
+
+  <h2 class="section-h">The sequence <em>that compounds.</em></h2>
+
+  <div class="gtm-phases">
+    <div class="gtm-phase">
+      <div class="gtm-phase-num">Phase 01</div>
+      <div class="gtm-phase-title">Build the Core</div>
+      <div class="gtm-phase-time">Months 0–6</div>
+      <div class="gtm-phase-desc">DTC-only. Shopify + subscription engine. Tight ICP targeting. Prove unit economics and product-market fit before spending on reach.</div>
+      <ul>
+        <li>50–100 micro-influencer seeding (no fee, just product)</li>
+        <li>Owned content: efficacy content + ritual building</li>
+        <li>Waitlist and referral mechanics on launch</li>
+        <li>Target: 500 active subscribers, sub-$50 CAC, 60%+ GM</li>
+      </ul>
+    </div>
+    <div class="gtm-phase">
+      <div class="gtm-phase-num">Phase 02</div>
+      <div class="gtm-phase-title">Prove the Machine</div>
+      <div class="gtm-phase-time">Months 6–18</div>
+      <div class="gtm-phase-desc">Scale paid channels with proven creative. Launch B2B program. Pilot 2–3 regional specialty retailers. Build PR and earned media engine.</div>
+      <ul>
+        <li>Meta + TikTok paid with $20–40K/mo budget</li>
+        <li>B2B outreach: 50 target accounts in 2 cities</li>
+        <li>Erewhon and regional Whole Foods pilot</li>
+        <li>Target: 2,500 subscribers, $150K MRR</li>
+      </ul>
+    </div>
+    <div class="gtm-phase">
+      <div class="gtm-phase-num">Phase 03</div>
+      <div class="gtm-phase-title">Press the Accelerator</div>
+      <div class="gtm-phase-time">Months 18–36</div>
+      <div class="gtm-phase-desc">National retail with proven sell-through data. Raise growth capital. Explore adjacent SKUs (sleep, focus). Evaluate M&A interest.</div>
+      <ul>
+        <li>Whole Foods national pitch with velocity data</li>
+        <li>Series A or strategic raise ($5–15M target)</li>
+        <li>SKU 2 launch: Sleep / Evening formula</li>
+        <li>Target: $8–15M ARR, 15K+ subscribers</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 10 INVESTOR NARRATIVE -->
+<div class="report-section reveal">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div class="section-label">Investor Narrative</div>
+    <div class="section-rule"></div>
+  </div>
+
+  <h2 class="section-h">How to frame this <em>for the room.</em></h2>
+
+  <div class="narrative-block">
+    <div class="narrative-label">Opening Hook</div>
+    "The American stress epidemic is a $300B problem looking for a $7 solution. We built it."
+  </div>
+
+  <div class="prose">
+    The narrative arc that resonates with consumer-focused investors in 2025: <strong>large problem + cultural tailwind + early traction + clear path to defensibility + acquisition appetite.</strong>
+  </div>
+
+  <div class="data-block">
+    <div class="db-row"><span class="db-label">Market sizing hook</span><span class="db-val">$4.2B addressable · 19.4% CAGR · no dominant player</span></div>
+    <div class="db-row"><span class="db-label">Why now</span><span class="db-val">Sober curiosity mainstream · ingredient awareness unlocked · retail shelf clearing</span></div>
+    <div class="db-row"><span class="db-label">Differentiation</span><span class="db-val">Only brand with clinical substantiation · efficacy-first positioning</span></div>
+    <div class="db-row"><span class="db-label">Business model clarity</span><span class="db-val">Subscription-first · 62% GM · $420 LTV · B2B trojan horse</span></div>
+    <div class="db-row"><span class="db-label">Comparable exits</span><span class="db-val">OLIPOP ($1.85B est.) · Poppi ($2B exit to PepsiCo 2024) · Recess ($50M+ ARR)</span></div>
+    <div class="db-row"><span class="db-label">Ask framing</span><span class="db-val">$1.5M seed to prove unit economics and reach 2,500 subscribers before Series A</span></div>
+  </div>
+
+  <div class="prose">
+    <strong>Key comp to lean on:</strong> Poppi sold to PepsiCo for $1.9B in early 2024 after ~$100M ARR. It's a flavored soda with prebiotics. The category premium for "better-for-you" CPG is real and investors know it. Your narrative is positioned ahead of Poppi's trajectory with a more defensible functional moat.
+  </div>
+</div>
+
+<!-- 12 NEXT 3 MOVES -->
+<div class="report-section reveal">
+  <div class="section-header">
+    <div class="section-num">12</div>
+    <div class="section-label">Your Next 3 Moves</div>
+    <div class="section-rule"></div>
+  </div>
+
+  <h2 class="section-h">Specific. Sequenced. <em>Start Monday.</em></h2>
+
+  <div class="moves-section">
+    <div class="moves-header">
+      <div class="moves-header-title">Action Protocol</div>
+      <div class="moves-header-sub">Prioritized by leverage · time-sequenced</div>
+    </div>
+
+    <div class="move-item">
+      <div class="move-num">1</div>
+      <div class="move-content">
+        <div class="move-title">Lock Your Formulation + Commission the Pilot Study</div>
+        <div class="move-body">
+          Your #1 differentiator is efficacy proof. Before you spend a dollar on marketing, get the formulation right and get it tested. Request quotes from 3 co-packers with functional beverage experience (Prinova, Imbibe, SanoRice are strong starting points). Simultaneously, contact a clinical research organization (CRO) for a 60-participant, 4-week pilot studying cortisol response to your specific KSM-66 + L-theanine blend. <strong>Budget $75–$95K. Timeline: 4 months to results.</strong> This single asset will appear in every investor deck, every press pitch, and every conversion email for the next 5 years.
+        </div>
+        <div class="move-timeline">Start this week · 4-month runway to results</div>
+      </div>
+    </div>
+
+    <div class="move-item">
+      <div class="move-num">2</div>
+      <div class="move-content">
+        <div class="move-title">Build the Waitlist Machine Before You Have Product</div>
+        <div class="move-body">
+          The highest-ROI moment to acquire subscribers is before launch. Build a simple landing page with a 3-minute "stress type" quiz that segments prospects into Morning Optimizer / Evening Wind-Down / Focus Mode profiles. Each profile gets a personalized email nurture sequence. <strong>Target: 3,000 email subscribers before launch day.</strong> Run $5K in Instagram + TikTok traffic (wellbeing, biohacking, sober-curious audiences) to the quiz. This pre-qualifies your audience, tests messaging, and gives you a real launch event. Brands with 3,000+ email subscribers on day one consistently outperform those who launch to silence by 4–7x in first-month revenue.
+        </div>
+        <div class="move-timeline">Start immediately · Run for 90 days pre-launch</div>
+      </div>
+    </div>
+
+    <div class="move-item">
+      <div class="move-num">3</div>
+      <div class="move-content">
+        <div class="move-title">Identify and Seed 30 Micro-Influencers Before Paying Anyone</div>
+        <div class="move-body">
+          The functional beverage category is made in the micro-influencer layer, not through celebrity deals. Identify 30 creators in the 20K–150K follower range in these specific niches: corporate wellness professionals, productivity YouTubers, sober-curious lifestyle accounts, and women's health practitioners. Send unsolicited product with a handwritten note — no contract, no expectations. <strong>Of 30 sends, expect 8–12 organic posts.</strong> Track UTM codes on each. The 3–4 creators who drive actual conversions become your affiliate partners at 15–20% commission. This approach has generated $200K+ first-year revenue for comparable CPG brands at a total cost of under $6K in product and shipping. Do not sign influencer contracts until you have organic conversion data.
+        </div>
+        <div class="move-timeline">Start building list now · Ship 4–6 weeks pre-launch</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /report-body -->
+
+<!-- REPORT FOOTER -->
+<div class="report-footer">
+  <div>
+    <div class="rf-brand">ORACLE</div>
+    <div class="rf-sub">
+      AI Market Intelligence<br>
+      Generated: Feb 22, 2025 · Professional Tier<br>
+      oracle-intelligence.netlify.app
+    </div>
+  </div>
+  <div>
+    <div class="rf-col-title">Disclaimer</div>
+    <div class="rf-col-text">This report is AI-synthesized market intelligence. Market figures are derived from public data and AI analysis. Not financial, legal, or investment advice. Validate key figures against primary sources before material business decisions.</div>
+  </div>
+  <div>
+    <div class="rf-col-title">Your Report</div>
+    <div class="rf-col-text">This is a sample. Your ORACLE report will be customized to your specific market, geography, competitive context, and strategic question — delivered in ~5 minutes.</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-bar">
+  <div class="cta-bar-eyebrow">This is what $89 buys</div>
+  <h2 class="cta-bar-title">Now imagine this<br><em>for your market.</em></h2>
+  <p class="cta-bar-sub">Same depth. Same rigor. Your market, your competitors, your opportunity — in 5 minutes.</p>
+  <div class="cta-bar-actions">
+    <a href="index.html" class="btn-gold">Order Your Report — From $39</a>
+    <a href="index.html#pricing" class="btn-outline">Compare Tiers</a>
+  </div>
+</div>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Animate market bars on scroll
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.mbar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width;
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+const barEl = document.getElementById('market-bars');
+if (barEl) barObs.observe(barEl);
+</script>
+</body>
+</html>

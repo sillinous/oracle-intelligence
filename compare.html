@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORACLE vs Gartner, McKinsey, Freelance Analysts — Market Research Comparison</title>
+<meta name="description" content="Compare ORACLE to traditional market research options. AI-powered market intelligence reports in 5 minutes from $39 vs $3,000–$50,000 for traditional research.">
+<link rel="canonical" href="https://oracle-intelligence.netlify.app/compare">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,400&family=Martian+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--void:#050403;--ink:#0d0b08;--ink-mid:#1a1612;--parchment:#f2ede3;--parchment-dim:rgba(242,237,227,0.62);--gold:#b8943f;--gold-bright:#d4aa50;--gold-line:rgba(184,148,63,0.22);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--void);color:var(--parchment);font-family:'Source Serif 4',Georgia,serif;line-height:1.7;}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,4,3,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-line);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:800;color:var(--gold);text-decoration:none;}
+.nav-cta{font-family:'Martian Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:var(--void);border:none;padding:0.6rem 1.25rem;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.3s;}
+.nav-cta:hover{background:var(--gold-bright);}
+.body{max-width:1000px;margin:0 auto;padding:0 2rem;}
+.hero{background:var(--ink);border-bottom:1px solid var(--gold-line);padding:4rem 2rem 3.5rem;text-align:center;}
+.breadcrumb{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--parchment-dim);margin-bottom:1.5rem;}
+.breadcrumb a{color:var(--gold);text-decoration:none;}
+.hero-h{font-family:'Fraunces',serif;font-size:clamp(1.75rem,4vw,3rem);font-weight:800;line-height:1.05;margin-bottom:0.75rem;}
+.hero-h em{font-style:italic;color:var(--gold-bright);}
+.hero-sub{font-size:1rem;color:var(--parchment-dim);font-style:italic;max-width:600px;margin:0 auto 2rem;}
+.section{padding:3rem 0;border-bottom:1px solid var(--gold-line);}
+.section:last-child{border-bottom:none;}
+.section-label{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.75rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--gold-line);}
+.section-h{font-family:'Fraunces',serif;font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;margin-bottom:1rem;}
+.prose{font-size:0.97rem;line-height:1.85;color:var(--parchment-dim);}
+table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+th{text-align:left;padding:0.8rem 1rem;font-family:'Martian Mono',monospace;font-size:0.48rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--gold-line);}
+td{padding:0.9rem 1rem;border-bottom:1px solid rgba(184,148,63,0.07);font-size:0.9rem;color:var(--parchment-dim);}
+tr.oracle-row td{color:var(--parchment);background:rgba(184,148,63,0.06);}
+tr.oracle-row td:first-child{font-weight:500;}
+.yes{color:#5ab87a;}
+.no{color:rgba(242,237,227,0.25);}
+.meh{color:#c8963e;}
+.vs-card{background:var(--ink);border:1px solid var(--gold-line);padding:2rem;margin:1.5rem 0;}
+.vs-card h3{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;margin-bottom:0.5rem;}
+.vs-card h3 em{font-style:italic;color:var(--gold-bright);}
+.vs-pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1rem;}
+@media(max-width:600px){.vs-pros-cons{grid-template-columns:1fr;}}
+.vs-col-h{font-family:'Martian Mono',monospace;font-size:0.48rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+.vs-list{list-style:none;display:flex;flex-direction:column;gap:0.35rem;}
+.vs-list li{font-size:0.88rem;color:var(--parchment-dim);padding-left:1.2rem;position:relative;}
+.vs-list li::before{content:'•';position:absolute;left:0;color:var(--gold);}
+.btn-gold{display:inline-block;font-family:'Martian Mono',monospace;font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;background:var(--gold);color:var(--void);border:none;padding:1rem 2.5rem;cursor:pointer;text-decoration:none;transition:background 0.3s;}
+.btn-gold:hover{background:var(--gold-bright);}
+.cta-section{text-align:center;padding:3rem 0;}
+.cta-h{font-family:'Fraunces',serif;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;margin-bottom:0.5rem;}
+.cta-h em{font-style:italic;color:var(--gold-bright);}
+.cta-sub{font-size:0.97rem;color:var(--parchment-dim);font-style:italic;margin-bottom:2rem;}
+.note{font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,227,0.2);margin-top:0.75rem;}
+footer{background:var(--ink-mid);border-top:1px solid var(--gold-line);padding:2rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,227,0.25);line-height:2;}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">ORACLE</a>
+  <a href="index.html" class="nav-cta">Order Report — From $39 →</a>
+</nav>
+
+<div class="hero">
+  <div class="breadcrumb"><a href="index.html">ORACLE</a> / Compare</div>
+  <h1 class="hero-h">ORACLE vs <em>Everything Else</em></h1>
+  <p class="hero-sub">Market research comparison: AI-powered intelligence vs traditional options. Honest assessment of when to use what.</p>
+</div>
+
+<div class="body">
+
+  <div class="section">
+    <div class="section-label">At a Glance</div>
+    <h2 class="section-h">How the options compare</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Cost</th>
+          <th>Time</th>
+          <th>Custom?</th>
+          <th>Actionable?</th>
+          <th>Current data?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>McKinsey / Big 4 Consulting</td>
+          <td>$50,000–$500,000+</td>
+          <td>6–16 weeks</td>
+          <td class="yes">Yes</td>
+          <td class="meh">Sometimes</td>
+          <td class="yes">Yes</td>
+        </tr>
+        <tr>
+          <td>Gartner / Forrester Reports</td>
+          <td>$3,000–$8,000/report</td>
+          <td>Immediate (but dated)</td>
+          <td class="no">No</td>
+          <td class="no">Rarely</td>
+          <td class="no">Often 12–18mo old</td>
+        </tr>
+        <tr>
+          <td>IBISWorld / Statista</td>
+          <td>$1,000–$5,000/report</td>
+          <td>Immediate (dated)</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">Often outdated</td>
+        </tr>
+        <tr>
+          <td>Freelance Market Analyst</td>
+          <td>$2,000–$8,000</td>
+          <td>2–4 weeks</td>
+          <td class="yes">Yes</td>
+          <td class="meh">Variable</td>
+          <td class="yes">Usually</td>
+        </tr>
+        <tr>
+          <td>DIY (Google / ChatGPT / gut)</td>
+          <td>Free (time cost)</td>
+          <td>Hours–days</td>
+          <td class="yes">Yes</td>
+          <td class="no">Rarely</td>
+          <td class="meh">Inconsistent</td>
+        </tr>
+        <tr class="oracle-row">
+          <td>ORACLE Intelligence</td>
+          <td>$39–$199</td>
+          <td>~5 minutes</td>
+          <td class="yes">Yes</td>
+          <td class="yes">Always</td>
+          <td class="yes">Yes (live pull)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Deep Dives</div>
+    <h2 class="section-h">ORACLE vs each option</h2>
+
+    <div class="vs-card">
+      <h3>ORACLE vs <em>McKinsey / Big 4 Consulting</em></h3>
+      <p class="prose" style="margin-bottom:1rem;">McKinsey, BCG, and Bain produce genuinely excellent market research — deep primary research, expert interviews, proprietary data. For a $50M strategic decision, the cost is justified.</p>
+      <div class="vs-pros-cons">
+        <div>
+          <div class="vs-col-h">When to use consulting firms</div>
+          <ul class="vs-list">
+            <li>C-suite strategic pivots with $10M+ stakes</li>
+            <li>M&A target identification</li>
+            <li>Board-level credibility required</li>
+            <li>Primary research (surveys, expert interviews) needed</li>
+          </ul>
+        </div>
+        <div>
+          <div class="vs-col-h">When ORACLE wins</div>
+          <ul class="vs-list">
+            <li>Idea validation before committing budget</li>
+            <li>Early-stage market sizing and positioning</li>
+            <li>You need intelligence in days, not months</li>
+            <li>You need a starting point, not a final word</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="vs-card">
+      <h3>ORACLE vs <em>Gartner / Forrester Reports</em></h3>
+      <p class="prose" style="margin-bottom:1rem;">Gartner excels at enterprise technology analysis. Their Magic Quadrants are genuinely useful for evaluating software vendors. But they publish static, pre-written reports — you can't ask Gartner to analyze your specific market niche.</p>
+      <div class="vs-pros-cons">
+        <div>
+          <div class="vs-col-h">When to use Gartner/Forrester</div>
+          <ul class="vs-list">
+            <li>Evaluating enterprise software vendors</li>
+            <li>Technology landscape overviews (Magic Quadrant)</li>
+            <li>IT/CIO-level purchasing justification</li>
+          </ul>
+        </div>
+        <div>
+          <div class="vs-col-h">When ORACLE wins</div>
+          <ul class="vs-list">
+            <li>Your niche doesn't have a Gartner report</li>
+            <li>You need current data, not 18-month-old analysis</li>
+            <li>You need GTM strategy, not just market overview</li>
+            <li>Budget under $3,000</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="vs-card">
+      <h3>ORACLE vs <em>Freelance Analysts</em></h3>
+      <p class="prose" style="margin-bottom:1rem;">A good freelance market analyst produces genuinely customized work. The problem: finding one takes time, quality is inconsistent, and the deliverable is typically a dense slide deck — not an action plan.</p>
+      <div class="vs-pros-cons">
+        <div>
+          <div class="vs-col-h">When to use freelance analysts</div>
+          <ul class="vs-list">
+            <li>Primary research (cold outreach, interviews) needed</li>
+            <li>Ongoing monthly intelligence retainer</li>
+            <li>You have 3+ weeks and a $3,000+ budget</li>
+          </ul>
+        </div>
+        <div>
+          <div class="vs-col-h">When ORACLE wins</div>
+          <ul class="vs-list">
+            <li>You need intelligence today, not in 3 weeks</li>
+            <li>Budget is under $500</li>
+            <li>You want a specific "Your Next 3 Moves" section</li>
+            <li>You're testing multiple market angles quickly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="vs-card">
+      <h3>ORACLE vs <em>DIY (Google / ChatGPT)</em></h3>
+      <p class="prose" style="margin-bottom:1rem;">The honest answer: ChatGPT gives you a surface-level market overview that looks impressive but is often wrong on specifics, lacks real data, and won't tell you what to actually do. Google requires hours of synthesis. ORACLE is structured, sourced, and action-oriented.</p>
+      <div class="vs-pros-cons">
+        <div>
+          <div class="vs-col-h">When DIY works</div>
+          <ul class="vs-list">
+            <li>You have 4+ hours and enjoy research</li>
+            <li>You just want general category orientation</li>
+            <li>You already know the market deeply</li>
+          </ul>
+        </div>
+        <div>
+          <div class="vs-col-h">When ORACLE wins</div>
+          <ul class="vs-list">
+            <li>You need specific competitor weaknesses, not names</li>
+            <li>You need real TAM data with sources</li>
+            <li>You want a structured GTM framework, not vibes</li>
+            <li>$39 is worth 3+ hours of your time</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2 class="cta-h">See it before you buy it.<br><em>Free sample report.</em></h2>
+    <p class="cta-sub">Full Professional-tier report on the functional adaptogenic beverage market. Real data, real analysis, real next steps.</p>
+    <a class='btn-gold' href='sample.html'>Read Sample Report →</a>
+    <br><br>
+    <a href="index.html" class="btn-gold" style="background:transparent;border:1px solid var(--gold);color:var(--gold);">Order Full Report — From $39 →</a>
+    <div class="note">No subscription · One-time payment · ~5 minute delivery</div>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html">ORACLE Intelligence</a> · AI-Synthesized Market Reports · From $39<br>
+  <a href="markets/index.html">Browse Market Snapshots</a> · <a href='quiz.html'>Free Snapshot Quiz</a> · <a href='sample.html'>Sample Report</a>
+</footer>
+
+</body>
+</html>

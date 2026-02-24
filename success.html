@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Report Ordered — ORACLE Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,400&family=Martian+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--void:#050403;--ink:#0d0b08;--ink-mid:#1a1612;--parchment:#f2ede3;--parchment-dim:rgba(242,237,227,0.62);--gold:#b8943f;--gold-bright:#d4aa50;--gold-line:rgba(184,148,63,0.22);--signal:#2a6e3f;--signal-dim:rgba(42,110,63,0.15);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--void);color:var(--parchment);font-family:'Source Serif 4',Georgia,serif;min-height:100vh;}
+.nav{background:rgba(5,4,3,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-line);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:800;color:var(--gold);text-decoration:none;}
+.nav-link{font-family:'Martian Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--parchment-dim);text-decoration:none;transition:color 0.2s;}
+.nav-link:hover{color:var(--gold);}
+.page{max-width:720px;margin:0 auto;padding:4rem 2rem;}
+.status-banner{background:var(--signal-dim);border:1px solid rgba(42,110,63,0.35);padding:1.1rem 1.5rem;display:flex;align-items:center;gap:1rem;margin-bottom:3rem;}
+.status-dot{width:8px;height:8px;background:var(--signal);border-radius:50%;animation:pulse 2s ease-in-out infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.7;transform:scale(1.15);}}
+.status-text{font-family:'Martian Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#5ab87a;}
+.confirm-h{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.05;margin-bottom:0.5rem;}
+.confirm-h em{font-style:italic;color:var(--gold-bright);}
+.confirm-sub{font-size:1.05rem;color:var(--parchment-dim);font-style:italic;line-height:1.7;margin-bottom:2.5rem;max-width:560px;}
+.timeline{border:1px solid var(--gold-line);margin-bottom:3rem;overflow:hidden;}
+.tl-header{background:var(--ink-mid);border-bottom:1px solid var(--gold-line);padding:0.8rem 1.5rem;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);}
+.tl-step{display:flex;align-items:flex-start;gap:1.25rem;padding:1.1rem 1.5rem;border-bottom:1px solid rgba(184,148,63,0.07);}
+.tl-step:last-child{border-bottom:none;}
+.tl-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Martian Mono',monospace;font-size:0.55rem;font-weight:500;flex-shrink:0;margin-top:0.1rem;}
+.tl-icon.done{background:rgba(42,110,63,0.3);color:#5ab87a;border:1px solid rgba(42,110,63,0.4);}
+.tl-icon.active{background:rgba(184,148,63,0.15);color:var(--gold);border:1px solid rgba(184,148,63,0.4);animation:glowPulse 2s ease-in-out infinite;}
+.tl-icon.pending{background:rgba(242,237,227,0.04);color:rgba(242,237,227,0.2);border:1px solid rgba(242,237,227,0.08);}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 0 0 rgba(184,148,63,0);}50%{box-shadow:0 0 12px 2px rgba(184,148,63,0.2);}}
+.tl-label{font-size:0.95rem;color:var(--parchment);margin-bottom:0.15rem;}
+.tl-note{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--parchment-dim);}
+.referral-box{background:var(--ink);border:1px solid var(--gold-line);padding:2rem;margin-bottom:2rem;position:relative;overflow:hidden;}
+.referral-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 100% 0%,rgba(184,148,63,0.05),transparent);pointer-events:none;}
+.ref-eyebrow{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+.ref-h{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700;margin-bottom:0.5rem;}
+.ref-h em{font-style:italic;color:var(--gold-bright);}
+.ref-sub{font-size:0.92rem;color:var(--parchment-dim);font-style:italic;line-height:1.65;margin-bottom:1.5rem;}
+.ref-link-wrap{display:flex;gap:0;margin-bottom:1rem;}
+.ref-link-box{flex:1;background:var(--void);border:1px solid var(--gold-line);border-right:none;padding:0.8rem 1rem;font-family:'Martian Mono',monospace;font-size:0.6rem;letter-spacing:0.08em;color:var(--gold-bright);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;user-select:all;}
+.ref-copy-btn{font-family:'Martian Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;background:var(--gold);color:var(--void);border:none;padding:0.8rem 1.25rem;cursor:pointer;transition:background 0.3s;white-space:nowrap;flex-shrink:0;}
+.ref-copy-btn:hover{background:var(--gold-bright);}
+.ref-copy-btn.copied{background:var(--signal);}
+.ref-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gold-line);border:1px solid var(--gold-line);}
+.ref-stat{background:var(--ink-mid);padding:0.85rem 1rem;text-align:center;}
+.ref-stat-val{font-family:'Martian Mono',monospace;font-size:0.75rem;color:var(--gold-bright);margin-bottom:0.2rem;}
+.ref-stat-lbl{font-family:'Martian Mono',monospace;font-size:0.45rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--parchment-dim);}
+.share-row{display:flex;gap:0.6rem;margin-top:1.5rem;flex-wrap:wrap;}
+.share-btn{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;background:transparent;border:1px solid var(--gold-line);color:var(--parchment-dim);padding:0.6rem 1rem;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.25s;}
+.share-btn:hover{border-color:var(--gold);color:var(--gold);}
+.order-another{border:1px solid var(--gold-line);padding:1.5rem;margin-top:2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;}
+.oa-text h3{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;margin-bottom:0.25rem;}
+.oa-text p{font-size:0.87rem;color:var(--parchment-dim);font-style:italic;}
+.btn-gold{font-family:'Martian Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:var(--void);border:none;padding:0.85rem 1.75rem;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.3s;white-space:nowrap;}
+.btn-gold:hover{background:var(--gold-bright);}
+footer{border-top:1px solid var(--gold-line);margin-top:4rem;padding:2rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,227,0.2);line-height:2;}
+footer a{color:rgba(184,148,63,0.5);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">ORACLE</a>
+  <a href="/markets/" class="nav-link">Browse All Markets</a>
+</nav>
+
+<div class="page">
+
+  <div class="status-banner">
+    <div class="status-dot"></div>
+    <div class="status-text">Payment confirmed · Report generating · Delivery incoming</div>
+  </div>
+
+  <h1 class="confirm-h">Your report is<br><em>being synthesized.</em></h1>
+  <p class="confirm-sub">Check your inbox in 3–7 minutes. The full intelligence report — TAM, competitors, GTM strategy, and Your Next 3 Moves — is being assembled right now.</p>
+
+  <div class="timeline">
+    <div class="tl-header">Report Status</div>
+    <div class="tl-step">
+      <div class="tl-icon done">✓</div>
+      <div>
+        <div class="tl-label">Payment confirmed</div>
+        <div class="tl-note">Just now</div>
+      </div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-icon done">✓</div>
+      <div>
+        <div class="tl-label">Live market data pull initiated</div>
+        <div class="tl-note">Querying live sources</div>
+      </div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-icon active" id="tl-3">◉</div>
+      <div>
+        <div class="tl-label">AI synthesis in progress</div>
+        <div class="tl-note" id="tl-3-note">Synthesizing intelligence across 12 sections</div>
+      </div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-icon pending" id="tl-4">○</div>
+      <div>
+        <div class="tl-label">Report delivered to your inbox</div>
+        <div class="tl-note" id="tl-4-note">Est. 3–7 minutes</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="referral-box">
+    <div class="ref-eyebrow">While You Wait — Earn</div>
+    <h2 class="ref-h">Share ORACLE.<br><em>Earn 20% on every referral.</em></h2>
+    <p class="ref-sub">Know a founder, operator, or investor who needs market intelligence? Share your personal link — earn 20% of every report they order. Tracked automatically.</p>
+
+    <div class="ref-link-wrap">
+      <div class="ref-link-box" id="ref-url">Generating your referral link...</div>
+      <button class="ref-copy-btn" id="copy-btn" onclick="copyRef()">Copy Link</button>
+    </div>
+
+    <div class="ref-stats">
+      <div class="ref-stat">
+        <div class="ref-stat-val">20%</div>
+        <div class="ref-stat-lbl">Commission</div>
+      </div>
+      <div class="ref-stat">
+        <div class="ref-stat-val">$7.80–$39.80</div>
+        <div class="ref-stat-lbl">Per Referral</div>
+      </div>
+      <div class="ref-stat">
+        <div class="ref-stat-val">Instant</div>
+        <div class="ref-stat-lbl">Tracking</div>
+      </div>
+    </div>
+
+    <div class="share-row">
+      <a class="share-btn" href="#" id="share-twitter" target="_blank" rel="noopener">Share on X / Twitter</a>
+      <a class="share-btn" href="#" id="share-linkedin" target="_blank" rel="noopener">Share on LinkedIn</a>
+      <a class="share-btn" href="#" id="share-email">Share via Email</a>
+    </div>
+  </div>
+
+  <div class="order-another">
+    <div class="oa-text">
+      <h3>Need another market analyzed?</h3>
+      <p>Order a second report — different market, same 5-minute delivery.</p>
+    </div>
+    <a href="/" class="btn-gold">Order Another →</a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="/">ORACLE Intelligence</a> · Reports delivered to your inbox ·
+  <a href="/markets/">Browse all markets</a> ·
+  <a href='/quiz'>Free snapshot quiz</a>
+</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const email = params.get('email') || '';
+
+function genRefCode(str) {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let hash = 0;
+  const seed = str || Math.random().toString(36);
+  for (let i = 0; i < seed.length; i++) { hash = ((hash << 5) - hash) + seed.charCodeAt(i); hash |= 0; }
+  let code = "ORC-";
+  for (let i = 0; i < 6; i++) code += chars[Math.abs((hash >> (i * 4)) % chars.length)];
+  return code;
+}
+
+const code = genRefCode(email);
+const refUrl = `https://oracle-intelligence.netlify.app/?ref=${code}`;
+document.getElementById('ref-url').textContent = refUrl;
+
+const shareText = "Just got a detailed market intelligence report from ORACLE — AI-synthesized research in under 5 minutes. Genuinely useful.";
+document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(refUrl)}`;
+document.getElementById('share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(refUrl)}`;
+document.getElementById('share-email').href = `mailto:?subject=Market%20intelligence%20in%205%20minutes%20%E2%80%94%20ORACLE&body=${encodeURIComponent(shareText + '\n\n' + refUrl)}`;
+
+function copyRef() {
+  navigator.clipboard.writeText(refUrl).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy Link'; btn.classList.remove('copied'); }, 2500);
+  });
+}
+
+// Advance timeline after estimated synthesis time
+setTimeout(() => {
+  const i3 = document.getElementById('tl-3');
+  const i4 = document.getElementById('tl-4');
+  i3.classList.remove('active'); i3.classList.add('done'); i3.textContent = '✓';
+  i4.classList.remove('pending'); i4.classList.add('done'); i4.textContent = '✓';
+  document.getElementById('tl-4-note').textContent = 'Delivered — check your inbox';
+}, 6 * 60 * 1000);
+</script>
+</body>
+</html>

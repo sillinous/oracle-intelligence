@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rate Your Report — ORACLE</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900&family=DM+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0a0906; --gold:#c8a96e; --gold-light:#e8d4a0; --parchment:#f5f0e8; --cream:#faf7f0; --rust:#8b3a1e; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--ink); color:var(--parchment); font-family:'Cormorant Garamond',serif; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:2rem; }
+  .card { background:var(--cream); color:var(--ink); max-width:540px; width:100%; padding:clamp(2rem,5vw,3.5rem); animation:fadeUp 0.8s ease-out; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:none} }
+  .logo { font-family:'Playfair Display',serif; font-size:1rem; letter-spacing:0.2em; color:var(--gold); margin-bottom:2rem; }
+  .title { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,4vw,2.2rem); font-weight:700; margin-bottom:0.5rem; line-height:1.2; }
+  .title em { color:var(--rust); font-style:italic; }
+  .subtitle { font-size:1rem; color:rgba(10,9,6,0.55); font-style:italic; font-weight:300; margin-bottom:2.5rem; line-height:1.6; }
+  .label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(10,9,6,0.5); display:block; margin-bottom:0.75rem; }
+  .nps-row { display:flex; gap:6px; margin-bottom:2rem; }
+  .nps-btn { flex:1; aspect-ratio:1; background:white; border:1px solid rgba(10,9,6,0.1); cursor:pointer; font-family:'DM Mono',monospace; font-size:0.75rem; font-weight:500; color:rgba(10,9,6,0.5); transition:all 0.15s; display:flex; align-items:center; justify-content:center; }
+  .nps-btn:hover { border-color:var(--gold); color:var(--ink); }
+  .nps-btn.selected { background:var(--gold); border-color:var(--gold); color:var(--ink); font-weight:700; }
+  .nps-labels { display:flex; justify-content:space-between; font-family:'DM Mono',monospace; font-size:0.45rem; color:rgba(10,9,6,0.35); margin-bottom:2rem; margin-top:-1.5rem; }
+  .form-group { margin-bottom:1.5rem; }
+  input, textarea { width:100%; padding:0.85rem 1rem; border:1px solid rgba(10,9,6,0.15); background:white; font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--ink); outline:none; transition:border-color 0.2s; }
+  input:focus, textarea:focus { border-color:var(--gold); }
+  textarea { resize:vertical; min-height:90px; }
+  .submit-btn { width:100%; background:var(--gold); color:var(--ink); border:none; font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; padding:1.1rem; cursor:pointer; transition:all 0.3s; clip-path:polygon(8px 0%,100% 0%,calc(100%-8px) 100%,0% 100%); margin-top:0.5rem; }
+  .submit-btn:hover { background:var(--gold-light); }
+  .submit-btn:disabled { opacity:0.5; cursor:not-allowed; }
+  .success { display:none; text-align:center; padding:1rem 0; }
+  .success-icon { font-size:2.5rem; margin-bottom:1rem; display:block; }
+  .success-title { font-family:'Playfair Display',serif; font-size:1.75rem; margin-bottom:0.5rem; }
+  .success-desc { font-size:1rem; color:rgba(10,9,6,0.6); line-height:1.7; font-style:italic; font-weight:300; }
+  .promo-code { display:inline-block; background:var(--ink); color:var(--gold); font-family:'DM Mono',monospace; font-size:0.9rem; letter-spacing:0.3em; padding:0.6rem 1.25rem; margin-top:1rem; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">ORACLE</div>
+
+  <div id="form-section">
+    <h1 class="title">How did we <em>do?</em></h1>
+    <p class="subtitle">Your feedback shapes every report that comes after yours. 60 seconds. Honest answers only.</p>
+
+    <span class="label">How likely are you to recommend ORACLE to a fellow founder?</span>
+    <div class="nps-row" id="nps-row">
+      <div class="nps-btn" onclick="selectNPS(1)">1</div>
+      <div class="nps-btn" onclick="selectNPS(2)">2</div>
+      <div class="nps-btn" onclick="selectNPS(3)">3</div>
+      <div class="nps-btn" onclick="selectNPS(4)">4</div>
+      <div class="nps-btn" onclick="selectNPS(5)">5</div>
+      <div class="nps-btn" onclick="selectNPS(6)">6</div>
+      <div class="nps-btn" onclick="selectNPS(7)">7</div>
+      <div class="nps-btn" onclick="selectNPS(8)">8</div>
+      <div class="nps-btn" onclick="selectNPS(9)">9</div>
+      <div class="nps-btn" onclick="selectNPS(10)">10</div>
+    </div>
+    <div class="nps-labels"><span>Not at all likely</span><span>Extremely likely</span></div>
+
+    <div class="form-group">
+      <label class="label" for="feedback">What did the report get right? What did it miss?</label>
+      <textarea id="feedback" placeholder="The competitive analysis was sharp, but I wanted more on pricing strategy..."></textarea>
+    </div>
+
+    <div id="testimonial-section" style="display:none">
+      <div class="form-group">
+        <label class="label">Would you share a brief testimonial? (optional)</label>
+        <textarea id="testimonial" placeholder="ORACLE gave me more clarity in 5 minutes than 3 weeks of my own research..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="label">Your role / title (for attribution)</label>
+        <input type="text" id="role" placeholder="Founder, CEO at XYZ">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label">Your email</label>
+      <input type="email" id="email" placeholder="you@company.com">
+    </div>
+    <div class="form-group">
+      <label class="label">Your name</label>
+      <input type="text" id="name" placeholder="Jane Smith">
+    </div>
+
+    <button class="submit-btn" id="submit-btn" onclick="submitFeedback()">Submit Feedback →</button>
+  </div>
+
+  <div class="success" id="success-section">
+    <span class="success-icon">✦</span>
+    <div class="success-title">Thank you.</div>
+    <p class="success-desc" id="success-msg">Your feedback has been received.</p>
+    <div id="promo-wrap" style="display:none">
+      <p style="font-size:0.9rem;color:rgba(10,9,6,0.55);font-style:italic;margin-top:1.5rem">As a thank-you for your kind words:</p>
+      <div class="promo-code">ADVOCATE25</div>
+      <p style="font-size:0.8rem;color:rgba(10,9,6,0.4);margin-top:0.5rem;font-family:'DM Mono',monospace;letter-spacing:0.1em">25% off your next report</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  let selectedNPS = null;
+
+  // Pre-fill email from URL param
+  const params = new URLSearchParams(location.search);
+  if (params.get('email')) document.getElementById('email').value = params.get('email');
+
+  function selectNPS(n) {
+    selectedNPS = n;
+    document.querySelectorAll('.nps-btn').forEach((btn, i) => {
+      btn.classList.toggle('selected', i + 1 === n);
+    });
+    // Show testimonial section for promoters (9+)
+    document.getElementById('testimonial-section').style.display = n >= 9 ? 'block' : 'none';
+  }
+
+  async function submitFeedback() {
+    if (!selectedNPS) { alert('Please select a score.'); return; }
+    const email = document.getElementById('email').value.trim();
+    if (!email) { alert('Please enter your email.'); return; }
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    const payload = {
+      email,
+      name: document.getElementById('name').value.trim(),
+      nps: selectedNPS,
+      feedback: document.getElementById('feedback').value.trim(),
+      testimonialText: document.getElementById('testimonial')?.value?.trim() || '',
+      role: document.getElementById('role')?.value?.trim() || '',
+    };
+
+    try {
+      const res = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+
+      document.getElementById('form-section').style.display = 'none';
+      document.getElementById('success-section').style.display = 'block';
+
+      if (data.isPromoter) {
+        document.getElementById('success-msg').textContent = "A 9 or 10 — that genuinely means everything. We've sent you a thank-you in your inbox.";
+        document.getElementById('promo-wrap').style.display = 'block';
+      } else {
+        document.getElementById('success-msg').textContent = "Every honest piece of feedback makes ORACLE sharper. Thank you for taking the time.";
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Submit Feedback →';
+      alert('Something went wrong. Please try again.');
+    }
+  }
+</script>
+</body>
+</html>

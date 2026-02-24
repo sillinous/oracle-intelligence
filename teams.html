@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORACLE for Teams & Agencies — Bulk Market Intelligence Reports</title>
+<meta name="description" content="Market intelligence for consulting firms, VC funds, and growth teams. Bulk report credits, team access, white-label options. From $199/month for 5 reports.">
+<link rel="canonical" href="https://oracle-intelligence.netlify.app/teams">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,400&family=Martian+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--void:#050403;--ink:#0d0b08;--ink-mid:#1a1612;--parchment:#f2ede3;--parchment-dim:rgba(242,237,227,0.62);--gold:#b8943f;--gold-bright:#d4aa50;--gold-line:rgba(184,148,63,0.22);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--void);color:var(--parchment);font-family:'Source Serif 4',Georgia,serif;line-height:1.7;}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,4,3,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-line);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:800;color:var(--gold);text-decoration:none;}
+.nav-link{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--parchment-dim);text-decoration:none;transition:color 0.2s;}
+.nav-link:hover{color:var(--gold);}
+.hero{background:var(--ink);border-bottom:1px solid var(--gold-line);padding:5rem 2rem 4rem;text-align:center;}
+.eyebrow{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;}
+.hero-h{font-family:'Fraunces',serif;font-size:clamp(2.25rem,5vw,3.75rem);font-weight:800;line-height:1.02;margin-bottom:0.75rem;}
+.hero-h em{font-style:italic;color:var(--gold-bright);}
+.hero-sub{font-size:1.1rem;color:var(--parchment-dim);font-style:italic;max-width:620px;margin:0 auto 2.5rem;line-height:1.75;}
+.hero-cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-gold{display:inline-block;font-family:'Martian Mono',monospace;font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;background:var(--gold);color:var(--void);padding:1rem 2.5rem;text-decoration:none;transition:background 0.3s;}
+.btn-gold:hover{background:var(--gold-bright);}
+.btn-ghost{display:inline-block;font-family:'Martian Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;background:transparent;border:1px solid var(--gold-line);color:var(--parchment-dim);padding:1rem 2rem;text-decoration:none;transition:all 0.2s;}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.body{max-width:1100px;margin:0 auto;padding:4rem 2rem;}
+.section{margin-bottom:4rem;}
+.section-label{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.75rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--gold-line);}
+.section-h{font-family:'Fraunces',serif;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;margin-bottom:0.5rem;}
+.section-h em{font-style:italic;color:var(--gold-bright);}
+.section-sub{font-size:1rem;color:var(--parchment-dim);font-style:italic;max-width:580px;line-height:1.7;margin-bottom:2rem;}
+/* Use cases */
+.use-cases{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gold-line);border:1px solid var(--gold-line);}
+@media(max-width:768px){.use-cases,.pricing-grid{grid-template-columns:1fr;}}
+.use-card{background:var(--ink-mid);padding:2rem;}
+.use-icon{font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+.use-h{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;margin-bottom:0.5rem;}
+.use-h em{font-style:italic;color:var(--gold-bright);}
+.use-text{font-size:0.9rem;color:var(--parchment-dim);line-height:1.7;}
+.use-example{font-family:'Martian Mono',monospace;font-size:0.48rem;letter-spacing:0.1em;color:rgba(242,237,227,0.25);margin-top:0.75rem;text-transform:uppercase;}
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gold-line);border:1px solid var(--gold-line);}
+.price-card{background:var(--ink);padding:2rem 1.75rem;position:relative;}
+.price-card.featured{background:#181410;}
+.price-card.featured::before{content:'MOST POPULAR';position:absolute;top:0;right:0;background:var(--gold);color:var(--void);font-family:'Martian Mono',monospace;font-size:0.42rem;letter-spacing:0.2em;padding:0.3rem 0.75rem;}
+.price-tier{font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+.price-name{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;margin-bottom:0.25rem;}
+.price-amount{font-family:'Martian Mono',monospace;font-size:1.75rem;color:var(--gold-bright);margin-bottom:0.25rem;}
+.price-per{font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--parchment-dim);margin-bottom:1.5rem;}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.75rem;}
+.price-features li{font-size:0.88rem;color:var(--parchment-dim);padding-left:1.25rem;position:relative;}
+.price-features li::before{content:'✓';position:absolute;left:0;color:var(--gold);}
+.price-features li.dim{color:rgba(242,237,227,0.2);}
+.price-features li.dim::before{color:rgba(242,237,227,0.15);}
+.price-cta{display:block;font-family:'Martian Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:var(--void);padding:0.85rem;text-align:center;text-decoration:none;transition:background 0.3s;}
+.price-cta:hover{background:var(--gold-bright);}
+.price-cta.ghost{background:transparent;border:1px solid var(--gold-line);color:var(--parchment-dim);}
+.price-cta.ghost:hover{border-color:var(--gold);color:var(--gold);}
+/* ROI */
+.roi-table{border:1px solid var(--gold-line);overflow:hidden;}
+.roi-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid rgba(184,148,63,0.07);}
+.roi-row:last-child{border-bottom:none;}
+.roi-row.header{background:var(--ink-mid);font-family:'Martian Mono',monospace;font-size:0.48rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);}
+.roi-cell{padding:1rem 1.25rem;font-size:0.88rem;color:var(--parchment-dim);}
+.roi-cell.val{font-family:'Martian Mono',monospace;font-size:0.75rem;color:var(--gold-bright);}
+.roi-cell.good{color:#5ab87a;}
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--gold-line);padding:1.25rem 0;}
+.faq-q{font-size:1rem;color:var(--parchment);margin-bottom:0.5rem;}
+.faq-a{font-size:0.92rem;color:var(--parchment-dim);font-style:italic;line-height:1.75;}
+/* Contact CTA */
+.contact-cta{background:var(--ink);border:1px solid var(--gold-line);padding:3rem;text-align:center;margin-top:3rem;}
+.contact-cta h3{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;margin-bottom:0.5rem;}
+.contact-cta h3 em{font-style:italic;color:var(--gold-bright);}
+.contact-cta p{font-size:0.97rem;color:var(--parchment-dim);font-style:italic;margin-bottom:1.5rem;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7;}
+footer{border-top:1px solid var(--gold-line);padding:2rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,227,0.2);line-height:2;}
+footer a{color:rgba(184,148,63,0.5);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">ORACLE</a>
+  <a href="index.html" class="nav-link">Individual Reports</a>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow">Teams · Agencies · Funds</div>
+  <h1 class="hero-h">Market intelligence for<br><em>teams that run on research.</em></h1>
+  <p class="hero-sub">Consulting firms, VC funds, growth agencies, and strategy teams use ORACLE to move faster — bulk report credits, shared team access, and white-label delivery.</p>
+  <div class="hero-cta-row">
+    <a href="mailto:teams@oraclereports.ai?subject=Team%20Plan%20Inquiry" class="btn-gold">Talk to Us About a Team Plan →</a>
+    <a class='btn-ghost' href='sample.html'>View Sample Report</a>
+  </div>
+</div>
+
+<div class="body">
+
+  <div class="section">
+    <div class="section-label">Use Cases</div>
+    <h2 class="section-h">Built for the teams<br><em>that move first.</em></h2>
+    <p class="section-sub">Three archetypes that get maximum leverage from a standing ORACLE subscription.</p>
+
+    <div class="use-cases">
+      <div class="use-card">
+        <div class="use-icon">◈ Consulting</div>
+        <h3 class="use-h">Boutique <em>Consulting Firms</em></h3>
+        <p class="use-text">Use ORACLE as a first-pass market landscape tool before scoping engagements. Replace 3 days of junior analyst work with 30 minutes of client-ready intelligence. Brand it as your own.</p>
+        <div class="use-example">Typical use: 8–12 reports/month per client engagement cycle</div>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">◈ Venture Capital</div>
+        <h3 class="use-h">VC &amp; <em>Growth Equity</em></h3>
+        <p class="use-text">Run rapid market diligence on inbound deals before spending partner time. Map competitive dynamics in a target market in minutes, not days. Build market landscape views across your portfolio.</p>
+        <div class="use-example">Typical use: 15–25 reports/month across deal flow + portfolio</div>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">◈ Growth Teams</div>
+        <h3 class="use-h">Strategy &amp; <em>Growth Agencies</em></h3>
+        <p class="use-text">Give every client engagement a market intelligence backbone. Brief teams quickly on new verticals. Generate competitive landscapes for positioning workshops. Move 10x faster on new client onboarding.</p>
+        <div class="use-example">Typical use: 5–8 reports/month per active client</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Team Pricing</div>
+    <h2 class="section-h">Volume pricing.<br><em>Significant leverage.</em></h2>
+    <p class="section-sub">Per-report cost drops to as low as $29 at volume. Contact us for enterprise custom pricing above 20 reports/month.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Starter Pack</div>
+        <div class="price-name">5 Reports</div>
+        <div class="price-amount">$179</div>
+        <div class="price-per">$35.80 / report · use anytime</div>
+        <ul class="price-features">
+          <li>5 Professional-tier reports</li>
+          <li>Any 5 markets</li>
+          <li>No expiry on credits</li>
+          <li>All reports to same email</li>
+          <li class="dim">Team member access</li>
+          <li class="dim">White-label delivery</li>
+          <li class="dim">Priority support</li>
+        </ul>
+        <a href="mailto:teams@oraclereports.ai?subject=5-Report%20Pack" class="price-cta ghost">Get Started →</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-tier">Growth Pack</div>
+        <div class="price-name">12 Reports</div>
+        <div class="price-amount">$389</div>
+        <div class="price-per">$32.42 / report · use anytime</div>
+        <ul class="price-features">
+          <li>12 Professional-tier reports</li>
+          <li>Any 12 markets</li>
+          <li>No expiry on credits</li>
+          <li>Up to 3 team email addresses</li>
+          <li>Monthly usage summary</li>
+          <li class="dim">White-label delivery</li>
+          <li class="dim">Priority support</li>
+        </ul>
+        <a href="mailto:teams@oraclereports.ai?subject=12-Report%20Pack" class="price-cta">Most Popular — Get Started →</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-tier">Agency Plan</div>
+        <div class="price-name">Unlimited</div>
+        <div class="price-amount">$899</div>
+        <div class="price-per">/ month · unlimited reports</div>
+        <ul class="price-features">
+          <li>Unlimited reports, all tiers</li>
+          <li>Up to 10 team members</li>
+          <li>White-label email delivery</li>
+          <li>Custom report branding</li>
+          <li>Priority support (same-day)</li>
+          <li>Dedicated account setup</li>
+          <li>Monthly strategy call</li>
+        </ul>
+        <a href="mailto:teams@oraclereports.ai?subject=Agency%20Plan%20Inquiry" class="price-cta">Talk to Us →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">ROI Calculator</div>
+    <h2 class="section-h">The math is<br><em>straightforward.</em></h2>
+    <div class="roi-table">
+      <div class="roi-row header">
+        <div class="roi-cell">Scenario</div>
+        <div class="roi-cell">Traditional Cost</div>
+        <div class="roi-cell">ORACLE Cost</div>
+      </div>
+      <div class="roi-row">
+        <div class="roi-cell">Consultant pre-engagement market research (8hrs junior analyst @ $85/hr)</div>
+        <div class="roi-cell val">$680</div>
+        <div class="roi-cell good">$35.80</div>
+      </div>
+      <div class="roi-row">
+        <div class="roi-cell">VC deal pre-diligence (4hrs associate @ $120/hr)</div>
+        <div class="roi-cell val">$480</div>
+        <div class="roi-cell good">$35.80</div>
+      </div>
+      <div class="roi-row">
+        <div class="roi-cell">Agency new client market brief (2 days, 2 people)</div>
+        <div class="roi-cell val">$2,400</div>
+        <div class="roi-cell good">$35.80</div>
+      </div>
+      <div class="roi-row">
+        <div class="roi-cell">Monthly team using 12 reports instead of analyst hours</div>
+        <div class="roi-cell val">$5,760+/mo</div>
+        <div class="roi-cell good">$389/mo</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Common Questions</div>
+    <div class="faq-item">
+      <div class="faq-q">Can I white-label the reports for clients?</div>
+      <div class="faq-a">Yes — on the Agency Plan, reports can be delivered with custom branding (your firm name, logo, email domain). Contact us to set this up during onboarding.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do report credits expire?</div>
+      <div class="faq-a">Starter and Growth packs have no expiry — use them whenever you need them. Agency Plan is a monthly subscription (unused reports don't roll over).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do team members access shared credits?</div>
+      <div class="faq-a">On the Growth Pack, we set up a shared team email that receives all reports. Agency Plan includes individual team member accounts with a shared credit pool.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I get Strategic-tier reports in bulk?</div>
+      <div class="faq-a">Yes — Strategic reports ($199 each, or discounted in custom bulk packages) include adjacent market mapping, M&amp;A landscape analysis, and scenario modeling. Contact us for bulk Strategic pricing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What's the turnaround time?</div>
+      <div class="faq-a">Same as individual reports: approximately 5 minutes per report. For large bulk orders (10+ reports at once), plan for 45–60 minutes total.</div>
+    </div>
+  </div>
+
+  <div class="contact-cta">
+    <h3>Ready to equip your team?<br><em>Let's talk.</em></h3>
+    <p>Send us a note with your team size, use case, and estimated volume. We'll respond within a few hours with a custom proposal.</p>
+    <a href="mailto:teams@oraclereports.ai?subject=Team%20Plan%20Inquiry&body=Hi%20ORACLE%2C%0A%0ATeam%20size%3A%0AUse%20case%3A%0AEstimated%20reports%2Fmonth%3A%0A%0AThanks" class="btn-gold">Email teams@oraclereports.ai →</a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html">ORACLE Intelligence</a> · Individual Reports from $39 · <a href="markets/index.html">136 Market Snapshots</a><br>
+  <a href='compare.html'>Compare Options</a> · <a href='sample.html'>Sample Report</a> · teams@oraclereports.ai
+</footer>
+
+</body>
+</html>

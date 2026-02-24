@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Market Intelligence Snapshot — ORACLE</title>
+<meta name="description" content="Answer 3 questions. Get a free personalized market intelligence snapshot for your business. No credit card. Delivered instantly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,400&family=Martian+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--void:#050403;--ink:#0d0b08;--ink-mid:#1a1612;--parchment:#f2ede3;--parchment-dim:rgba(242,237,227,0.62);--gold:#b8943f;--gold-bright:#d4aa50;--gold-line:rgba(184,148,63,0.22);--signal:#2a6e3f;--tr:cubic-bezier(0.19,1,0.22,1);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;}
+body{background:var(--void);color:var(--parchment);font-family:'Source Serif 4',Georgia,serif;display:flex;flex-direction:column;}
+.nav{background:rgba(5,4,3,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-line);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
+.nav-logo{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:800;color:var(--gold);text-decoration:none;}
+.nav-back{font-family:'Martian Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--parchment-dim);text-decoration:none;transition:color 0.2s;}
+.nav-back:hover{color:var(--gold);}
+.quiz-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem;}
+.quiz-card{width:100%;max-width:640px;}
+
+/* Progress */
+.progress-bar{height:2px;background:var(--gold-line);margin-bottom:2.5rem;position:relative;}
+.progress-fill{height:100%;background:var(--gold);transition:width 0.6s var(--tr);}
+.progress-label{font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--parchment-dim);margin-top:0.4rem;}
+
+/* Step */
+.step{display:none;}
+.step.active{display:block;}
+
+.step-num{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.step-q{font-family:'Fraunces',serif;font-size:clamp(1.5rem,4vw,2.25rem);font-weight:800;line-height:1.1;margin-bottom:0.5rem;font-optical-sizing:auto;}
+.step-q em{font-style:italic;color:var(--gold-bright);}
+.step-sub{font-size:0.97rem;color:var(--parchment-dim);font-style:italic;margin-bottom:2rem;line-height:1.65;}
+
+/* Options */
+.options{display:flex;flex-direction:column;gap:0.65rem;}
+.option{background:var(--ink);border:1px solid var(--gold-line);padding:1.1rem 1.5rem;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:1rem;}
+.option:hover{background:rgba(184,148,63,0.08);border-color:rgba(184,148,63,0.4);}
+.option.selected{background:rgba(184,148,63,0.12);border-color:var(--gold);}
+.option-dot{width:16px;height:16px;border:1px solid var(--gold-line);border-radius:50%;flex-shrink:0;transition:all 0.2s;display:flex;align-items:center;justify-content:center;}
+.option.selected .option-dot{border-color:var(--gold);background:var(--gold);}
+.option.selected .option-dot::after{content:'';width:6px;height:6px;background:var(--void);border-radius:50%;}
+.option-text{font-size:0.97rem;line-height:1.45;}
+.option-sub{font-size:0.8rem;color:var(--parchment-dim);margin-top:0.15rem;}
+
+/* Text input */
+.text-group{margin-bottom:1.25rem;}
+.text-group label{display:block;font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+.text-group input,.text-group select{width:100%;background:var(--ink);border:1px solid var(--gold-line);color:var(--parchment);font-family:'Source Serif 4',serif;font-size:1rem;padding:0.9rem 1.1rem;outline:none;transition:border-color 0.3s;}
+.text-group input:focus,.text-group select:focus{border-color:var(--gold);}
+.text-group input::placeholder{color:rgba(242,237,227,0.2);}
+.text-group select option{background:var(--ink-mid);}
+
+/* Buttons */
+.btn-next{font-family:'Martian Mono',monospace;font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;background:var(--gold);color:var(--void);border:none;padding:1rem 2.5rem;cursor:pointer;transition:background 0.3s;font-weight:500;width:100%;margin-top:1.5rem;}
+.btn-next:hover:not(:disabled){background:var(--gold-bright);}
+.btn-next:disabled{opacity:0.4;cursor:not-allowed;}
+
+/* Result step */
+.result-badge{display:inline-flex;align-items:center;gap:0.6rem;font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--signal);border:1px solid rgba(42,110,63,0.3);padding:0.4rem 1rem;margin-bottom:1.5rem;}
+.result-badge::before{content:'';width:5px;height:5px;background:var(--signal);border-radius:50%;animation:blink 1.5s step-end infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.result-h{font-family:'Fraunces',serif;font-size:clamp(1.5rem,4vw,2.25rem);font-weight:800;margin-bottom:0.5rem;}
+.result-h em{font-style:italic;color:var(--gold-bright);}
+.result-sub{font-size:0.97rem;color:var(--parchment-dim);font-style:italic;margin-bottom:2rem;line-height:1.65;}
+
+.snapshot-card{background:var(--ink);border:1px solid var(--gold-line);margin-bottom:1.5rem;overflow:hidden;}
+.sc-header{background:var(--ink-mid);border-bottom:1px solid var(--gold-line);padding:0.85rem 1.25rem;display:flex;justify-content:space-between;align-items:center;}
+.sc-title{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);}
+.sc-status{font-family:'Martian Mono',monospace;font-size:0.48rem;letter-spacing:0.12em;color:var(--signal);display:flex;align-items:center;gap:0.35rem;}
+.sc-status::before{content:'';width:4px;height:4px;background:var(--signal);border-radius:50%;animation:blink 1.5s step-end infinite;}
+.sc-body{padding:1.25rem;font-family:'Martian Mono',monospace;font-size:0.62rem;line-height:1.85;color:var(--gold);}
+.sc-row{display:flex;justify-content:space-between;padding:0.2rem 0;}
+.sc-label{color:var(--parchment-dim);}
+.sc-val{color:var(--gold-bright);}
+.sc-divider{height:1px;background:var(--gold-line);margin:0.5rem 0;}
+.sc-blur{filter:blur(4px);user-select:none;pointer-events:none;}
+
+.wall-note{font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,227,0.22);text-align:center;margin-top:0.75rem;line-height:1.8;}
+
+/* Loading */
+.loading-step{text-align:center;padding:3rem 0;}
+.loading-orb{width:80px;height:80px;margin:0 auto 2rem;position:relative;}
+.lorb-ring{position:absolute;border-radius:50%;border:1px solid var(--gold-line);animation:lorbPulse 2s ease-in-out infinite;}
+.lorb-ring:nth-child(1){inset:30%;animation-delay:0s;}
+.lorb-ring:nth-child(2){inset:15%;animation-delay:0.5s;opacity:0.6;}
+.lorb-ring:nth-child(3){inset:0;animation-delay:1s;opacity:0.3;}
+.lorb-core{position:absolute;inset:35%;border-radius:50%;background:radial-gradient(circle,rgba(184,148,63,0.4),transparent);}
+@keyframes lorbPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+.loading-text{font-family:'Martian Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);}
+.loading-sub{font-size:0.9rem;color:var(--parchment-dim);font-style:italic;margin-top:0.5rem;}
+.loading-log{margin-top:1.5rem;font-family:'Martian Mono',monospace;font-size:0.52rem;color:var(--parchment-dim);line-height:2;letter-spacing:0.05em;}
+.log-item{opacity:0;transition:opacity 0.5s;}
+.log-item.show{opacity:1;}
+.log-item.done{color:var(--signal);}
+.log-item.done::before{content:'✓ ';}
+.log-item.active::before{content:'→ ';}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">ORACLE</a>
+  <a href="index.html" class="nav-back">← Back to ORACLE</a>
+</nav>
+
+<div class="quiz-wrap">
+<div class="quiz-card">
+
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress" style="width:0%"></div>
+    <div class="progress-label" id="progress-label">Step 1 of 4</div>
+  </div>
+
+  <!-- STEP 1: Stage -->
+  <div class="step active" id="step-1">
+    <div class="step-num">Question 01 / 04</div>
+    <h2 class="step-q">Where are you <em>right now?</em></h2>
+    <p class="step-sub">This shapes the intelligence we surface for you.</p>
+    <div class="options">
+      <div class="option" data-val="idea" onclick="select(this,'stage')">
+        <div class="option-dot"></div>
+        <div><div class="option-text">I have an idea I'm validating</div><div class="option-sub">Pre-revenue, exploring the market</div></div>
+      </div>
+      <div class="option" data-val="building" onclick="select(this,'stage')">
+        <div class="option-dot"></div>
+        <div><div class="option-text">I'm building / early-stage</div><div class="option-sub">Product in development or just launched</div></div>
+      </div>
+      <div class="option" data-val="scaling" onclick="select(this,'stage')">
+        <div class="option-dot"></div>
+        <div><div class="option-text">I'm scaling an existing business</div><div class="option-sub">Revenue generating, exploring growth vectors</div></div>
+      </div>
+      <div class="option" data-val="investing" onclick="select(this,'stage')">
+        <div class="option-dot"></div>
+        <div><div class="option-text">I'm evaluating an investment or acquisition</div><div class="option-sub">Due diligence, market sizing</div></div>
+      </div>
+    </div>
+    <button class="btn-next" id="btn-1" disabled onclick="nextStep(2)">Continue →</button>
+  </div>
+
+  <!-- STEP 2: Type -->
+  <div class="step" id="step-2">
+    <div class="step-num">Question 02 / 04</div>
+    <h2 class="step-q">What <em>type</em> of business?</h2>
+    <p class="step-sub">Shapes the competitive and customer intelligence we include.</p>
+    <div class="options">
+      <div class="option" data-val="saas" onclick="select(this,'type')">
+        <div class="option-dot"></div>
+        <div><div class="option-text">SaaS / Software</div><div class="option-sub">Subscription software product</div></div>
+      </div>
+      <div class="option" data-val="cpg" onclick="select(this,'type')">
+        <div class="option-dot"></div>
+        <div><div class="option-text">Consumer Product (CPG / D2C)</div><div class="option-sub">Physical product, brand, e-commerce</div></div>
+      </div>
+      <div class="option" data-val="marketplace" onclick="select(this,'type')">
+        <div class="option-dot"></div>
+        <div><div class="option-text">Marketplace or Platform</div><div class="option-sub">Two-sided market, network effect business</div></div>
+      </div>
+      <div class="option" data-val="services" onclick="select(this,'type')">
+        <div class="option-dot"></div>
+        <div><div class="option-text">Service Business</div><div class="option-sub">Agency, consulting, local services, professional practice</div></div>
+      </div>
+    </div>
+    <button class="btn-next" id="btn-2" disabled onclick="nextStep(3)">Continue →</button>
+  </div>
+
+  <!-- STEP 3: Market + Email -->
+  <div class="step" id="step-3">
+    <div class="step-num">Question 03 / 04</div>
+    <h2 class="step-q">Tell me your <em>market.</em></h2>
+    <p class="step-sub">Be specific — the more you tell us, the sharper the intelligence.</p>
+    <div class="text-group">
+      <label>Your Market or Business</label>
+      <input type="text" id="market-input" placeholder="e.g. AI-powered recruiting software for restaurants" oninput="checkStep3()">
+    </div>
+    <div class="text-group">
+      <label>Your Name</label>
+      <input type="text" id="name-input" placeholder="First name" oninput="checkStep3()">
+    </div>
+    <div class="text-group">
+      <label>Email — We'll send your free snapshot here</label>
+      <input type="email" id="email-input" placeholder="you@company.com" oninput="checkStep3()">
+    </div>
+    <button class="btn-next" id="btn-3" disabled onclick="nextStep('loading')">Get My Free Snapshot →</button>
+  </div>
+
+  <!-- LOADING -->
+  <div class="step" id="step-loading">
+    <div class="loading-step">
+      <div class="loading-orb">
+        <div class="lorb-ring"></div>
+        <div class="lorb-ring"></div>
+        <div class="lorb-ring"></div>
+        <div class="lorb-core"></div>
+      </div>
+      <div class="loading-text">ORACLE Analyzing</div>
+      <div class="loading-sub" id="loading-market">Your market intelligence is being synthesized...</div>
+      <div class="loading-log" id="loading-log">
+        <div class="log-item" id="log-1">Identifying market boundaries and TAM</div>
+        <div class="log-item" id="log-2">Mapping competitive landscape</div>
+        <div class="log-item" id="log-3">Profiling customer segments</div>
+        <div class="log-item" id="log-4">Identifying key opportunities</div>
+        <div class="log-item" id="log-5">Compiling your snapshot</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="step" id="step-result">
+    <div class="result-badge">Snapshot Ready</div>
+    <h2 class="result-h">Your free snapshot<br><em>is on its way.</em></h2>
+    <p class="result-sub" id="result-sub">Check your inbox — your personalized market intelligence snapshot arrives in minutes.</p>
+
+    <div class="snapshot-card">
+      <div class="sc-header">
+        <div class="sc-title" id="sc-title">Market Intelligence Snapshot</div>
+        <div class="sc-status">Synthesized</div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-row"><span class="sc-label">Market</span><span class="sc-val" id="sc-market">—</span></div>
+        <div class="sc-row"><span class="sc-label">Stage</span><span class="sc-val" id="sc-stage">—</span></div>
+        <div class="sc-row"><span class="sc-label">Type</span><span class="sc-val" id="sc-type">—</span></div>
+        <div class="sc-divider"></div>
+        <div class="sc-row sc-blur"><span class="sc-label">TAM (Total Addressable Market)</span><span class="sc-val">$XX.XB</span></div>
+        <div class="sc-row sc-blur"><span class="sc-label">CAGR (2024–2028)</span><span class="sc-val">XX.X%</span></div>
+        <div class="sc-row sc-blur"><span class="sc-label">Top Competitor #1</span><span class="sc-val">XXXXXXXX</span></div>
+        <div class="sc-row sc-blur"><span class="sc-label">Top Competitor #2</span><span class="sc-val">XXXXXXXX</span></div>
+        <div class="sc-row sc-blur"><span class="sc-label">Primary Opportunity</span><span class="sc-val">XXXXXXXX</span></div>
+        <div class="sc-divider"></div>
+        <div class="sc-row sc-blur"><span class="sc-label">Your Next Move #1</span><span class="sc-val">XXXXXXXX XXXXX</span></div>
+        <div class="sc-row sc-blur"><span class="sc-label">Your Next Move #2</span><span class="sc-val">XXXXXXXX XXXXX</span></div>
+        <div class="sc-row sc-blur"><span class="sc-label">Your Next Move #3</span><span class="sc-val">XXXXXXXX XXXXX</span></div>
+      </div>
+    </div>
+
+    <p style="font-size:0.9rem;color:var(--parchment-dim);font-style:italic;margin-bottom:1.5rem;text-align:center;">
+      Full TAM, competitive breakdown, GTM strategy, and Your Next 3 Moves — unlocked in the full report.
+    </p>
+    <button class="btn-next" onclick="window.location.href='/?ref=quiz'">Unlock Full Report — From $39 →</button>
+    <div class="wall-note">One-time payment · Delivered in ~5 minutes · No subscription</div>
+  </div>
+
+</div>
+</div>
+
+<script>
+const answers = { stage: null, type: null, market: '', name: '', email: '' };
+
+const STAGE_LABELS = { idea: 'Idea Validation', building: 'Early-Stage Build', scaling: 'Scaling', investing: 'Investment / M&A' };
+const TYPE_LABELS = { saas: 'SaaS / Software', cpg: 'Consumer Product (CPG/D2C)', marketplace: 'Marketplace / Platform', services: 'Service Business' };
+const PROGRESS = { 1: 25, 2: 50, 3: 75, loading: 90, result: 100 };
+
+function select(el, field) {
+  document.querySelectorAll(`#step-${field === 'stage' ? 1 : 2} .option`).forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[field] = el.dataset.val;
+  document.getElementById(`btn-${field === 'stage' ? 1 : 2}`).disabled = false;
+}
+
+function checkStep3() {
+  const market = document.getElementById('market-input').value.trim();
+  const name = document.getElementById('name-input').value.trim();
+  const email = document.getElementById('email-input').value.trim();
+  answers.market = market; answers.name = name; answers.email = email;
+  const valid = market.length > 3 && name.length > 1 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  document.getElementById('btn-3').disabled = !valid;
+}
+
+function nextStep(step) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById(`step-${step}`).classList.add('active');
+  const p = PROGRESS[step] || PROGRESS[String(step)];
+  document.getElementById('progress').style.width = (p || 25) + '%';
+  const stepNum = step === 'loading' ? '...' : step === 'result' ? '4' : step;
+  document.getElementById('progress-label').textContent = `Step ${stepNum} of 4`;
+
+  if (step === 'loading') {
+    runLoading();
+  }
+}
+
+function runLoading() {
+  document.getElementById('loading-market').textContent = `Analyzing: ${answers.market}`;
+  const logs = ['log-1','log-2','log-3','log-4','log-5'];
+  let i = 0;
+
+  // Submit lead to backend
+  submitLead();
+
+  const interval = setInterval(() => {
+    if (i > 0) {
+      document.getElementById(logs[i-1]).classList.remove('active');
+      document.getElementById(logs[i-1]).classList.add('done');
+    }
+    if (i < logs.length) {
+      document.getElementById(logs[i]).classList.add('show','active');
+      i++;
+    } else {
+      clearInterval(interval);
+      setTimeout(showResult, 600);
+    }
+  }, 900);
+}
+
+function showResult() {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-result').classList.add('active');
+  document.getElementById('progress').style.width = '100%';
+  document.getElementById('progress-label').textContent = 'Complete';
+  document.getElementById('sc-market').textContent = answers.market || '—';
+  document.getElementById('sc-stage').textContent = STAGE_LABELS[answers.stage] || '—';
+  document.getElementById('sc-type').textContent = TYPE_LABELS[answers.type] || '—';
+  document.getElementById('sc-title').textContent = `${answers.market} — Snapshot`;
+  document.getElementById('result-sub').textContent =
+    `Hi ${answers.name} — your free snapshot is heading to ${answers.email}. Full details below are unlocked in the complete report.`;
+}
+
+async function submitLead() {
+  try {
+    await fetch('/api/quiz-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: answers.name,
+        email: answers.email,
+        market: answers.market,
+        stage: answers.stage,
+        type: answers.type
+      })
+    });
+  } catch(e) {
+    // Silent — don't break UX if API fails
+  }
+}
+</script>
+</body>
+</html>
