@@ -22,32 +22,32 @@ export default async function handler(req, context) {
     // Industry → Platform mapping
     const ECOSYSTEM_RECOMMENDATIONS = {
       'saas': [
-        { platform: 'Grant Platform', url: 'https://grant-platform-unless.netlify.app?ref=oracle', reason: 'Find SBIR/STTR grants for your SaaS innovation', priority: 1 },
+        { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=oracle', reason: 'Find SBIR/STTR grants for your SaaS innovation', priority: 1 },
         { platform: 'ATLAS', url: 'https://unless-atlas-platform.netlify.app', reason: 'Model your SaaS financial projections', priority: 2 },
         { platform: 'CLEAR', url: 'https://clear-platform.netlify.app', reason: 'Ongoing competitive intelligence', priority: 3 },
       ],
       'healthtech': [
         { platform: 'BioVentures', url: 'https://bioventures-platform.netlify.app', reason: 'Deep life sciences intelligence', priority: 1 },
-        { platform: 'Grant Platform', url: 'https://grant-platform-unless.netlify.app?ref=oracle', reason: 'NIH and healthcare grants', priority: 2 },
+        { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=oracle', reason: 'NIH and healthcare grants', priority: 2 },
         { platform: 'CLEAR', url: 'https://clear-platform.netlify.app', reason: 'Regulatory landscape monitoring', priority: 3 },
       ],
       'fintech': [
         { platform: 'ATLAS', url: 'https://unless-atlas-platform.netlify.app', reason: 'Financial modeling and projections', priority: 1 },
         { platform: 'CLEAR', url: 'https://clear-platform.netlify.app', reason: 'Regulatory and compliance analysis', priority: 2 },
-        { platform: 'Grant Platform', url: 'https://grant-platform-unless.netlify.app?ref=oracle', reason: 'FinTech innovation grants', priority: 3 },
+        { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=oracle', reason: 'FinTech innovation grants', priority: 3 },
       ],
       'cleantech': [
-        { platform: 'Grant Platform', url: 'https://grant-platform-unless.netlify.app?ref=oracle', reason: 'DOE and EPA clean energy grants', priority: 1 },
+        { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=oracle', reason: 'DOE and EPA clean energy grants', priority: 1 },
         { platform: 'P-Wave', url: 'https://pwave-silver-battery.netlify.app', reason: 'Energy storage technology intelligence', priority: 2 },
         { platform: 'ATLAS', url: 'https://unless-atlas-platform.netlify.app', reason: 'Clean energy financial modeling', priority: 3 },
       ],
       'cpg': [
         { platform: 'CLEAR', url: 'https://clear-platform.netlify.app', reason: 'Consumer trend analysis', priority: 1 },
         { platform: 'ATLAS', url: 'https://unless-atlas-platform.netlify.app', reason: 'CPG unit economics modeling', priority: 2 },
-        { platform: 'Grant Platform', url: 'https://grant-platform-unless.netlify.app?ref=oracle', reason: 'Small business grants', priority: 3 },
+        { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=oracle', reason: 'Small business grants', priority: 3 },
       ],
       'default': [
-        { platform: 'Grant Platform', url: 'https://grant-platform-unless.netlify.app?ref=oracle', reason: 'Find grants in your industry', priority: 1 },
+        { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=oracle', reason: 'Find grants in your industry', priority: 1 },
         { platform: 'CLEAR', url: 'https://clear-platform.netlify.app', reason: 'Ongoing AI intelligence', priority: 2 },
         { platform: 'ATLAS', url: 'https://unless-atlas-platform.netlify.app', reason: 'Financial modeling tools', priority: 3 },
       ],
