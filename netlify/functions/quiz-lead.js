@@ -89,3 +89,5 @@ export default async (req, context) => {
     return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: cors });
   }
 };
+
+export const config = { path: "/api/quiz-lead" };
