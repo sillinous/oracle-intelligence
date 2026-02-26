@@ -1,2 +1,15 @@
-# API routing (fallback for functions without v2 config)
-/api/quiz-lead  /.netlify/functions/quiz-lead  200
+# API routing — functions use v2 config path routing natively,
+# these redirects provide fallback for any edge cases
+/api/quiz-lead       /.netlify/functions/quiz-lead       200
+/api/config          /.netlify/functions/config           200
+/api/create-checkout /.netlify/functions/create-checkout  200
+/api/webhook         /.netlify/functions/webhook          200
+/api/research        /.netlify/functions/research         200
+/api/feedback        /.netlify/functions/feedback          200
+/api/referral        /.netlify/functions/referral          200
+/api/admin           /.netlify/functions/admin-api         200
+/api/ab-track        /.netlify/functions/ab-track          200
+/api/distribution    /.netlify/functions/distribution      200
+/api/env-check       /.netlify/functions/env-check         200
+/api/cross-sell      /.netlify/functions/cross-sell        200
+/api/email-capture   /.netlify/functions/email-capture  200

@@ -1,9 +1,16 @@
 [build]
   publish = "."
+  command = "echo 'Static site with serverless functions — no frontend build needed'"
 
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
+
+# API path routing (functions handle via config exports, but this helps fallback)
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
 
 # CORS headers for API endpoints
 [[headers]]
@@ -19,9 +26,16 @@
   [headers.values]
     Cache-Control = "public, max-age=3600"
 
+# Cache market pages longer (they don't change often)
+[[headers]]
+  for = "/markets/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
 # Security headers
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
