@@ -33,14 +33,14 @@ export default async (req) => {
           method: "POST",
           headers: { Authorization: `Bearer ${RESEND_KEY}`, "Content-Type": "application/json" },
           body: JSON.stringify({
-            from: "ORACLE Intelligence <hello@oraclereports.ai>",
+            from: "APERTURE Intelligence <hello@aperturereports.ai>",
             to: [email],
-            subject: "Welcome to ORACLE Intelligence",
+            subject: "Welcome to APERTURE Intelligence",
             html: `<div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;color:#1a1a1a;">
-              <h2 style="color:#b8943f;">Welcome to ORACLE Intelligence</h2>
+              <h2 style="color:#b8943f;">Welcome to APERTURE Intelligence</h2>
               <p>You're now subscribed to receive market intelligence insights, industry analysis, and exclusive report previews.</p>
-              <p>In the meantime, explore our <a href="https://oracle-intelligence.netlify.app/#pricing" style="color:#b8943f;">AI-powered market reports</a> — what consultants charge $15K for, starting at $19.</p>
-              <p style="color:#666;font-size:14px;">— The ORACLE Team</p>
+              <p>In the meantime, explore our <a href="https://aperture-intel.netlify.app/#pricing" style="color:#b8943f;">AI-powered market reports</a> — what consultants charge $15K for, starting at $19.</p>
+              <p style="color:#666;font-size:14px;">— The APERTURE Team</p>
             </div>`,
           }),
         });

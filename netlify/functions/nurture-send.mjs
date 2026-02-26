@@ -15,7 +15,7 @@ export default async (req) => {
         try {
           await fetch("https://api.resend.com/emails", {
             method: "POST", headers: { Authorization: `Bearer ${RESEND_KEY}`, "Content-Type": "application/json" },
-            body: JSON.stringify({ from: "ORACLE Intelligence <reports@oraclereports.ai>", to: [lead.email], subject: "Your free market snapshot is waiting", html: `<p>Hi${lead.name ? ` ${lead.name}` : ""},</p><p>You recently took our Market Intelligence Quiz. Your personalized snapshot is ready — <a href="https://oracle-intelligence.netlify.app/markets/${lead.recommendedMarket || ""}">view it here</a>.</p><p>Want the full report? <a href="https://oracle-intelligence.netlify.app/#pricing">See our plans</a> starting at $19.</p><p>— ORACLE Intelligence</p>` }),
+            body: JSON.stringify({ from: "APERTURE Intelligence <reports@aperturereports.ai>", to: [lead.email], subject: "Your free market snapshot is waiting", html: `<p>Hi${lead.name ? ` ${lead.name}` : ""},</p><p>You recently took our Market Intelligence Quiz. Your personalized snapshot is ready — <a href="https://aperture-intel.netlify.app/markets/${lead.recommendedMarket || ""}">view it here</a>.</p><p>Want the full report? <a href="https://aperture-intel.netlify.app/#pricing">See our plans</a> starting at $19.</p><p>— APERTURE Intelligence</p>` }),
           });
           lead.nurtureSent = new Date().toISOString();
           await store.set(k.key, JSON.stringify(lead));

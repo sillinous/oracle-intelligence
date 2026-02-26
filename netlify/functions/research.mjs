@@ -42,8 +42,8 @@ Format as structured markdown. Use real data where available. Be specific with n
 
     const aiRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${OPENROUTER_KEY}`, "HTTP-Referer": "https://oracle-intelligence.netlify.app" },
-      body: JSON.stringify({ model, messages: [{ role: "system", content: "You are ORACLE, an expert market intelligence analyst. Produce detailed, data-driven market research reports." }, { role: "user", content: prompt }], max_tokens: tier === "strategic" ? 8000 : tier === "professional" ? 6000 : tier === "starter" ? 4000 : 2000 }),
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${OPENROUTER_KEY}`, "HTTP-Referer": "https://aperture-intel.netlify.app" },
+      body: JSON.stringify({ model, messages: [{ role: "system", content: "You are APERTURE, an expert market intelligence analyst. Produce detailed, data-driven market research reports." }, { role: "user", content: prompt }], max_tokens: tier === "strategic" ? 8000 : tier === "professional" ? 6000 : tier === "starter" ? 4000 : 2000 }),
     });
 
     const aiData = await aiRes.json();
@@ -62,18 +62,18 @@ Format as structured markdown. Use real data where available. Be specific with n
           method: "POST",
           headers: { Authorization: `Bearer ${RESEND_KEY}`, "Content-Type": "application/json" },
           body: JSON.stringify({
-            from: "ORACLE Intelligence <reports@oraclereports.ai>",
+            from: "APERTURE Intelligence <reports@aperturereports.ai>",
             to: [email],
-            subject: `Your ORACLE ${(tier||"").charAt(0).toUpperCase()+(tier||"").slice(1)} Report: ${market}`,
+            subject: `Your APERTURE ${(tier||"").charAt(0).toUpperCase()+(tier||"").slice(1)} Report: ${market}`,
             html: `<div style="font-family:sans-serif;max-width:700px;margin:0 auto;padding:24px">
-              <h2>🔮 Your ORACLE Report is Ready</h2>
+              <h2>🔮 Your APERTURE Report is Ready</h2>
               <p>Hi ${name || "there"},</p>
               <p>Your <strong>${market}</strong> market intelligence report is attached below.</p>
               <div style="background:#f8f9fa;border:1px solid #e0e0e0;border-radius:8px;padding:24px;margin:24px 0;white-space:pre-wrap;font-size:14px;line-height:1.6">${report.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>
-              <p>Want deeper analysis? <a href="https://oracle-intelligence.netlify.app/#pricing">Upgrade your report tier</a></p>
+              <p>Want deeper analysis? <a href="https://aperture-intel.netlify.app/#pricing">Upgrade your report tier</a></p>
               <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
-              <p style="color:#666;font-size:12px">ORACLE Intelligence — AI Market Research in Minutes<br/>
-              <a href="https://oracle-intelligence.netlify.app">oracle-intelligence.netlify.app</a></p>
+              <p style="color:#666;font-size:12px">APERTURE Intelligence — AI Market Research in Minutes<br/>
+              <a href="https://aperture-intel.netlify.app">aperture-intel.netlify.app</a></p>
             </div>`,
           }),
         });

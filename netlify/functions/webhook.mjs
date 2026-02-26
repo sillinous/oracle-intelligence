@@ -22,7 +22,7 @@ export default async (req, context) => {
       const { tier, market, name, platform } = session.metadata || {};
       const email = session.customer_details?.email || session.customer_email;
 
-      if (platform !== "oracle" && !tier) return new Response(JSON.stringify({ received: true }), { status: 200, headers });
+      if (platform !== "aperture" && !tier) return new Response(JSON.stringify({ received: true }), { status: 200, headers });
 
       // Store purchase
       const store = getStore("purchases");
@@ -39,16 +39,16 @@ export default async (req, context) => {
             method: "POST",
             headers: { Authorization: `Bearer ${RESEND_KEY}`, "Content-Type": "application/json" },
             body: JSON.stringify({
-              from: "ORACLE Intelligence <reports@oraclereports.ai>",
+              from: "APERTURE Intelligence <reports@aperturereports.ai>",
               to: [email],
-              subject: `Your ORACLE ${(tier || "").charAt(0).toUpperCase() + (tier || "").slice(1)} Report is Being Generated`,
+              subject: `Your APERTURE ${(tier || "").charAt(0).toUpperCase() + (tier || "").slice(1)} Report is Being Generated`,
               html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px">
                 <h2 style="color:#1a1a2e">🔮 Your Report is Being Generated</h2>
                 <p>Hi ${name || "there"},</p>
                 <p>Thank you for your purchase! Your <strong>${(tier || "standard").charAt(0).toUpperCase() + (tier || "").slice(1)} Report</strong> for <strong>${market || "your market"}</strong> is being generated.</p>
                 <p>You'll receive your complete report within <strong>5 minutes</strong>.</p>
                 <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
-                <p style="color:#666;font-size:13px">ORACLE Intelligence — AI Market Research in Minutes</p>
+                <p style="color:#666;font-size:13px">APERTURE Intelligence — AI Market Research in Minutes</p>
               </div>`,
             }),
           });
@@ -57,7 +57,7 @@ export default async (req, context) => {
 
       // Trigger report generation (fire and forget)
       try {
-        await fetch("https://oracle-intelligence.netlify.app/api/research", {
+        await fetch("https://aperture-intel.netlify.app/api/research", {
           method: "POST",
           headers: { "Content-Type": "application/json", "x-admin-key": process.env["ADMIN_KEY"] || "" },
           body: JSON.stringify({ market, tier, email, name, purchaseId }),

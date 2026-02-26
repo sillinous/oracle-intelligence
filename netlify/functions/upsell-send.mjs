@@ -17,7 +17,7 @@ export default async (req) => {
         try {
           await fetch("https://api.resend.com/emails", {
             method: "POST", headers: { Authorization: `Bearer ${RESEND_KEY}`, "Content-Type": "application/json" },
-            body: JSON.stringify({ from: "ORACLE Intelligence <reports@oraclereports.ai>", to: [purchase.email], subject: `Upgrade to ${nextTier.charAt(0).toUpperCase()+nextTier.slice(1)} for deeper insights`, html: `<p>Hi${purchase.name ? ` ${purchase.name}` : ""},</p><p>Your ${purchase.tier} report for "${purchase.market}" was just the beginning.</p><p>Upgrade to our <strong>${nextTier}</strong> tier for deeper competitive analysis, regulatory insights, and strategic recommendations.</p><p><a href="https://oracle-intelligence.netlify.app/#pricing">View upgrade options →</a></p><p>— ORACLE Intelligence</p>` }),
+            body: JSON.stringify({ from: "APERTURE Intelligence <reports@aperturereports.ai>", to: [purchase.email], subject: `Upgrade to ${nextTier.charAt(0).toUpperCase()+nextTier.slice(1)} for deeper insights`, html: `<p>Hi${purchase.name ? ` ${purchase.name}` : ""},</p><p>Your ${purchase.tier} report for "${purchase.market}" was just the beginning.</p><p>Upgrade to our <strong>${nextTier}</strong> tier for deeper competitive analysis, regulatory insights, and strategic recommendations.</p><p><a href="https://aperture-intel.netlify.app/#pricing">View upgrade options →</a></p><p>— APERTURE Intelligence</p>` }),
           });
           purchase.upsellSent = new Date().toISOString();
           await store.set(k.key, JSON.stringify(purchase));

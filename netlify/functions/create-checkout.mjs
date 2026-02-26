@@ -38,20 +38,20 @@ export default async (req, context) => {
     const params = new URLSearchParams({
       "payment_method_types[0]": "card",
       "line_items[0][price_data][currency]": "usd",
-      "line_items[0][price_data][product_data][name]": `ORACLE ${selected.name}`,
+      "line_items[0][price_data][product_data][name]": `APERTURE ${selected.name}`,
       "line_items[0][price_data][product_data][description]": selected.desc,
       "line_items[0][price_data][unit_amount]": selected.price.toString(),
       "line_items[0][quantity]": "1",
       mode: "payment",
-      success_url: `https://oracle-intelligence.netlify.app/success.html?session_id={CHECKOUT_SESSION_ID}&tier=${tier}`,
-      cancel_url: `https://oracle-intelligence.netlify.app/?cancelled=true`,
+      success_url: `https://aperture-intel.netlify.app/success.html?session_id={CHECKOUT_SESSION_ID}&tier=${tier}`,
+      cancel_url: `https://aperture-intel.netlify.app/?cancelled=true`,
       customer_email: email,
       "metadata[tier]": tier,
       "metadata[market]": market || business || "",
       "metadata[name]": name || "",
       "metadata[geo]": geo || "",
       "metadata[context]": (marketContext || "").slice(0, 500),
-      "metadata[platform]": "oracle",
+      "metadata[platform]": "aperture",
     });
 
     const stripeRes = await fetch("https://api.stripe.com/v1/checkout/sessions", {

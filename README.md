@@ -1,6 +1,6 @@
-# ORACLE Intelligence — Additional Functions
+# APERTURE Intelligence — Additional Functions
 
-Supplementary Netlify Functions for the ORACLE Intelligence platform.
+Supplementary Netlify Functions for the APERTURE Intelligence platform.
 
 ## Functions
 
@@ -22,4 +22,4 @@ Industry-aware cross-sell engine. After purchase, recommends relevant UNLESS eco
 **Returns:** Platform recommendations with personalized reasons, optionally sends cross-sell email via Resend.
 
 ## Integration
-These functions extend the existing ORACLE platform (oracle-intelligence.netlify.app).
+These functions extend the existing APERTURE platform (aperture-intel.netlify.app).

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Report Ordered — ORACLE Intelligence</title>
+<title>Report Ordered — APERTURE Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,400&family=Martian+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
 <style>
@@ -63,7 +63,7 @@ footer a{color:rgba(184,148,63,0.5);text-decoration:none;}
 <body>
 
 <nav class="nav">
-  <a href="/" class="nav-logo">ORACLE</a>
+  <a href="/" class="nav-logo">APERTURE</a>
   <a href="/markets/" class="nav-link">Browse All Markets</a>
 </nav>
 
@@ -111,7 +111,7 @@ footer a{color:rgba(184,148,63,0.5);text-decoration:none;}
 
   <div class="referral-box">
     <div class="ref-eyebrow">While You Wait — Earn</div>
-    <h2 class="ref-h">Share ORACLE.<br><em>Earn 20% on every referral.</em></h2>
+    <h2 class="ref-h">Share APERTURE.<br><em>Earn 20% on every referral.</em></h2>
     <p class="ref-sub">Know a founder, operator, or investor who needs market intelligence? Share your personal link — earn 20% of every report they order. Tracked automatically.</p>
 
     <div class="ref-link-wrap">
@@ -152,7 +152,7 @@ footer a{color:rgba(184,148,63,0.5);text-decoration:none;}
 </div>
 
 <footer>
-  <a href="/">ORACLE Intelligence</a> · Reports delivered to your inbox ·
+  <a href="/">APERTURE Intelligence</a> · Reports delivered to your inbox ·
   <a href="/markets/">Browse all markets</a> ·
   <a href='/quiz'>Free snapshot quiz</a>
 </footer>
@@ -172,13 +172,13 @@ function genRefCode(str) {
 }
 
 const code = genRefCode(email);
-const refUrl = `https://oracle-intelligence.netlify.app/?ref=${code}`;
+const refUrl = `https://aperture-intel.netlify.app/?ref=${code}`;
 document.getElementById('ref-url').textContent = refUrl;
 
-const shareText = "Just got a detailed market intelligence report from ORACLE — AI-synthesized research in under 5 minutes. Genuinely useful.";
+const shareText = "Just got a detailed market intelligence report from APERTURE — AI-synthesized research in under 5 minutes. Genuinely useful.";
 document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(refUrl)}`;
 document.getElementById('share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(refUrl)}`;
-document.getElementById('share-email').href = `mailto:?subject=Market%20intelligence%20in%205%20minutes%20%E2%80%94%20ORACLE&body=${encodeURIComponent(shareText + '\n\n' + refUrl)}`;
+document.getElementById('share-email').href = `mailto:?subject=Market%20intelligence%20in%205%20minutes%20%E2%80%94%20APERTURE&body=${encodeURIComponent(shareText + '\n\n' + refUrl)}`;
 
 function copyRef() {
   navigator.clipboard.writeText(refUrl).then(() => {
