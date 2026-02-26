@@ -1,14 +1,14 @@
 import { getStore } from "@netlify/blobs";
-import type { Context, Config } from "@netlify/functions";
 
-export default async (req: Request, context: Context) => {
+
+export default async (req, context) => {
   const headers = { "Content-Type": "application/json" };
   if (req.method === "OPTIONS") return new Response(null, { status: 204 });
   if (req.method !== "POST") return new Response(JSON.stringify({ received: true }), { status: 200, headers });
 
-  const STRIPE_KEY = Netlify.env.get("STRIPE_SECRET_KEY");
-  const STRIPE_WEBHOOK_SECRET = Netlify.env.get("STRIPE_WEBHOOK_SECRET");
-  const RESEND_KEY = Netlify.env.get("RESEND_API_KEY");
+  const STRIPE_KEY = process.env["STRIPE_SECRET_KEY"];
+  const STRIPE_WEBHOOK_SECRET = process.env["STRIPE_WEBHOOK_SECRET"];
+  const RESEND_KEY = process.env["RESEND_API_KEY"];
 
   try {
     const body = await req.text();
@@ -59,17 +59,17 @@ export default async (req: Request, context: Context) => {
       try {
         await fetch("https://oracle-intelligence.netlify.app/api/research", {
           method: "POST",
-          headers: { "Content-Type": "application/json", "x-admin-key": Netlify.env.get("ADMIN_KEY") || "" },
+          headers: { "Content-Type": "application/json", "x-admin-key": process.env["ADMIN_KEY"] || "" },
           body: JSON.stringify({ market, tier, email, name, purchaseId }),
         });
       } catch {}
     }
 
     return new Response(JSON.stringify({ received: true }), { status: 200, headers });
-  } catch (err: any) {
+  } catch (err) {
     console.error("Webhook error:", err);
     return new Response(JSON.stringify({ received: true }), { status: 200, headers });
   }
 };
 
-export const config: Config = { path: "/api/webhook" };
+export const config = { path: "/api/webhook" };

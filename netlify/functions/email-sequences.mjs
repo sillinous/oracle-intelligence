@@ -1,7 +1,7 @@
 import { getStore } from "@netlify/blobs";
-import type { Config } from "@netlify/functions";
-export default async (req: Request) => {
-  const RESEND_KEY = Netlify.env.get("RESEND_API_KEY");
+
+export default async (req) => {
+  const RESEND_KEY = process.env["RESEND_API_KEY"];
   if (!RESEND_KEY) return Response.json({ error: "Email not configured" }, { status: 500 });
   const store = getStore("email-sequences");
   const leads = getStore("quiz-leads");
@@ -12,7 +12,7 @@ export default async (req: Request) => {
       const lead = JSON.parse(await leads.get(k.key) || "{}");
       if (!lead.email) continue;
       const seqKey = `seq_${lead.email.replace(/[^a-zA-Z0-9]/g,"_")}`;
-      let seq: any = { step: 0, lastSent: null };
+      let seq = { step: 0, lastSent: null };
       try { const raw = await store.get(seqKey); if (raw) seq = JSON.parse(raw); } catch {}
       const daysSinceCapture = (Date.now() - new Date(lead.created || 0).getTime()) / 86400000;
       if (seq.step === 0 && daysSinceCapture >= 1) { seq.step = 1; seq.lastSent = new Date().toISOString(); await store.set(seqKey, JSON.stringify(seq)); sent++; }
@@ -21,4 +21,4 @@ export default async (req: Request) => {
   }
   return Response.json({ processed: leadList.blobs.length, sent });
 };
-export const config: Config = { schedule: "@hourly" };
+export const config = { schedule: "@hourly" };

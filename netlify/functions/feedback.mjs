@@ -1,6 +1,6 @@
 import { getStore } from "@netlify/blobs";
-import type { Config } from "@netlify/functions";
-export default async (req: Request) => {
+
+export default async (req) => {
   const h = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET,POST,OPTIONS", "Access-Control-Allow-Headers": "Content-Type", "Content-Type": "application/json" };
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: h });
   const store = getStore("feedback");
@@ -15,4 +15,4 @@ export default async (req: Request) => {
   await store.set(id, JSON.stringify({ id, ...body, created: new Date().toISOString() }));
   return Response.json({ ok: true, id }, { headers: h });
 };
-export const config: Config = { path: "/api/feedback" };
+export const config = { path: "/api/feedback" };

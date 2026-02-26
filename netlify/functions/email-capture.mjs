@@ -1,7 +1,7 @@
 import { getStore } from "@netlify/blobs";
-import type { Config } from "@netlify/functions";
 
-export default async (req: Request) => {
+
+export default async (req) => {
   const h = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -26,7 +26,7 @@ export default async (req: Request) => {
     }));
 
     // Send welcome email via Resend if configured
-    const RESEND_KEY = Netlify.env.get("RESEND_API_KEY");
+    const RESEND_KEY = process.env["RESEND_API_KEY"];
     if (RESEND_KEY) {
       try {
         await fetch("https://api.resend.com/emails", {
@@ -48,9 +48,9 @@ export default async (req: Request) => {
     }
 
     return Response.json({ ok: true, message: "Subscribed" }, { headers: h });
-  } catch (err: any) {
+  } catch (err) {
     return Response.json({ error: err.message }, { status: 500, headers: h });
   }
 };
 
-export const config: Config = { path: "/api/email-capture" };
+export const config = { path: "/api/email-capture" };

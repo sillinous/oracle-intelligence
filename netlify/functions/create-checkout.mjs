@@ -1,14 +1,14 @@
 import { getStore } from "@netlify/blobs";
-import type { Context, Config } from "@netlify/functions";
 
-const TIERS: Record<string, { price: number; name: string; desc: string }> = {
+
+const TIERS = {
   pulse:        { price: 1900,  name: "Pulse Report",        desc: "Quick market snapshot — TAM estimate, top 5 competitors, key trends" },
   starter:      { price: 3900,  name: "Starter Report",      desc: "Core market intelligence — TAM/SAM/SOM, competitive landscape, growth forecast" },
   professional: { price: 9900,  name: "Professional Report",  desc: "Deep market analysis — full competitive matrix, regulatory landscape, 5-year forecast" },
   strategic:    { price: 19900, name: "Strategic Report",     desc: "Executive intelligence — comprehensive analysis with strategic recommendations and action plan" },
 };
 
-export default async (req: Request, context: Context) => {
+export default async (req, context) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -19,7 +19,7 @@ export default async (req: Request, context: Context) => {
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers });
   if (req.method !== "POST") return new Response(JSON.stringify({ error: "POST required" }), { status: 405, headers });
 
-  const STRIPE_KEY = Netlify.env.get("STRIPE_SECRET_KEY");
+  const STRIPE_KEY = process.env["STRIPE_SECRET_KEY"];
   if (!STRIPE_KEY) return new Response(JSON.stringify({ error: "Payment not configured" }), { status: 500, headers });
 
   try {
@@ -75,9 +75,9 @@ export default async (req: Request, context: Context) => {
     } catch {}
 
     return new Response(JSON.stringify({ url: session.url, sessionId: session.id }), { status: 200, headers });
-  } catch (err: any) {
+  } catch (err) {
     return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
   }
 };
 
-export const config: Config = { path: "/api/create-checkout" };
+export const config = { path: "/api/create-checkout" };

@@ -1,16 +1,16 @@
 import { getStore } from "@netlify/blobs";
-import type { Context, Config } from "@netlify/functions";
 
-export default async (req: Request, context: Context) => {
+
+export default async (req, context) => {
   const headers = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type, x-admin-key", "Content-Type": "application/json" };
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers });
   if (req.method !== "POST") return new Response(JSON.stringify({ error: "POST required" }), { status: 405, headers });
 
-  const ADMIN_KEY = Netlify.env.get("ADMIN_KEY");
+  const ADMIN_KEY = process.env["ADMIN_KEY"];
   const adminKey = req.headers.get("x-admin-key");
   if (!adminKey || adminKey !== ADMIN_KEY) return new Response("Unauthorized", { status: 401, headers });
 
-  const OPENROUTER_KEY = Netlify.env.get("OPENROUTER_API_KEY");
+  const OPENROUTER_KEY = process.env["OPENROUTER_API_KEY"];
   if (!OPENROUTER_KEY) return new Response(JSON.stringify({ error: "AI not configured" }), { status: 500, headers });
 
   try {
@@ -55,7 +55,7 @@ Format as structured markdown. Use real data where available. Be specific with n
     await store.set(reportId, JSON.stringify({ id: reportId, market, tier, report, email, name, purchaseId, created: new Date().toISOString() }));
 
     // Email report
-    const RESEND_KEY = Netlify.env.get("RESEND_API_KEY");
+    const RESEND_KEY = process.env["RESEND_API_KEY"];
     if (RESEND_KEY && email) {
       try {
         await fetch("https://api.resend.com/emails", {
@@ -81,9 +81,9 @@ Format as structured markdown. Use real data where available. Be specific with n
     }
 
     return new Response(JSON.stringify({ reportId, market, tier, generated: true }), { status: 200, headers });
-  } catch (err: any) {
+  } catch (err) {
     return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
   }
 };
 
-export const config: Config = { path: "/api/research" };
+export const config = { path: "/api/research" };

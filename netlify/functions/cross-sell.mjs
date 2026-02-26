@@ -57,17 +57,17 @@ export default async function handler(req, context) {
     const recommendations = ECOSYSTEM_RECOMMENDATIONS[normalizedIndustry] || ECOSYSTEM_RECOMMENDATIONS['default'];
 
     // If email provided, queue cross-sell email via Resend
-    if (email && Netlify.env.get('RESEND_API_KEY')) {
+    if (email && process.env['RESEND_API_KEY']) {
       const topRec = recommendations[0];
       
       await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Netlify.env.get('RESEND_API_KEY')}`,
+          'Authorization': `Bearer ${process.env['RESEND_API_KEY']}`,
         },
         body: JSON.stringify({
-          from: Netlify.env.get('ADMIN_EMAIL') || 'hello@oraclereports.ai',
+          from: process.env['ADMIN_EMAIL'] || 'hello@oraclereports.ai',
           to: email,
           subject: `Your ${reportTopic || 'market'} research is ready — here's what to do next`,
           html: `

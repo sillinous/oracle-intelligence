@@ -1,7 +1,7 @@
 import { getStore } from "@netlify/blobs";
-import type { Config } from "@netlify/functions";
-export default async (req: Request) => {
-  const RESEND_KEY = Netlify.env.get("RESEND_API_KEY");
+
+export default async (req) => {
+  const RESEND_KEY = process.env["RESEND_API_KEY"];
   if (!RESEND_KEY) return Response.json({ skipped: "no email key" });
   const store = getStore("purchases");
   const list = await store.list();
@@ -13,7 +13,7 @@ export default async (req: Request) => {
       if (purchase.tier === "strategic") continue;
       const age = (Date.now() - new Date(purchase.created || 0).getTime()) / 86400000;
       if (age >= 3 && age <= 10) {
-        const nextTier = { pulse: "starter", starter: "professional", professional: "strategic" }[purchase.tier as string] || "professional";
+        const nextTier = { pulse: "starter", starter: "professional", professional: "strategic" }[purchase.tier] || "professional";
         try {
           await fetch("https://api.resend.com/emails", {
             method: "POST", headers: { Authorization: `Bearer ${RESEND_KEY}`, "Content-Type": "application/json" },
@@ -28,4 +28,4 @@ export default async (req: Request) => {
   }
   return Response.json({ processed: list.blobs.length, upsold });
 };
-export const config: Config = { schedule: "0 10 * * *" };
+export const config = { schedule: "0 10 * * *" };

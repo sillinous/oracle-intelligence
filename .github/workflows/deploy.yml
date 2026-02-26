@@ -1,13 +1,23 @@
-# Netlify handles builds natively via Git integration
-# This workflow is kept for reference but disabled
-# Push to master → Netlify auto-builds + deploys
-
-name: Deploy (Netlify Native)
+name: Deploy to Netlify
 on:
-  workflow_dispatch:  # Manual trigger only — auto-deploy handled by Netlify
+  push:
+    branches: [master]
+  workflow_dispatch:
 jobs:
-  notify:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Info
-        run: echo "Deploys are handled by Netlify's native Git integration. Push to master to trigger a build."
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v3.0
+        with:
+          publish-dir: '.'
+          production-deploy: true
+          functions-dir: 'netlify/functions'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: 1c40a588-ed19-4f9a-82e1-cf48d8b1ca20

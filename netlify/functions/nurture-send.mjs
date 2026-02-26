@@ -1,7 +1,7 @@
 import { getStore } from "@netlify/blobs";
-import type { Config } from "@netlify/functions";
-export default async (req: Request) => {
-  const RESEND_KEY = Netlify.env.get("RESEND_API_KEY");
+
+export default async (req) => {
+  const RESEND_KEY = process.env["RESEND_API_KEY"];
   if (!RESEND_KEY) return Response.json({ skipped: "no email key" });
   const store = getStore("quiz-leads");
   const list = await store.list();
@@ -26,4 +26,4 @@ export default async (req: Request) => {
   }
   return Response.json({ processed: list.blobs.length, nurtured });
 };
-export const config: Config = { schedule: "0 9 * * *" };
+export const config = { schedule: "0 9 * * *" };
