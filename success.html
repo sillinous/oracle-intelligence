@@ -256,6 +256,7 @@ footer a{color:rgba(184,148,63,0.5);text-decoration:none;}
   <a href="/quiz">Free snapshot quiz</a>
 </footer>
 
+<script src="/js/markdown-renderer.js"></script>
 <script>
 const params = new URLSearchParams(window.location.search);
 const reportId = params.get('report');
@@ -377,8 +378,7 @@ function renderReport(data) {
   document.getElementById('report-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// markdownToHtml is loaded from /js/markdown-renderer.js
+// markdownToHtml is loaded from /js/markdown-renderer.js above
 </script>
-<script src="/js/markdown-renderer.js"></script>
 </body>
 </html>
