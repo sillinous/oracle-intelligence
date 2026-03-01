@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,400&family=Martian+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
 <style>
-:root{--void:#050403;--ink:#0d0b08;--ink-mid:#1a1612;--parchment:#f2ede3;--parchment-dim:rgba(242,237,227,0.62);--gold:#b8943f;--gold-bright:#d4aa50;--gold-line:rgba(184,148,63,0.22);--signal:#2a6e3f;--signal-dim:rgba(42,110,63,0.15);}
+:root{--void:#050403;--ink:#0d0b08;--ink-mid:#1a1612;--parchment:#f2ede3;--parchment-dim:rgba(242,237,227,0.62);--gold:#b8943f;--gold-bright:#d4aa50;--gold-line:rgba(184,148,63,0.22);--signal:#2a6e3f;--signal-dim:rgba(42,110,63,0.15);--risk-high:#c0392b;--risk-med:#d4aa50;--risk-low:#2a6e3f;}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--void);color:var(--parchment);font-family:'Source Serif 4',Georgia,serif;min-height:100vh;}
 .nav{background:rgba(5,4,3,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-line);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
@@ -15,7 +15,7 @@ body{background:var(--void);color:var(--parchment);font-family:'Source Serif 4',
 .nav-links{display:flex;gap:1.5rem;align-items:center;}
 .nav-link{font-family:'Martian Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--parchment-dim);text-decoration:none;transition:color 0.2s;}
 .nav-link:hover{color:var(--gold);}
-.page{max-width:860px;margin:0 auto;padding:3rem 2rem 4rem;}
+.page{max-width:900px;margin:0 auto;padding:3rem 2rem 4rem;}
 
 /* Status banner */
 .status-banner{background:var(--signal-dim);border:1px solid rgba(42,110,63,0.35);padding:1.1rem 1.5rem;display:flex;align-items:center;gap:1rem;margin-bottom:2rem;}
@@ -59,24 +59,37 @@ body{background:var(--void);color:var(--parchment);font-family:'Source Serif 4',
 .toolbar-btn.copied{border-color:var(--signal);color:#5ab87a;}
 .toolbar-spacer{flex:1;}
 
-.report-body{background:var(--ink);border:1px solid var(--gold-line);padding:2.5rem;line-height:1.8;font-size:1rem;position:relative;}
+.report-body{background:var(--ink);border:1px solid var(--gold-line);padding:2.5rem 3rem;line-height:1.8;font-size:1rem;position:relative;}
 .report-body::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 100% 0%,rgba(184,148,63,0.03),transparent);pointer-events:none;}
-.report-body h1{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:800;margin:1.5rem 0 0.75rem;color:var(--parchment);line-height:1.2;}
+.report-body h1{font-family:'Fraunces',serif;font-size:1.85rem;font-weight:800;margin:2rem 0 0.75rem;color:var(--parchment);line-height:1.2;}
 .report-body h1:first-child{margin-top:0;}
-.report-body h2{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700;margin:2rem 0 0.6rem;color:var(--gold-bright);border-bottom:1px solid var(--gold-line);padding-bottom:0.4rem;}
-.report-body h3{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;margin:1.5rem 0 0.4rem;color:var(--parchment);}
-.report-body h4{font-family:'Martian Mono',monospace;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;margin:1.25rem 0 0.4rem;color:var(--gold);}
-.report-body p{margin-bottom:1rem;color:var(--parchment-dim);}
-.report-body ul,.report-body ol{margin:0.5rem 0 1rem 1.5rem;color:var(--parchment-dim);}
-.report-body li{margin-bottom:0.4rem;}
+.report-body h2{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;margin:2.5rem 0 0.75rem;color:var(--gold-bright);border-bottom:1px solid var(--gold-line);padding-bottom:0.5rem;}
+.report-body h2:first-child{margin-top:0;}
+.report-body h3{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;margin:2rem 0 0.5rem;color:var(--parchment);}
+.report-body h4{font-family:'Martian Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;margin:1.5rem 0 0.4rem;color:var(--gold);}
+.report-body p{margin-bottom:1rem;color:var(--parchment-dim);line-height:1.85;}
 .report-body strong{color:var(--parchment);font-weight:600;}
 .report-body em{font-style:italic;}
-.report-body hr{border:none;border-top:1px solid var(--gold-line);margin:2rem 0;}
-.report-body table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem;}
-.report-body th{font-family:'Martian Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--ink-mid);color:var(--gold);padding:0.6rem 0.8rem;text-align:left;border:1px solid var(--gold-line);}
-.report-body td{padding:0.5rem 0.8rem;border:1px solid rgba(184,148,63,0.1);color:var(--parchment-dim);}
-.report-body blockquote{border-left:3px solid var(--gold);padding:0.5rem 1rem;margin:1rem 0;background:rgba(184,148,63,0.04);font-style:italic;}
-.report-body code{font-family:'Martian Mono',monospace;font-size:0.8em;background:var(--ink-mid);padding:0.15rem 0.4rem;border-radius:3px;color:var(--gold-bright);}
+.report-body del{text-decoration:line-through;opacity:0.6;}
+.report-body hr{border:none;border-top:1px solid var(--gold-line);margin:2.5rem 0;}
+.report-body ul,.report-body ol{margin:0.5rem 0 1.25rem 1.5rem;color:var(--parchment-dim);}
+.report-body li{margin-bottom:0.5rem;line-height:1.7;}
+.report-body li strong{color:var(--parchment);}
+.report-body blockquote{border-left:3px solid var(--gold);padding:1rem 1.5rem;margin:1.5rem 0;background:rgba(184,148,63,0.06);border-radius:0 4px 4px 0;font-style:italic;color:var(--parchment);line-height:1.7;}
+.report-body blockquote strong{color:var(--gold-bright);}
+.report-body .table-wrap{overflow-x:auto;margin:1.5rem 0;}
+.report-body table{width:100%;border-collapse:collapse;font-size:0.85rem;line-height:1.5;}
+.report-body thead{position:sticky;top:0;}
+.report-body th{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--ink-mid);color:var(--gold);padding:0.7rem 0.8rem;text-align:left;border:1px solid var(--gold-line);white-space:nowrap;}
+.report-body td{padding:0.6rem 0.8rem;border:1px solid rgba(184,148,63,0.12);color:var(--parchment-dim);vertical-align:top;}
+.report-body tbody tr:hover{background:rgba(184,148,63,0.03);}
+.report-body code{font-family:'Martian Mono',monospace;font-size:0.78em;background:var(--ink-mid);padding:0.15rem 0.45rem;border-radius:3px;color:var(--gold-bright);border:1px solid rgba(184,148,63,0.1);}
+.report-body .tag{display:inline-block;font-family:'Martian Mono',monospace;font-size:0.5rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:3px;vertical-align:middle;margin-left:0.3rem;}
+.report-body .tag-macro{background:rgba(184,148,63,0.15);color:var(--gold-bright);border:1px solid rgba(184,148,63,0.3);}
+.report-body .tag-micro{background:rgba(42,110,63,0.15);color:#5ab87a;border:1px solid rgba(42,110,63,0.3);}
+.report-body .tag-high{background:rgba(192,57,43,0.15);color:#e74c3c;border:1px solid rgba(192,57,43,0.3);}
+.report-body .tag-med{background:rgba(212,170,80,0.15);color:var(--gold-bright);border:1px solid rgba(212,170,80,0.3);}
+.report-body .tag-low{background:rgba(42,110,63,0.15);color:#5ab87a;border:1px solid rgba(42,110,63,0.3);}
 
 /* Referral */
 .referral-box{background:var(--ink);border:1px solid var(--gold-line);padding:2rem;margin-top:2.5rem;position:relative;overflow:hidden;}
@@ -105,13 +118,24 @@ body{background:var(--void);color:var(--parchment);font-family:'Source Serif 4',
 footer{border-top:1px solid var(--gold-line);margin-top:4rem;padding:2rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,227,0.2);line-height:2;}
 footer a{color:rgba(184,148,63,0.5);text-decoration:none;}
 
+@media(max-width:640px){
+  .report-body{padding:1.5rem 1.25rem;}
+  .report-body h2{font-size:1.2rem;}
+  .report-body table{font-size:0.75rem;}
+  .report-body th,.report-body td{padding:0.4rem 0.5rem;}
+}
 @media print{
   body{background:#fff;color:#111;}
   .nav,.report-toolbar,.referral-box,.order-another,footer,.status-banner,.report-link-box{display:none!important;}
   .page{padding:0;max-width:100%;}
   .report-body{border:none;padding:0;background:transparent;}
+  .report-body::before{display:none;}
   .report-body h2{color:#333;border-bottom-color:#ccc;}
-  .report-body p,.report-body li{color:#333;}
+  .report-body h3{color:#222;}
+  .report-body p,.report-body li,.report-body td{color:#333;}
+  .report-body th{background:#f0f0f0;color:#333;}
+  .report-body blockquote{background:#f8f8f8;border-left-color:#999;}
+  .report-body .tag{border-color:#999;color:#333;background:#eee;}
   .report-meta{border-color:#ccc;}
   .report-meta-header{background:#f5f5f5;color:#333;border-bottom-color:#ccc;}
 }
@@ -353,41 +377,8 @@ function renderReport(data) {
   document.getElementById('report-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function markdownToHtml(md) {
-  var html = md
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/^#### (.+)$/gm, '<h4>$1</h4>')
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-    .replace(/^---+$/gm, '<hr/>')
-    .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>')
-    .replace(/^[\-\*] (.+)$/gm, '<li>$1</li>')
-    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
-    .replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>')
-    .replace(/^\|(.+)\|$/gm, function(match, content) {
-      var cells = content.split('|').map(function(c) { return c.trim(); });
-      if (cells.every(function(c) { return /^[\-:]+$/.test(c); })) return '<!--table-sep-->';
-      return '<tr>' + cells.map(function(c) { return '<td>' + c + '</td>'; }).join('') + '</tr>';
-    })
-    .replace(/((?:<tr>.*<\/tr>\n?)+)/g, function(match) {
-      var table = match.replace('<!--table-sep-->', '');
-      table = table.replace(/<tr>(.*?)<\/tr>/, function(m, inner) {
-        return '<thead><tr>' + inner.replace(/<td>/g, '<th>').replace(/<\/td>/g, '</th>') + '</tr></thead><tbody>';
-      }) + '</tbody>';
-      return '<table>' + table + '</table>';
-    })
-    .replace(/<!--table-sep-->/g, '')
-    .replace(/^(?!<[a-z])((?!<).+)$/gm, '<p>$1</p>')
-    .replace(/<p>\s*<\/p>/g, '');
-  return html;
-}
+// markdownToHtml is loaded from /js/markdown-renderer.js
 </script>
+<script src="/js/markdown-renderer.js"></script>
 </body>
 </html>
