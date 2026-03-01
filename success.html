@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Report Ordered — APERTURE Intelligence</title>
+<title>Report Ready — APERTURE Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,400&family=Martian+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
 <style>
@@ -12,28 +12,74 @@
 body{background:var(--void);color:var(--parchment);font-family:'Source Serif 4',Georgia,serif;min-height:100vh;}
 .nav{background:rgba(5,4,3,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-line);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
 .nav-logo{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:800;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;align-items:center;}
 .nav-link{font-family:'Martian Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--parchment-dim);text-decoration:none;transition:color 0.2s;}
 .nav-link:hover{color:var(--gold);}
-.page{max-width:720px;margin:0 auto;padding:4rem 2rem;}
-.status-banner{background:var(--signal-dim);border:1px solid rgba(42,110,63,0.35);padding:1.1rem 1.5rem;display:flex;align-items:center;gap:1rem;margin-bottom:3rem;}
-.status-dot{width:8px;height:8px;background:var(--signal);border-radius:50%;animation:pulse 2s ease-in-out infinite;flex-shrink:0;}
+.page{max-width:860px;margin:0 auto;padding:3rem 2rem 4rem;}
+
+/* Status banner */
+.status-banner{background:var(--signal-dim);border:1px solid rgba(42,110,63,0.35);padding:1.1rem 1.5rem;display:flex;align-items:center;gap:1rem;margin-bottom:2rem;}
+.status-dot{width:8px;height:8px;background:var(--signal);border-radius:50%;flex-shrink:0;}
+.status-dot.loading{animation:pulse 2s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.7;transform:scale(1.15);}}
 .status-text{font-family:'Martian Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#5ab87a;}
+
 .confirm-h{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.05;margin-bottom:0.5rem;}
 .confirm-h em{font-style:italic;color:var(--gold-bright);}
-.confirm-sub{font-size:1.05rem;color:var(--parchment-dim);font-style:italic;line-height:1.7;margin-bottom:2.5rem;max-width:560px;}
-.timeline{border:1px solid var(--gold-line);margin-bottom:3rem;overflow:hidden;}
-.tl-header{background:var(--ink-mid);border-bottom:1px solid var(--gold-line);padding:0.8rem 1.5rem;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);}
-.tl-step{display:flex;align-items:flex-start;gap:1.25rem;padding:1.1rem 1.5rem;border-bottom:1px solid rgba(184,148,63,0.07);}
-.tl-step:last-child{border-bottom:none;}
-.tl-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Martian Mono',monospace;font-size:0.55rem;font-weight:500;flex-shrink:0;margin-top:0.1rem;}
-.tl-icon.done{background:rgba(42,110,63,0.3);color:#5ab87a;border:1px solid rgba(42,110,63,0.4);}
-.tl-icon.active{background:rgba(184,148,63,0.15);color:var(--gold);border:1px solid rgba(184,148,63,0.4);animation:glowPulse 2s ease-in-out infinite;}
-.tl-icon.pending{background:rgba(242,237,227,0.04);color:rgba(242,237,227,0.2);border:1px solid rgba(242,237,227,0.08);}
-@keyframes glowPulse{0%,100%{box-shadow:0 0 0 0 rgba(184,148,63,0);}50%{box-shadow:0 0 12px 2px rgba(184,148,63,0.2);}}
-.tl-label{font-size:0.95rem;color:var(--parchment);margin-bottom:0.15rem;}
-.tl-note{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--parchment-dim);}
-.referral-box{background:var(--ink);border:1px solid var(--gold-line);padding:2rem;margin-bottom:2rem;position:relative;overflow:hidden;}
+.confirm-sub{font-size:1.05rem;color:var(--parchment-dim);font-style:italic;line-height:1.7;margin-bottom:2rem;max-width:600px;}
+
+/* Report link box */
+.report-link-box{background:var(--ink);border:1px solid var(--gold-line);padding:1.5rem;margin-bottom:2rem;display:none;}
+.report-link-box .rlb-label{font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+.report-link-box .rlb-note{font-size:0.85rem;color:var(--parchment-dim);font-style:italic;margin-bottom:1rem;}
+.rlb-url-row{display:flex;gap:0;}
+.rlb-url{flex:1;background:var(--void);border:1px solid var(--gold-line);border-right:none;padding:0.75rem 1rem;font-family:'Martian Mono',monospace;font-size:0.55rem;letter-spacing:0.05em;color:var(--gold-bright);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;user-select:all;}
+.rlb-copy{font-family:'Martian Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;background:var(--gold);color:var(--void);border:none;padding:0.75rem 1.25rem;cursor:pointer;transition:background 0.3s;white-space:nowrap;flex-shrink:0;}
+.rlb-copy:hover{background:var(--gold-bright);}
+.rlb-copy.copied{background:var(--signal);}
+
+/* Loading */
+.loading-state{text-align:center;padding:3rem 2rem;display:none;}
+.loading-spinner{width:36px;height:36px;border:2px solid var(--gold-line);border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1rem;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading-label{font-family:'Martian Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--parchment-dim);}
+
+/* Report display */
+.report-section{display:none;}
+.report-meta{border:1px solid var(--gold-line);margin-bottom:1.5rem;overflow:hidden;}
+.report-meta-header{background:var(--ink-mid);border-bottom:1px solid var(--gold-line);padding:0.8rem 1.5rem;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);}
+.report-meta-body{padding:1.25rem 1.5rem;display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{flex:1;min-width:120px;}
+.meta-label{font-family:'Martian Mono',monospace;font-size:0.45rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--parchment-dim);margin-bottom:0.2rem;}
+.meta-value{font-size:0.95rem;}
+
+.report-toolbar{display:flex;gap:0.6rem;margin-bottom:1.5rem;flex-wrap:wrap;align-items:center;}
+.toolbar-btn{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;background:transparent;border:1px solid var(--gold-line);color:var(--parchment-dim);padding:0.6rem 1rem;cursor:pointer;transition:all 0.25s;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;}
+.toolbar-btn:hover{border-color:var(--gold);color:var(--gold);}
+.toolbar-btn.copied{border-color:var(--signal);color:#5ab87a;}
+.toolbar-spacer{flex:1;}
+
+.report-body{background:var(--ink);border:1px solid var(--gold-line);padding:2.5rem;line-height:1.8;font-size:1rem;position:relative;}
+.report-body::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 100% 0%,rgba(184,148,63,0.03),transparent);pointer-events:none;}
+.report-body h1{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:800;margin:1.5rem 0 0.75rem;color:var(--parchment);line-height:1.2;}
+.report-body h1:first-child{margin-top:0;}
+.report-body h2{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700;margin:2rem 0 0.6rem;color:var(--gold-bright);border-bottom:1px solid var(--gold-line);padding-bottom:0.4rem;}
+.report-body h3{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;margin:1.5rem 0 0.4rem;color:var(--parchment);}
+.report-body h4{font-family:'Martian Mono',monospace;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;margin:1.25rem 0 0.4rem;color:var(--gold);}
+.report-body p{margin-bottom:1rem;color:var(--parchment-dim);}
+.report-body ul,.report-body ol{margin:0.5rem 0 1rem 1.5rem;color:var(--parchment-dim);}
+.report-body li{margin-bottom:0.4rem;}
+.report-body strong{color:var(--parchment);font-weight:600;}
+.report-body em{font-style:italic;}
+.report-body hr{border:none;border-top:1px solid var(--gold-line);margin:2rem 0;}
+.report-body table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem;}
+.report-body th{font-family:'Martian Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--ink-mid);color:var(--gold);padding:0.6rem 0.8rem;text-align:left;border:1px solid var(--gold-line);}
+.report-body td{padding:0.5rem 0.8rem;border:1px solid rgba(184,148,63,0.1);color:var(--parchment-dim);}
+.report-body blockquote{border-left:3px solid var(--gold);padding:0.5rem 1rem;margin:1rem 0;background:rgba(184,148,63,0.04);font-style:italic;}
+.report-body code{font-family:'Martian Mono',monospace;font-size:0.8em;background:var(--ink-mid);padding:0.15rem 0.4rem;border-radius:3px;color:var(--gold-bright);}
+
+/* Referral */
+.referral-box{background:var(--ink);border:1px solid var(--gold-line);padding:2rem;margin-top:2.5rem;position:relative;overflow:hidden;}
 .referral-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 100% 0%,rgba(184,148,63,0.05),transparent);pointer-events:none;}
 .ref-eyebrow{font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
 .ref-h{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700;margin-bottom:0.5rem;}
@@ -58,61 +104,90 @@ body{background:var(--void);color:var(--parchment);font-family:'Source Serif 4',
 .btn-gold:hover{background:var(--gold-bright);}
 footer{border-top:1px solid var(--gold-line);margin-top:4rem;padding:2rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,227,0.2);line-height:2;}
 footer a{color:rgba(184,148,63,0.5);text-decoration:none;}
+
+@media print{
+  body{background:#fff;color:#111;}
+  .nav,.report-toolbar,.referral-box,.order-another,footer,.status-banner,.report-link-box{display:none!important;}
+  .page{padding:0;max-width:100%;}
+  .report-body{border:none;padding:0;background:transparent;}
+  .report-body h2{color:#333;border-bottom-color:#ccc;}
+  .report-body p,.report-body li{color:#333;}
+  .report-meta{border-color:#ccc;}
+  .report-meta-header{background:#f5f5f5;color:#333;border-bottom-color:#ccc;}
+}
 </style>
 </head>
 <body>
 
 <nav class="nav">
   <a href="/" class="nav-logo">APERTURE</a>
-  <a href="/markets/" class="nav-link">Browse All Markets</a>
+  <div class="nav-links">
+    <a href="/markets/" class="nav-link">Browse Markets</a>
+    <a href="/" class="nav-link">Order Report</a>
+  </div>
 </nav>
 
 <div class="page">
 
-  <div class="status-banner">
-    <div class="status-dot"></div>
-    <div class="status-text">Payment confirmed · Report generating · Delivery incoming</div>
+  <div class="status-banner" id="status-banner">
+    <div class="status-dot loading" id="status-dot"></div>
+    <div class="status-text" id="status-text">Report confirmed · Loading your intelligence report...</div>
   </div>
 
-  <h1 class="confirm-h">Your report is<br><em>being synthesized.</em></h1>
-  <p class="confirm-sub">Check your inbox in 3–7 minutes. The full intelligence report — TAM, competitors, GTM strategy, and Your Next 3 Moves — is being assembled right now.</p>
+  <h1 class="confirm-h" id="page-title">Your report is<br><em>ready.</em></h1>
+  <p class="confirm-sub" id="page-sub">Your full intelligence report is below. Bookmark this page or copy the permanent link to access it anytime.</p>
 
-  <div class="timeline">
-    <div class="tl-header">Report Status</div>
-    <div class="tl-step">
-      <div class="tl-icon done">✓</div>
-      <div>
-        <div class="tl-label">Payment confirmed</div>
-        <div class="tl-note">Just now</div>
-      </div>
-    </div>
-    <div class="tl-step">
-      <div class="tl-icon done">✓</div>
-      <div>
-        <div class="tl-label">Live market data pull initiated</div>
-        <div class="tl-note">Querying live sources</div>
-      </div>
-    </div>
-    <div class="tl-step">
-      <div class="tl-icon active" id="tl-3">◉</div>
-      <div>
-        <div class="tl-label">AI synthesis in progress</div>
-        <div class="tl-note" id="tl-3-note">Synthesizing intelligence across 12 sections</div>
-      </div>
-    </div>
-    <div class="tl-step">
-      <div class="tl-icon pending" id="tl-4">○</div>
-      <div>
-        <div class="tl-label">Report delivered to your inbox</div>
-        <div class="tl-note" id="tl-4-note">Est. 3–7 minutes</div>
-      </div>
+  <!-- Permanent report link -->
+  <div class="report-link-box" id="report-link-box">
+    <div class="rlb-label">Permanent Report Link</div>
+    <div class="rlb-note">Save this link to access your report anytime — no login required.</div>
+    <div class="rlb-url-row">
+      <div class="rlb-url" id="report-url">—</div>
+      <button class="rlb-copy" id="copy-report-link" onclick="copyReportLink()">Copy Link</button>
     </div>
   </div>
 
+  <!-- Loading state -->
+  <div class="loading-state" id="loading">
+    <div class="loading-spinner"></div>
+    <div class="loading-label">Retrieving your report...</div>
+  </div>
+
+  <!-- Report display -->
+  <div class="report-section" id="report-section">
+    <div class="report-meta">
+      <div class="report-meta-header">Intelligence Report</div>
+      <div class="report-meta-body">
+        <div class="meta-item">
+          <div class="meta-label">Market</div>
+          <div class="meta-value" id="r-market">—</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Tier</div>
+          <div class="meta-value" id="r-tier">—</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Generated</div>
+          <div class="meta-value" id="r-date">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-toolbar">
+      <button class="toolbar-btn" onclick="copyReportLink()">Copy Link</button>
+      <button class="toolbar-btn" onclick="window.print()">Print / PDF</button>
+      <div class="toolbar-spacer"></div>
+      <a href="/" class="toolbar-btn">Order Another Report</a>
+    </div>
+
+    <div class="report-body" id="r-body"></div>
+  </div>
+
+  <!-- Referral -->
   <div class="referral-box">
-    <div class="ref-eyebrow">While You Wait — Earn</div>
+    <div class="ref-eyebrow">Share & Earn</div>
     <h2 class="ref-h">Share APERTURE.<br><em>Earn 20% on every referral.</em></h2>
-    <p class="ref-sub">Know a founder, operator, or investor who needs market intelligence? Share your personal link — earn 20% of every report they order. Tracked automatically.</p>
+    <p class="ref-sub">Know a founder, operator, or investor who needs market intelligence? Share your personal link — earn 20% of every report they order.</p>
 
     <div class="ref-link-wrap">
       <div class="ref-link-box" id="ref-url">Generating your referral link...</div>
@@ -144,23 +219,34 @@ footer a{color:rgba(184,148,63,0.5);text-decoration:none;}
   <div class="order-another">
     <div class="oa-text">
       <h3>Need another market analyzed?</h3>
-      <p>Order a second report — different market, same 5-minute delivery.</p>
+      <p>Order a second report — different market, same delivery.</p>
     </div>
-    <a href="/" class="btn-gold">Order Another →</a>
+    <a href="/" class="btn-gold">Order Another</a>
   </div>
 
 </div>
 
 <footer>
-  <a href="/">APERTURE Intelligence</a> · Reports delivered to your inbox ·
+  <a href="/">APERTURE Intelligence</a> · AI Market Research in Minutes ·
   <a href="/markets/">Browse all markets</a> ·
-  <a href='/quiz'>Free snapshot quiz</a>
+  <a href="/quiz">Free snapshot quiz</a>
 </footer>
 
 <script>
 const params = new URLSearchParams(window.location.search);
+const reportId = params.get('report');
 const email = params.get('email') || '';
+const tierParam = params.get('tier') || '';
 
+// Set up permanent report link
+let reportUrl = '';
+if (reportId) {
+  reportUrl = window.location.origin + '/report.html?id=' + encodeURIComponent(reportId);
+  document.getElementById('report-url').textContent = reportUrl;
+  document.getElementById('report-link-box').style.display = 'block';
+}
+
+// Referral setup
 function genRefCode(str) {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let hash = 0;
@@ -172,32 +258,136 @@ function genRefCode(str) {
 }
 
 const code = genRefCode(email);
-const refUrl = `https://aperture-intel.netlify.app/?ref=${code}`;
+const refUrl = 'https://aperture-intel.netlify.app/?ref=' + code;
 document.getElementById('ref-url').textContent = refUrl;
 
-const shareText = "Just got a detailed market intelligence report from APERTURE — AI-synthesized research in under 5 minutes. Genuinely useful.";
-document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(refUrl)}`;
-document.getElementById('share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(refUrl)}`;
-document.getElementById('share-email').href = `mailto:?subject=Market%20intelligence%20in%205%20minutes%20%E2%80%94%20APERTURE&body=${encodeURIComponent(shareText + '\n\n' + refUrl)}`;
+const shareText = "Just got a detailed market intelligence report from APERTURE \u2014 AI-synthesized research in under 5 minutes. Genuinely useful.";
+document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(refUrl);
+document.getElementById('share-linkedin').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(refUrl);
+document.getElementById('share-email').href = 'mailto:?subject=Market%20intelligence%20in%205%20minutes%20%E2%80%94%20APERTURE&body=' + encodeURIComponent(shareText + '\n\n' + refUrl);
 
 function copyRef() {
-  navigator.clipboard.writeText(refUrl).then(() => {
-    const btn = document.getElementById('copy-btn');
-    btn.textContent = 'Copied ✓';
+  navigator.clipboard.writeText(refUrl).then(function() {
+    var btn = document.getElementById('copy-btn');
+    btn.textContent = 'Copied!';
     btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'Copy Link'; btn.classList.remove('copied'); }, 2500);
+    setTimeout(function() { btn.textContent = 'Copy Link'; btn.classList.remove('copied'); }, 2500);
   });
 }
 
-// Advance timeline after estimated synthesis time
-setTimeout(() => {
-  const i3 = document.getElementById('tl-3');
-  const i4 = document.getElementById('tl-4');
-  i3.classList.remove('active'); i3.classList.add('done'); i3.textContent = '✓';
-  i4.classList.remove('pending'); i4.classList.add('done'); i4.textContent = '✓';
-  document.getElementById('tl-4-note').textContent = 'Delivered — check your inbox';
-}, 6 * 60 * 1000);
+function copyReportLink() {
+  navigator.clipboard.writeText(reportUrl).then(function() {
+    var btn = document.getElementById('copy-report-link');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() { btn.textContent = 'Copy Link'; btn.classList.remove('copied'); }, 2500);
+  });
+}
+
+// Load report
+if (reportId) {
+  document.getElementById('loading').style.display = 'block';
+  loadReport(reportId);
+} else {
+  // No report ID — show fallback
+  document.getElementById('page-title').innerHTML = 'Your report is<br><em>being synthesized.</em>';
+  document.getElementById('page-sub').textContent = 'Check your inbox shortly. Your intelligence report is being assembled now.';
+  document.getElementById('status-text').textContent = 'Report generating \u00B7 Delivery incoming';
+}
+
+async function loadReport(id) {
+  try {
+    var res = await fetch('/api/view-report?id=' + encodeURIComponent(id));
+    if (!res.ok) throw new Error('Report not found');
+    var data = await res.json();
+    renderReport(data);
+  } catch (err) {
+    // Report might still be generating — retry a few times
+    retryLoad(id, 0);
+  }
+}
+
+function retryLoad(id, attempt) {
+  if (attempt >= 5) {
+    // Give up after 5 retries, show fallback
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('page-title').innerHTML = 'Your report is<br><em>being finalized.</em>';
+    document.getElementById('page-sub').innerHTML = 'Your report is still being generated. It will appear at your <a href="' + reportUrl + '" style="color:var(--gold)">permanent report link</a> shortly, and will also be emailed to you.';
+    document.getElementById('status-text').textContent = 'Report generating \u00B7 Check back in a moment';
+    return;
+  }
+  setTimeout(async function() {
+    try {
+      var res = await fetch('/api/view-report?id=' + encodeURIComponent(id));
+      if (!res.ok) throw new Error('Not ready');
+      var data = await res.json();
+      renderReport(data);
+    } catch (e) {
+      retryLoad(id, attempt + 1);
+    }
+  }, 3000 * (attempt + 1));
+}
+
+function renderReport(data) {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('report-section').style.display = 'block';
+
+  // Update status
+  document.getElementById('status-dot').classList.remove('loading');
+  document.getElementById('status-text').textContent = 'Report ready \u00B7 ' + (data.market || 'Market Intelligence');
+
+  document.getElementById('page-title').innerHTML = 'Your report is<br><em>ready.</em>';
+  document.getElementById('page-sub').textContent = 'Your full intelligence report is below. Bookmark this page or save the permanent link to access it anytime.';
+
+  // Meta
+  document.getElementById('r-market').textContent = data.market || 'Market Intelligence';
+  document.getElementById('r-tier').textContent = (data.tier || tierParam || 'standard').charAt(0).toUpperCase() + (data.tier || tierParam || '').slice(1);
+  document.getElementById('r-date').textContent = data.created ? new Date(data.created).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Just now';
+
+  document.title = (data.market || 'Report') + ' \u2014 APERTURE Intelligence';
+
+  // Render report content
+  document.getElementById('r-body').innerHTML = markdownToHtml(data.report || '');
+
+  // Scroll to report
+  document.getElementById('report-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function markdownToHtml(md) {
+  var html = md
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/^#### (.+)$/gm, '<h4>$1</h4>')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    .replace(/^---+$/gm, '<hr/>')
+    .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>')
+    .replace(/^[\-\*] (.+)$/gm, '<li>$1</li>')
+    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+    .replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>')
+    .replace(/^\|(.+)\|$/gm, function(match, content) {
+      var cells = content.split('|').map(function(c) { return c.trim(); });
+      if (cells.every(function(c) { return /^[\-:]+$/.test(c); })) return '<!--table-sep-->';
+      return '<tr>' + cells.map(function(c) { return '<td>' + c + '</td>'; }).join('') + '</tr>';
+    })
+    .replace(/((?:<tr>.*<\/tr>\n?)+)/g, function(match) {
+      var table = match.replace('<!--table-sep-->', '');
+      table = table.replace(/<tr>(.*?)<\/tr>/, function(m, inner) {
+        return '<thead><tr>' + inner.replace(/<td>/g, '<th>').replace(/<\/td>/g, '</th>') + '</tr></thead><tbody>';
+      }) + '</tbody>';
+      return '<table>' + table + '</table>';
+    })
+    .replace(/<!--table-sep-->/g, '')
+    .replace(/^(?!<[a-z])((?!<).+)$/gm, '<p>$1</p>')
+    .replace(/<p>\s*<\/p>/g, '');
+  return html;
+}
 </script>
 </body>
 </html>
-
