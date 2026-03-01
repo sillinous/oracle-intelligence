@@ -172,10 +172,10 @@ Include 8-10 real companies. Be specific about funding rounds, employee counts w
 ## Trend Analysis
 6 trends, alternating Macro and Micro:
 
-### [Trend 1] `MACRO`
+### [Trend 1] \`MACRO\`
 3-4 sentences with specific data points, company examples, and growth metrics. Explain the implication for market entrants.
 
-### [Trend 2] `MICRO`
+### [Trend 2] \`MICRO\`
 Same depth. Reference specific products, features, or behavioral data.
 
 (Continue for all 6 trends)
@@ -308,7 +308,7 @@ Describe the 2x2 positioning landscape (axes and where each player sits).
 ## Trend Analysis
 8+ trends with alternating Macro and Micro tags:
 
-### [Trend 1] `MACRO`
+### [Trend 1] \`MACRO\`
 4-5 sentences. Specific data, named companies, growth metrics, and direct implication for strategy. Reference specific reports, studies, or data sources where possible.
 
 (Continue for all 8+ trends, each with this depth)
