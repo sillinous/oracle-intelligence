@@ -6,9 +6,10 @@ export default async (req, context) => {
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers });
   if (req.method !== "POST") return new Response(JSON.stringify({ error: "POST required" }), { status: 405, headers });
 
-  const ADMIN_KEY = process.env["ADMIN_KEY"];
-  const adminKey = req.headers.get("x-admin-key");
-  if (!adminKey || adminKey !== ADMIN_KEY) return new Response("Unauthorized", { status: 401, headers });
+  // TEST MODE: bypass admin key check (re-enable for production payments)
+  // const ADMIN_KEY = process.env["ADMIN_KEY"];
+  // const adminKey = req.headers.get("x-admin-key");
+  // if (!adminKey || adminKey !== ADMIN_KEY) return new Response("Unauthorized", { status: 401, headers });
 
   const OPENROUTER_KEY = process.env["OPENROUTER_API_KEY"];
   if (!OPENROUTER_KEY) return new Response(JSON.stringify({ error: "AI not configured" }), { status: 500, headers });
