@@ -730,13 +730,229 @@ footer {
 @keyframes successPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 .success-title { font-family: 'Fraunces', serif; font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; color: var(--parchment); }
 .success-desc { font-size: 0.93rem; line-height: 1.8; color: var(--parchment-dim); }
+
+/* SKIP TO CONTENT */
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 9999;
+  background: var(--gold); color: var(--void); padding: 0.8rem 1.5rem;
+  font-family: 'Martian Mono', monospace; font-size: 0.7rem; text-decoration: none;
+}
+.skip-link:focus { left: 1rem; top: 1rem; }
+
+/* MOBILE NAV */
+.nav-hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 32px; height: 24px; position: relative; z-index: 200;
+}
+.nav-hamburger span {
+  display: block; width: 100%; height: 1.5px; background: var(--parchment);
+  position: absolute; left: 0; transition: all 0.35s var(--transition);
+}
+.nav-hamburger span:nth-child(1) { top: 0; }
+.nav-hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.nav-hamburger span:nth-child(3) { bottom: 0; }
+.nav-hamburger.active span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+
+.mobile-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; width: 300px; max-width: 85vw;
+  background: var(--ink); border-left: 1px solid var(--gold-line); z-index: 150;
+  transform: translateX(100%); transition: transform 0.45s var(--transition);
+  padding: 5rem 2rem 2rem; display: flex; flex-direction: column; gap: 0.5rem;
+  overflow-y: auto;
+}
+.mobile-drawer.open { transform: translateX(0); }
+.mobile-drawer a {
+  font-family: 'Martian Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--parchment-dim); text-decoration: none;
+  padding: 1rem 0; border-bottom: 1px solid rgba(184,148,63,0.1); transition: color 0.2s, padding-left 0.2s;
+}
+.mobile-drawer a:hover { color: var(--gold); padding-left: 0.5rem; }
+.mobile-overlay {
+  position: fixed; inset: 0; background: rgba(5,4,3,0.7); z-index: 140;
+  opacity: 0; pointer-events: none; transition: opacity 0.35s;
+}
+.mobile-overlay.open { opacity: 1; pointer-events: all; }
+
+@media (max-width: 768px) {
+  .nav-hamburger { display: block; }
+  .nav-cta { display: none; }
+}
+
+/* TOUCH DEVICE CURSOR FIX */
+@media (hover: none), (pointer: coarse) {
+  body { cursor: auto !important; }
+  .cursor-dot, .cursor-ring { display: none !important; }
+}
+
+/* PRICING CARD HOVER POLISH */
+.price-card {
+  transition: background 0.3s, transform 0.35s var(--transition), box-shadow 0.35s;
+}
+.price-card:hover {
+  background: rgba(184,148,63,0.04);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(184,148,63,0.08);
+}
+.price-card.featured:hover {
+  background: rgba(184,148,63,0.08);
+  box-shadow: 0 12px 48px rgba(184,148,63,0.15);
+}
+
+/* QUIZ CTA BAR */
+.quiz-cta-bar {
+  background: #181410; border-top: 1px solid rgba(184,148,63,0.22);
+  border-bottom: 1px solid rgba(184,148,63,0.22);
+  padding: 1.1rem 2rem; display: flex; align-items: center;
+  justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+}
+.quiz-cta-bar .bar-label {
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.quiz-cta-bar .bar-dot {
+  width: 5px; height: 5px; background: var(--gold); border-radius: 50%;
+}
+.quiz-cta-bar .bar-text {
+  font-family: 'Martian Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(242,237,227,0.55);
+}
+.quiz-cta-bar .bar-link {
+  font-family: 'Martian Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold); text-decoration: none;
+  border-bottom: 1px solid rgba(184,148,63,0.3); padding-bottom: 1px; white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+.quiz-cta-bar .bar-link:hover { color: var(--gold-bright); border-color: var(--gold-bright); }
+
+/* COMPARISON SECTION */
+.compare-section {
+  background: var(--ink); border-top: 1px solid var(--gold-line);
+  border-bottom: 1px solid var(--gold-line); padding: 5rem 0;
+}
+.compare-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+}
+.compare-table {
+  width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 3rem;
+}
+.compare-table th {
+  text-align: left; padding: 1rem 1.25rem;
+  font-family: 'Martian Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold);
+}
+.compare-table th:not(:first-child) { text-align: center; }
+.compare-table thead tr { border-bottom: 1px solid var(--gold-line); }
+.compare-table tbody tr { border-bottom: 1px solid rgba(184,148,63,0.08); transition: background 0.2s; }
+.compare-table tbody tr:hover { background: rgba(184,148,63,0.03); }
+.compare-table tbody tr.highlight {
+  background: rgba(184,148,63,0.06); border: 1px solid rgba(184,148,63,0.25);
+}
+.compare-table td { padding: 1rem 1.25rem; }
+.compare-table td:not(:first-child) { text-align: center; }
+.compare-table .method { color: var(--parchment-dim); font-style: italic; }
+.compare-table .dim {
+  font-family: 'Martian Mono', monospace; font-size: 0.7rem; color: rgba(242,237,227,0.35);
+}
+.compare-table .bright {
+  font-family: 'Martian Mono', monospace; font-size: 0.7rem; color: var(--gold-bright);
+}
+.compare-table .accent { color: var(--parchment); font-weight: 500; }
+.compare-table .green { color: #5ab87a; }
+.compare-table .dim-text { color: rgba(242,237,227,0.25); }
+@media (max-width: 768px) {
+  .compare-table { font-size: 0.78rem; }
+  .compare-table th, .compare-table td { padding: 0.75rem 0.6rem; }
+  .compare-table th { font-size: 0.42rem; }
+}
+
+/* USE CASES GRID */
+.use-cases-grid {
+  margin-top: 4rem; display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--gold-line); border: 1px solid var(--gold-line);
+}
+@media (max-width: 768px) { .use-cases-grid { grid-template-columns: 1fr; } }
+.use-case-card {
+  background: var(--ink-mid); padding: 1.75rem 1.5rem;
+  transition: background 0.3s;
+}
+.use-case-card:hover { background: var(--ink); }
+.use-case-label {
+  font-family: 'Martian Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;
+}
+.use-case-quote {
+  font-size: 0.95rem; color: var(--parchment); font-style: italic; line-height: 1.65; margin-bottom: 0.75rem;
+}
+.use-case-context {
+  font-family: 'Martian Mono', monospace; font-size: 0.52rem; color: var(--parchment-dim);
+}
+
+/* TRUST STRIP */
+.trust-strip {
+  background: var(--void); border-top: 1px solid var(--gold-line);
+  padding: 1.5rem 2rem; display: flex; justify-content: center;
+  gap: 2.5rem; flex-wrap: wrap; align-items: center;
+}
+.trust-item {
+  font-family: 'Martian Mono', monospace; font-size: 0.52rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(242,237,227,0.3);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.trust-item .dot-green { color: #4caf81; }
+.trust-item .dot-gold { color: var(--gold); }
+.trust-item a {
+  color: var(--gold); text-decoration: none; transition: color 0.2s;
+}
+.trust-item a:hover { color: var(--gold-bright); }
+
+/* SAMPLE LINK BUTTON */
+.sample-link {
+  font-family: 'Martian Mono', monospace; font-size: 0.57rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(184,148,63,0.7); text-decoration: none;
+  border-bottom: 1px solid rgba(184,148,63,0.25); padding-bottom: 2px; transition: color 0.2s;
+}
+.sample-link:hover { color: var(--gold-bright); }
+
+.report-full-link {
+  display: block; margin-top: 1px; background: rgba(184,148,63,0.08);
+  border: 1px solid rgba(184,148,63,0.25); border-top: none;
+  padding: 1rem 1.5rem; font-family: 'Martian Mono', monospace;
+  font-size: 0.57rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none; text-align: center;
+  transition: background 0.3s;
+}
+.report-full-link:hover { background: rgba(184,148,63,0.15); }
+
+/* FORM INLINE ERRORS */
+.form-error {
+  font-family: 'Martian Mono', monospace; font-size: 0.5rem; color: var(--ember);
+  margin-top: 0.4rem; display: none; letter-spacing: 0.05em;
+}
+.form-group.has-error input,
+.form-group.has-error textarea { border-color: var(--ember); }
+.form-group.has-error .form-error { display: block; }
+
+/* HERO STATS ANIMATION */
+.stat-num[data-count] { transition: color 0.3s; }
 </style>
 </head>
 <body>
 
+<a href="#what" class="skip-link">Skip to content</a>
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 <div class="grain"></div>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="mobile-drawer" id="mobile-drawer">
+  <a href="#what" onclick="closeMobileNav()">Intelligence</a>
+  <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="/markets/">Markets</a>
+  <a href="teams.html">Teams</a>
+  <a href="quiz.html">Free Snapshot</a>
+  <a href="sample.html">Sample Report</a>
+  <a href="mailto:hello@aperturereports.ai">Contact</a>
+</div>
 
 <!-- TICKER -->
 <div class="ticker-bar">
@@ -768,6 +984,9 @@ footer {
     <li><a href='sample.html'>Sample</a></li>
   </ul>
   <button class="nav-cta" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">See Plans →</button>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -797,26 +1016,26 @@ footer {
         <span>Get Your Intelligence Report</span>
       </button>
       <button class="btn-ghost" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View Pricing</button>
-      <a href='sample.html' onmouseout='this.style.color=\'rgba(184,148,63,0.7)\'' onmouseover='this.style.color=\'#d4aa50\'' style='font-family:\'Martian Mono\',monospace;font-size:0.57rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(184,148,63,0.7);text-decoration:none;border-bottom:1px solid rgba(184,148,63,0.25);padding-bottom:2px;transition:color 0.2s;'>View Sample Report →</a>
+      <a href="sample.html" class="sample-link">View Sample Report →</a>
       <div class="price-hint">From $19 · One-time payment · ~5 minute delivery</div>
     </div>
   </div>
 
   <div class="stats-strip">
     <div class="stat-cell">
-      <div class="stat-num"><span>$</span>15k</div>
+      <div class="stat-num" data-count="15" data-prefix="$" data-suffix="k"><span>$</span>15k</div>
       <div class="stat-label">Traditional cost</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-num"><span>~</span>5m</div>
+      <div class="stat-num" data-count="5" data-prefix="~" data-suffix="m"><span>~</span>5m</div>
       <div class="stat-label">Your delivery time</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-num">12<span>+</span></div>
+      <div class="stat-num" data-count="12" data-suffix="+">12<span>+</span></div>
       <div class="stat-label">Report sections</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-num"><span>$</span>39</div>
+      <div class="stat-num" data-count="39" data-prefix="$"><span>$</span>39</div>
       <div class="stat-label">Starting price</div>
     </div>
   </div>
@@ -825,12 +1044,12 @@ footer {
 <!-- WHAT -->
 
   <!-- Quiz CTA Bar -->
-  <div style="background:#181410;border-top:1px solid rgba(184,148,63,0.22);border-bottom:1px solid rgba(184,148,63,0.22);padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
-    <div style="display:flex;align-items:center;gap:0.75rem;">
-      <div style="width:5px;height:5px;background:#b8943f;border-radius:50%;"></div>
-      <span style="font-family:'Martian Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,227,0.55);">Not ready to order? Get a free market snapshot first.</span>
+  <div class="quiz-cta-bar">
+    <div class="bar-label">
+      <div class="bar-dot"></div>
+      <span class="bar-text">Not ready to order? Get a free market snapshot first.</span>
     </div>
-    <a href='quiz.html' style='font-family:\'Martian Mono\',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:#b8943f;text-decoration:none;border-bottom:1px solid rgba(184,148,63,0.3);padding-bottom:1px;white-space:nowrap;'>Take the Free Snapshot Quiz →</a>
+    <a href="quiz.html" class="bar-link">Take the Free Snapshot Quiz →</a>
   </div>
 <section class="what-section" id="what">
   <div class="section">
@@ -882,7 +1101,7 @@ footer {
           <div class="report-body">
             <div class="r-h1">AI Fitness Coaching Platform — Market Intelligence</div>
             <div class="r-data">
-              APERTURE INTELLIGENCE · Professional Tier · Delivered 2025-02-22<br>
+              APERTURE INTELLIGENCE · Professional Tier · Delivered 2026-02-28<br>
               Market: AI-powered fitness coaching · Geography: United States<br>
               Classification: HIGH OPPORTUNITY · Maturity: Emerging
             </div>
@@ -900,7 +1119,7 @@ footer {
             <div class="r-p">Market is bifurcated between established fitness platforms adding AI features (Peloton, Mirror) and pure-play AI entrants. Key vulnerability: incumbents optimize for engagement metrics, not outcome delivery — creating a wedge for results-first positioning.</div>
           </div>
         </div>
-        <a href='sample.html' onmouseout='this.style.background=\'rgba(184,148,63,0.08)\'' onmouseover='this.style.background=\'rgba(184,148,63,0.15)\'' style='display:block;margin-top:1px;background:rgba(184,148,63,0.08);border:1px solid rgba(184,148,63,0.25);border-top:none;padding:1rem 1.5rem;font-family:\'Martian Mono\',monospace;font-size:0.57rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:background 0.3s;text-align:center;'>Read Full Sample Report — Adaptogenic Beverage Brand →</a>
+        <a href="sample.html" class="report-full-link">Read Full Sample Report — Adaptogenic Beverage Brand →</a>
       </div>
     </div>
   </div>
@@ -940,74 +1159,74 @@ footer {
 
 
 <!-- COMPARISON SECTION -->
-<section style="background:var(--ink);border-top:1px solid var(--gold-line);border-bottom:1px solid var(--gold-line);padding:5rem 0;">
-  <div class="section" style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+<section class="compare-section">
+  <div class="compare-inner">
     <div class="section-rule reveal">
       <span class="rule-label">Why APERTURE</span>
     </div>
     <h2 class="section-h reveal" style="font-size:clamp(1.75rem,3.5vw,2.75rem);max-width:600px;">Professional intelligence.<br><em>Without professional overhead.</em></h2>
 
-    <div style="margin-top:3rem;overflow-x:auto;">
-      <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+    <div style="overflow-x:auto;">
+      <table class="compare-table reveal">
         <thead>
-          <tr style="border-bottom:1px solid var(--gold-line);">
-            <th style="text-align:left;padding:1rem 1.25rem;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);width:30%;">Method</th>
-            <th style="text-align:center;padding:1rem;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);">Cost</th>
-            <th style="text-align:center;padding:1rem;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);">Time</th>
-            <th style="text-align:center;padding:1rem;font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);">Actionable?</th>
+          <tr>
+            <th style="width:30%;">Method</th>
+            <th>Cost</th>
+            <th>Time</th>
+            <th>Actionable?</th>
           </tr>
         </thead>
         <tbody>
-          <tr style="border-bottom:1px solid rgba(184,148,63,0.08);">
-            <td style="padding:1rem 1.25rem;color:var(--parchment-dim);font-style:italic;">McKinsey / Big 4</td>
-            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">$50,000+</td>
-            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">6–12 weeks</td>
-            <td style="padding:1rem;text-align:center;color:rgba(242,237,227,0.25);">Sometimes</td>
+          <tr>
+            <td class="method">McKinsey / Big 4</td>
+            <td class="dim">$50,000+</td>
+            <td class="dim">6–12 weeks</td>
+            <td class="dim-text">Sometimes</td>
           </tr>
-          <tr style="border-bottom:1px solid rgba(184,148,63,0.08);">
-            <td style="padding:1rem 1.25rem;color:var(--parchment-dim);font-style:italic;">Gartner / Forrester Report</td>
-            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">$3,000–$8,000</td>
-            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">Immediate (stale)</td>
-            <td style="padding:1rem;text-align:center;color:rgba(242,237,227,0.25);">Rarely</td>
+          <tr>
+            <td class="method">Gartner / Forrester Report</td>
+            <td class="dim">$3,000–$8,000</td>
+            <td class="dim">Immediate (stale)</td>
+            <td class="dim-text">Rarely</td>
           </tr>
-          <tr style="border-bottom:1px solid rgba(184,148,63,0.08);">
-            <td style="padding:1rem 1.25rem;color:var(--parchment-dim);font-style:italic;">Freelance Analyst</td>
-            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">$2,000–$8,000</td>
-            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">2–4 weeks</td>
-            <td style="padding:1rem;text-align:center;color:rgba(242,237,227,0.25);">Variable</td>
+          <tr>
+            <td class="method">Freelance Analyst</td>
+            <td class="dim">$2,000–$8,000</td>
+            <td class="dim">2–4 weeks</td>
+            <td class="dim-text">Variable</td>
           </tr>
-          <tr style="border-bottom:1px solid rgba(184,148,63,0.08);">
-            <td style="padding:1rem 1.25rem;color:var(--parchment-dim);font-style:italic;">DIY (Google + gut)</td>
-            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">Free</td>
-            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:rgba(242,237,227,0.35);">Hours/days</td>
-            <td style="padding:1rem;text-align:center;color:rgba(242,237,227,0.25);">Rarely</td>
+          <tr>
+            <td class="method">DIY (Google + gut)</td>
+            <td class="dim">Free</td>
+            <td class="dim">Hours/days</td>
+            <td class="dim-text">Rarely</td>
           </tr>
-          <tr style="background:rgba(184,148,63,0.06);border:1px solid rgba(184,148,63,0.25);">
-            <td style="padding:1rem 1.25rem;color:var(--parchment);font-weight:500;">APERTURE Intelligence</td>
-            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:var(--gold-bright);">$39–$199</td>
-            <td style="padding:1rem;text-align:center;font-family:'Martian Mono',monospace;font-size:0.7rem;color:var(--gold-bright);">~5 minutes</td>
-            <td style="padding:1rem;text-align:center;color:#5ab87a;">Always</td>
+          <tr class="highlight">
+            <td class="accent">APERTURE Intelligence</td>
+            <td class="bright">$39–$199</td>
+            <td class="bright">~5 minutes</td>
+            <td class="green">Always</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <!-- Social proof / use cases -->
-    <div style="margin-top:4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gold-line);border:1px solid var(--gold-line);">
-      <div style="background:var(--ink-mid);padding:1.75rem 1.5rem;">
-        <div style="font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Founders</div>
-        <div style="font-size:0.95rem;color:var(--parchment);font-style:italic;line-height:1.65;margin-bottom:0.75rem;">"I used APERTURE to validate my market before spending $80K on development. The competitor weakness section changed my positioning entirely."</div>
-        <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;color:var(--parchment-dim);">Idea → product validation</div>
+    <div class="use-cases-grid reveal">
+      <div class="use-case-card">
+        <div class="use-case-label">Founders</div>
+        <div class="use-case-quote">"I used APERTURE to validate my market before spending $80K on development. The competitor weakness section changed my positioning entirely."</div>
+        <div class="use-case-context">Idea → product validation</div>
       </div>
-      <div style="background:var(--ink-mid);padding:1.75rem 1.5rem;">
-        <div style="font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Operators</div>
-        <div style="font-size:0.95rem;color:var(--parchment);font-style:italic;line-height:1.65;margin-bottom:0.75rem;">"We used the GTM framework from our APERTURE report to structure our Q1 expansion plan. Saved two weeks of internal research."</div>
-        <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;color:var(--parchment-dim);">Market expansion planning</div>
+      <div class="use-case-card">
+        <div class="use-case-label">Operators</div>
+        <div class="use-case-quote">"We used the GTM framework from our APERTURE report to structure our Q1 expansion plan. Saved two weeks of internal research."</div>
+        <div class="use-case-context">Market expansion planning</div>
       </div>
-      <div style="background:var(--ink-mid);padding:1.75rem 1.5rem;">
-        <div style="font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Investors</div>
-        <div style="font-size:0.95rem;color:var(--parchment);font-style:italic;line-height:1.65;margin-bottom:0.75rem;">"For early-stage diligence, APERTURE gives me a structured market view in minutes. I use it as a first pass before going deeper."</div>
-        <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;color:var(--parchment-dim);">Early-stage due diligence</div>
+      <div class="use-case-card">
+        <div class="use-case-label">Investors</div>
+        <div class="use-case-quote">"For early-stage diligence, APERTURE gives me a structured market view in minutes. I use it as a first pass before going deeper."</div>
+        <div class="use-case-context">Early-stage due diligence</div>
       </div>
     </div>
   </div>
@@ -1189,19 +1408,11 @@ footer {
 </section>
 
   <!-- Post-pricing trust strip -->
-  <div style="background:var(--void);border-top:1px solid var(--gold-line);padding:1.5rem 2rem;display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;align-items:center;">
-    <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,227,0.3);display:flex;align-items:center;gap:0.5rem;">
-      <span style="color:#4caf81;">●</span> $0 subscription — one-time, forever yours
-    </div>
-    <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,227,0.3);display:flex;align-items:center;gap:0.5rem;">
-      <span style="color:#4caf81;">●</span> Stripe-secured checkout
-    </div>
-    <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,227,0.3);display:flex;align-items:center;gap:0.5rem;">
-      <span style="color:#4caf81;">●</span> Email delivery in minutes — not days
-    </div>
-    <div style="font-family:'Martian Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,227,0.3);display:flex;align-items:center;gap:0.5rem;">
-      <span style="color:var(--gold);">●</span> <a href='sample.html' style='color:var(--gold);text-decoration:none;'>Read a sample report first →</a>
-    </div>
+  <div class="trust-strip">
+    <div class="trust-item"><span class="dot-green">●</span> $0 subscription — one-time, forever yours</div>
+    <div class="trust-item"><span class="dot-green">●</span> Stripe-secured checkout</div>
+    <div class="trust-item"><span class="dot-green">●</span> Email delivery in minutes — not days</div>
+    <div class="trust-item"><span class="dot-gold">●</span> <a href="sample.html">Read a sample report first →</a></div>
   </div>
 
 
@@ -1352,13 +1563,13 @@ footer {
     <a href="mailto:hello@aperturereports.ai">Contact</a>
   </div>
   <div class="footer-legal">
-    © 2025 Aperture Reports · hello@aperturereports.ai<br>
+    © 2026 Aperture Reports · hello@aperturereports.ai<br>
     Reports are AI-synthesized and not financial or legal advice.
   </div>
 </footer>
 
 <!-- ORDER MODAL -->
-<div class="modal-overlay" id="order-modal">
+<div class="modal-overlay" id="order-modal" role="dialog" aria-modal="true" aria-label="Order Intelligence Report">
   <div class="modal">
     <div class="modal-top">
       <div>
@@ -1370,19 +1581,21 @@ footer {
     <div class="modal-body">
       <div class="modal-form" id="modal-form">
         <div class="form-row">
-          <div class="form-group">
+          <div class="form-group" id="fg-name">
             <label>Your Name</label>
             <input type="text" id="f-name" placeholder="Jane Smith" required>
+            <div class="form-error">Name is required</div>
           </div>
-          <div class="form-group">
+          <div class="form-group" id="fg-email">
             <label>Email</label>
             <input type="email" id="f-email" placeholder="jane@company.com" required>
-            <div class="error-msg" id="email-error">Invalid email address</div>
+            <div class="form-error">Please enter a valid email address</div>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="fg-business">
           <label>Market / Business to Analyze</label>
           <input type="text" id="f-business" placeholder="e.g., B2B SaaS for dental practices, plant-based snack brand" required>
+          <div class="form-error">Please describe your market or business</div>
         </div>
         <div class="form-group">
           <label>Target Geography</label>
@@ -1422,32 +1635,58 @@ footer {
 </div>
 
 <script>
-// CURSOR
+// CURSOR (only on hover-capable devices)
 const dot = document.getElementById('cursorDot');
 const ring = document.getElementById('cursorRing');
 let mx = 0, my = 0, rx = 0, ry = 0;
 
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
-});
+if (window.matchMedia('(hover: hover)').matches) {
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+  });
 
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-  el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-});
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+  });
 
-(function lerpCursor() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-  requestAnimationFrame(lerpCursor);
-})();
+  (function lerpCursor() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(lerpCursor);
+  })();
+}
 
 // NAV
 window.addEventListener('scroll', () => {
   document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
 });
+
+// MOBILE NAV
+const hamburger = document.getElementById('nav-hamburger');
+const drawer = document.getElementById('mobile-drawer');
+const overlay = document.getElementById('mobile-overlay');
+
+function openMobileNav() {
+  hamburger.classList.add('active');
+  hamburger.setAttribute('aria-expanded', 'true');
+  drawer.classList.add('open');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileNav() {
+  hamburger.classList.remove('active');
+  hamburger.setAttribute('aria-expanded', 'false');
+  drawer.classList.remove('open');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+hamburger.addEventListener('click', () => {
+  drawer.classList.contains('open') ? closeMobileNav() : openMobileNav();
+});
+overlay.addEventListener('click', closeMobileNav);
 
 // SCROLL REVEAL
 const revealObs = new IntersectionObserver(entries => {
@@ -1455,8 +1694,33 @@ const revealObs = new IntersectionObserver(entries => {
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
+// HERO STATS COUNT-UP
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseInt(el.dataset.count);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    let current = 0;
+    const duration = 1200;
+    const steps = 30;
+    const increment = target / steps;
+    const interval = duration / steps;
+    const counter = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(counter); }
+      const display = Math.round(current);
+      el.innerHTML = (prefix ? '<span>' + prefix + '</span>' : '') + display + (suffix ? '<span>' + suffix + '</span>' : '');
+    }, interval);
+    countObs.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => countObs.observe(el));
+
 // MODAL
 let currentTier = 'professional', currentPrice = 89;
+let lastFocusedEl = null;
 const tierNames = {
   pulse: 'Market Pulse — Quick Snapshot',
   starter: 'Starter Intelligence Report',
@@ -1472,15 +1736,18 @@ const tierDelivery = {
 
 function openModal(tier, price) {
   currentTier = tier; currentPrice = price;
+  lastFocusedEl = document.activeElement;
   document.getElementById('modal-subtitle').textContent = tierNames[tier] || tier;
   document.getElementById('modal-price').textContent = '$' + price;
   const noteEl = document.getElementById('modal-delivery-note');
   if (noteEl) noteEl.textContent = 'Report delivered to your inbox in ' + (tierDelivery[tier] || '~5 minutes');
-  // Show pulse-specific notice
   const pulseNotice = document.getElementById('pulse-notice');
   if (pulseNotice) pulseNotice.style.display = tier === 'pulse' ? 'block' : 'none';
+  // Clear previous errors
+  document.querySelectorAll('.form-group').forEach(g => g.classList.remove('has-error'));
   document.getElementById('order-modal').classList.add('active');
   document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('f-name').focus(), 100);
 }
 
 function closeModal() {
@@ -1490,11 +1757,28 @@ function closeModal() {
   document.getElementById('modal-form').classList.remove('hidden');
   const btn = document.getElementById('submit-btn');
   btn.disabled = false; btn.innerHTML = 'Proceed to Secure Payment →';
+  if (lastFocusedEl) lastFocusedEl.focus();
 }
+
+// Keyboard: Escape to close modal & mobile nav
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('order-modal').classList.contains('active')) closeModal();
+    if (drawer.classList.contains('open')) closeMobileNav();
+  }
+});
 
 document.getElementById('order-modal').addEventListener('click', e => {
   if (e.target === document.getElementById('order-modal')) closeModal();
 });
+
+function validateField(id, groupId, test) {
+  const val = document.getElementById(id).value.trim();
+  const group = document.getElementById(groupId);
+  const valid = test ? test(val) : val.length > 0;
+  group.classList.toggle('has-error', !valid);
+  return valid;
+}
 
 async function submitOrder() {
   const name = document.getElementById('f-name').value.trim();
@@ -1503,11 +1787,12 @@ async function submitOrder() {
   const geo = document.getElementById('f-geo').value;
   const context = document.getElementById('f-context').value.trim();
 
-  if (!name || !email || !business) { alert('Please fill in all required fields.'); return; }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    document.getElementById('email-error').style.display = 'block'; return;
-  }
-  document.getElementById('email-error').style.display = 'none';
+  // Inline validation
+  let valid = true;
+  valid = validateField('f-name', 'fg-name') & valid;
+  valid = validateField('f-email', 'fg-email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) & valid;
+  valid = validateField('f-business', 'fg-business') & valid;
+  if (!valid) return;
 
   const btn = document.getElementById('submit-btn');
   btn.disabled = true;
@@ -1532,13 +1817,27 @@ async function submitOrder() {
   }
 }
 
-// FAQ
+// Clear field error on input
+['f-name', 'f-email', 'f-business'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => {
+    document.getElementById(id).closest('.form-group').classList.remove('has-error');
+  });
+});
+
+// FAQ with aria
 document.querySelectorAll('.faq-q').forEach(q => {
+  q.setAttribute('aria-expanded', 'false');
   q.addEventListener('click', () => {
     const item = q.parentElement;
     const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!wasOpen) {
+      item.classList.add('open');
+      q.setAttribute('aria-expanded', 'true');
+    }
   });
 });
 
@@ -1611,5 +1910,4 @@ async function loadLiveTestimonials() {
 </script>
 </body>
 </html>
-<!-- redeploy 2026-02-24T21:31:02Z -->
 
