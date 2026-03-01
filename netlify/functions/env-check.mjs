@@ -1,6 +1,6 @@
 
 export default async (req) => {
-  const vars = ["STRIPE_SECRET_KEY","STRIPE_WEBHOOK_SECRET","RESEND_API_KEY","ADMIN_KEY","ANTHROPIC_API_KEY","SERPER_API_KEY","OPENROUTER_API_KEY","URL"];
+  const vars = ["STRIPE_SECRET_KEY","STRIPE_WEBHOOK_SECRET","RESEND_API_KEY","ADMIN_KEY","GROQ_API_KEY","SERPER_API_KEY","URL"];
   const check = {};
   for (const v of vars) {
     const val = process.env[v] || process.env[v] || "";

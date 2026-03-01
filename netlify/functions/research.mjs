@@ -1,25 +1,25 @@
 import { getStore } from "@netlify/blobs";
 
 
-// Tier configurations: model, token limits, and prompt builders
+// Tier configurations: model, token limits, and prompt builders (Groq API)
 const TIER_CONFIG = {
   pulse: {
-    model: "anthropic/claude-3.5-haiku",
+    model: "llama-3.1-8b-instant",
     maxTokens: 3000,
     label: "Pulse",
   },
   starter: {
-    model: "anthropic/claude-sonnet-4-20250514",
+    model: "llama-3.3-70b-versatile",
     maxTokens: 7000,
     label: "Starter",
   },
   professional: {
-    model: "anthropic/claude-sonnet-4-20250514",
+    model: "llama-3.3-70b-versatile",
     maxTokens: 12000,
     label: "Professional",
   },
   strategic: {
-    model: "anthropic/claude-sonnet-4-20250514",
+    model: "llama-3.3-70b-versatile",
     maxTokens: 16000,
     label: "Strategic",
   },
@@ -462,8 +462,8 @@ export default async (req, context) => {
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers });
   if (req.method !== "POST") return new Response(JSON.stringify({ error: "POST required" }), { status: 405, headers });
 
-  const OPENROUTER_KEY = process.env["OPENROUTER_API_KEY"];
-  if (!OPENROUTER_KEY) return new Response(JSON.stringify({ error: "AI not configured" }), { status: 500, headers });
+  const GROQ_KEY = process.env["GROQ_API_KEY"];
+  if (!GROQ_KEY) return new Response(JSON.stringify({ error: "AI not configured — GROQ_API_KEY missing" }), { status: 500, headers });
 
   try {
     const { market, tier, email, name, purchaseId } = await req.json();
@@ -472,9 +472,9 @@ export default async (req, context) => {
     const config = TIER_CONFIG[tier] || TIER_CONFIG.starter;
     const prompt = buildPrompt(market, tier || "starter");
 
-    const aiRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    const aiRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${OPENROUTER_KEY}`, "HTTP-Referer": "https://aperture-intel.netlify.app" },
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${GROQ_KEY}` },
       body: JSON.stringify({
         model: config.model,
         messages: [
@@ -488,7 +488,7 @@ export default async (req, context) => {
 
     const aiData = await aiRes.json();
     if (!aiRes.ok) {
-      console.error("OpenRouter API error:", JSON.stringify(aiData));
+      console.error("Groq API error:", JSON.stringify(aiData));
       return new Response(JSON.stringify({ error: "AI generation failed: " + (aiData.error?.message || aiRes.status) }), { status: 502, headers });
     }
     const report = aiData.choices?.[0]?.message?.content || "";
