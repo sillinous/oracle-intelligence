@@ -1812,7 +1812,7 @@ async function submitOrder() {
       document.getElementById('success-screen').classList.add('active');
       // Redirect to success page after a moment
       setTimeout(() => {
-        window.location.href = '/success.html?tier=' + currentTier + '&report=' + data.reportId;
+        window.location.href = '/success.html?tier=' + currentTier + '&report=' + data.reportId + '&email=' + encodeURIComponent(email);
       }, 2000);
     } else { throw new Error(data.error || 'Something went wrong'); }
   } catch (err) {

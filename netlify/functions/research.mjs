@@ -55,33 +55,75 @@ Format as structured markdown. Use real data where available. Be specific with n
     const reportId = `report_${Date.now()}_${Math.random().toString(36).slice(2,8)}`;
     await store.set(reportId, JSON.stringify({ id: reportId, market, tier, report, email, name, purchaseId, created: new Date().toISOString() }));
 
-    // Email report
+    // Email report with view link
     const RESEND_KEY = process.env["RESEND_API_KEY"];
+    const siteUrl = process.env["URL"] || "https://aperture-intel.netlify.app";
+    const viewUrl = `${siteUrl}/report.html?id=${encodeURIComponent(reportId)}`;
+    let emailSent = false;
+    let emailError = null;
+
     if (RESEND_KEY && email) {
-      try {
-        await fetch("https://api.resend.com/emails", {
-          method: "POST",
-          headers: { Authorization: `Bearer ${RESEND_KEY}`, "Content-Type": "application/json" },
-          body: JSON.stringify({
-            from: "APERTURE Intelligence <reports@aperturereports.ai>",
-            to: [email],
-            subject: `Your APERTURE ${(tier||"").charAt(0).toUpperCase()+(tier||"").slice(1)} Report: ${market}`,
-            html: `<div style="font-family:sans-serif;max-width:700px;margin:0 auto;padding:24px">
-              <h2>🔮 Your APERTURE Report is Ready</h2>
-              <p>Hi ${name || "there"},</p>
-              <p>Your <strong>${market}</strong> market intelligence report is attached below.</p>
-              <div style="background:#f8f9fa;border:1px solid #e0e0e0;border-radius:8px;padding:24px;margin:24px 0;white-space:pre-wrap;font-size:14px;line-height:1.6">${report.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>
-              <p>Want deeper analysis? <a href="https://aperture-intel.netlify.app/#pricing">Upgrade your report tier</a></p>
-              <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
-              <p style="color:#666;font-size:12px">APERTURE Intelligence — AI Market Research in Minutes<br/>
-              <a href="https://aperture-intel.netlify.app">aperture-intel.netlify.app</a></p>
-            </div>`,
-          }),
-        });
-      } catch {}
+      const tierLabel = (tier || "").charAt(0).toUpperCase() + (tier || "").slice(1);
+      const escapedReport = report.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+      // Try sending with custom domain first, fall back to Resend default domain
+      const fromAddresses = [
+        "APERTURE Intelligence <reports@aperturereports.ai>",
+        "APERTURE Intelligence <onboarding@resend.dev>",
+      ];
+
+      for (const fromAddr of fromAddresses) {
+        try {
+          const emailRes = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: { Authorization: `Bearer ${RESEND_KEY}`, "Content-Type": "application/json" },
+            body: JSON.stringify({
+              from: fromAddr,
+              to: [email],
+              subject: `Your APERTURE ${tierLabel} Report: ${market}`,
+              html: `<div style="font-family:sans-serif;max-width:700px;margin:0 auto;padding:24px">
+                <h2 style="color:#1a1a2e">Your APERTURE Report is Ready</h2>
+                <p>Hi ${name || "there"},</p>
+                <p>Your <strong>${market}</strong> market intelligence report has been generated.</p>
+                <div style="background:#f0f7ff;border:1px solid #c0d8f0;border-radius:8px;padding:20px;margin:20px 0;text-align:center">
+                  <p style="margin:0 0 12px;font-size:15px;color:#333"><strong>View your full report online:</strong></p>
+                  <a href="${viewUrl}" style="display:inline-block;background:#b8943f;color:#fff;text-decoration:none;padding:12px 28px;border-radius:6px;font-weight:600;font-size:15px">View Report</a>
+                  <p style="margin:12px 0 0;font-size:12px;color:#888">Bookmark this link to access your report anytime</p>
+                </div>
+                <p style="font-size:13px;color:#666;margin-bottom:8px"><strong>Report preview:</strong></p>
+                <div style="background:#f8f9fa;border:1px solid #e0e0e0;border-radius:8px;padding:24px;margin:0 0 24px;white-space:pre-wrap;font-size:13px;line-height:1.6;max-height:600px;overflow:hidden">${escapedReport}</div>
+                <p style="text-align:center"><a href="${viewUrl}" style="color:#b8943f;font-weight:600">View full report online &rarr;</a></p>
+                <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
+                <p>Want deeper analysis? <a href="${siteUrl}/#pricing" style="color:#b8943f">Upgrade your report tier</a></p>
+                <p style="color:#999;font-size:11px">APERTURE Intelligence — AI Market Research in Minutes<br/>
+                <a href="${siteUrl}" style="color:#999">${siteUrl.replace("https://","")}</a></p>
+              </div>`,
+            }),
+          });
+
+          const emailData = await emailRes.json();
+          if (emailRes.ok && emailData.id) {
+            emailSent = true;
+            console.log("Email sent successfully via", fromAddr, "id:", emailData.id);
+            break;
+          } else {
+            emailError = emailData.message || emailData.error || JSON.stringify(emailData);
+            console.error("Email send failed with", fromAddr, ":", emailError);
+          }
+        } catch (err) {
+          emailError = err.message;
+          console.error("Email send error with", fromAddr, ":", err.message);
+        }
+      }
+
+      if (!emailSent) {
+        console.error("All email attempts failed. Last error:", emailError);
+      }
+    } else {
+      console.warn("Email not sent: RESEND_API_KEY", RESEND_KEY ? "present" : "missing", "| email:", email || "missing");
     }
 
-    return new Response(JSON.stringify({ reportId, market, tier, generated: true }), { status: 200, headers });
+    return new Response(JSON.stringify({ reportId, market, tier, generated: true, viewUrl, emailSent, emailError: emailSent ? null : emailError }), { status: 200, headers });
   } catch (err) {
     return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
   }

@@ -32,32 +32,50 @@ export default async (req, context) => {
         amount: session.amount_total, created: new Date().toISOString(), status: "paid",
       }));
 
-      // Send confirmation email
+      // Send confirmation email with fallback domain
+      const siteUrl = process.env["URL"] || "https://aperture-intel.netlify.app";
       if (RESEND_KEY && email) {
-        try {
-          await fetch("https://api.resend.com/emails", {
-            method: "POST",
-            headers: { Authorization: `Bearer ${RESEND_KEY}`, "Content-Type": "application/json" },
-            body: JSON.stringify({
-              from: "APERTURE Intelligence <reports@aperturereports.ai>",
-              to: [email],
-              subject: `Your APERTURE ${(tier || "").charAt(0).toUpperCase() + (tier || "").slice(1)} Report is Being Generated`,
-              html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px">
-                <h2 style="color:#1a1a2e">🔮 Your Report is Being Generated</h2>
-                <p>Hi ${name || "there"},</p>
-                <p>Thank you for your purchase! Your <strong>${(tier || "standard").charAt(0).toUpperCase() + (tier || "").slice(1)} Report</strong> for <strong>${market || "your market"}</strong> is being generated.</p>
-                <p>You'll receive your complete report within <strong>5 minutes</strong>.</p>
-                <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
-                <p style="color:#666;font-size:13px">APERTURE Intelligence — AI Market Research in Minutes</p>
-              </div>`,
-            }),
-          });
-        } catch (emailErr) { console.error("Email send failed:", emailErr); }
+        const tierLabel = (tier || "standard").charAt(0).toUpperCase() + (tier || "").slice(1);
+        const fromAddresses = [
+          "APERTURE Intelligence <reports@aperturereports.ai>",
+          "APERTURE Intelligence <onboarding@resend.dev>",
+        ];
+        for (const fromAddr of fromAddresses) {
+          try {
+            const emailRes = await fetch("https://api.resend.com/emails", {
+              method: "POST",
+              headers: { Authorization: `Bearer ${RESEND_KEY}`, "Content-Type": "application/json" },
+              body: JSON.stringify({
+                from: fromAddr,
+                to: [email],
+                subject: `Your APERTURE ${tierLabel} Report is Being Generated`,
+                html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px">
+                  <h2 style="color:#1a1a2e">Your Report is Being Generated</h2>
+                  <p>Hi ${name || "there"},</p>
+                  <p>Thank you for your purchase! Your <strong>${tierLabel} Report</strong> for <strong>${market || "your market"}</strong> is being generated.</p>
+                  <p>You'll receive a follow-up email with a link to view your full report online within <strong>5 minutes</strong>. You can also view it directly on the success page.</p>
+                  <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
+                  <p style="color:#666;font-size:13px">APERTURE Intelligence — AI Market Research in Minutes<br/>
+                  <a href="${siteUrl}" style="color:#b8943f">${siteUrl.replace("https://","")}</a></p>
+                </div>`,
+              }),
+            });
+            const emailData = await emailRes.json();
+            if (emailRes.ok && emailData.id) {
+              console.log("Confirmation email sent via", fromAddr, "id:", emailData.id);
+              break;
+            } else {
+              console.error("Confirmation email failed with", fromAddr, ":", emailData.message || JSON.stringify(emailData));
+            }
+          } catch (emailErr) {
+            console.error("Confirmation email error with", fromAddr, ":", emailErr.message);
+          }
+        }
       }
 
       // Trigger report generation (fire and forget)
       try {
-        await fetch("https://aperture-intel.netlify.app/api/research", {
+        await fetch(`${siteUrl}/api/research`, {
           method: "POST",
           headers: { "Content-Type": "application/json", "x-admin-key": process.env["ADMIN_KEY"] || "" },
           body: JSON.stringify({ market, tier, email, name, purchaseId }),
