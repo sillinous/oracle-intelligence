@@ -1241,22 +1241,22 @@ footer {
       <span class="rule-num">03</span>
     </div>
     <div class="pricing-intro">
-      <h2 class="section-h reveal reveal-delay-1">Intelligence at a<br><em>fraction of the cost.</em></h2>
+      <h2 class="section-h reveal reveal-delay-1">Free during beta.<br><em>Try every tier — no card required.</em></h2>
       <div class="pricing-comparison reveal reveal-delay-2">
         <div class="comparison-item">
           <span class="comp-label">Traditional consultancy</span>
           <span class="comp-old">$12,000–$50,000</span>
-          <span class="comp-new">→ $19</span>
+          <span class="comp-new">→ Free</span>
         </div>
         <div class="comparison-item">
           <span class="comp-label">MBA intern (3 months)</span>
           <span class="comp-old">$8,000</span>
-          <span class="comp-new">→ $89</span>
+          <span class="comp-new">→ Free</span>
         </div>
         <div class="comparison-item">
           <span class="comp-label">Research platform annual sub</span>
           <span class="comp-old">$3,600/yr</span>
-          <span class="comp-new">→ $199</span>
+          <span class="comp-new">→ Free</span>
         </div>
         <div class="comparison-item">
           <span class="comp-label">Time to results</span>
@@ -1269,10 +1269,10 @@ footer {
     <!-- 4-tier pricing grid — experiment: Pulse added, Professional re-framed -->
     <div class="pricing-cards pricing-cards-4 reveal reveal-delay-2" id="pricing-cards">
 
-      <!-- PULSE: $19 entry — experiment variable -->
+      <!-- PULSE: $19 entry — experiment variable (FREE during beta) -->
       <div class="price-card" data-tier="pulse" id="card-pulse">
         <div class="tier-name">Pulse</div>
-        <div class="tier-price"><sup>$</sup>19</div>
+        <div class="tier-price">Free <span style="font-size:0.35em;text-decoration:line-through;opacity:0.4">$19</span></div>
         <div class="tier-delivery">⬤ Delivered in ~90 sec</div>
         <div class="tier-divider"></div>
         <ul class="tier-features">
@@ -1281,13 +1281,13 @@ footer {
           <li><strong>The Single Best Opportunity</strong></li>
         </ul>
         <div style="font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;color:rgba(242,237,227,0.3);margin-bottom:1.25rem;line-height:1.6;">Best for: quick gut-check before committing to deeper research</div>
-        <button class="tier-btn" onclick="trackTierClick('pulse', 19); openModal('pulse', 19)">Quick Pulse →</button>
+        <button class="tier-btn" onclick="trackTierClick('pulse', 0); openModal('pulse', 0)">Try Pulse Free →</button>
       </div>
 
-      <!-- STARTER: $39 -->
+      <!-- STARTER: $39 (FREE during beta) -->
       <div class="price-card" data-tier="starter" id="card-starter">
         <div class="tier-name">Starter</div>
-        <div class="tier-price"><sup>$</sup>39</div>
+        <div class="tier-price">Free <span style="font-size:0.35em;text-decoration:line-through;opacity:0.4">$39</span></div>
         <div class="tier-delivery">⬤ Delivered in ~3 min</div>
         <div class="tier-divider"></div>
         <ul class="tier-features">
@@ -1301,13 +1301,13 @@ footer {
           <li>Revenue Models</li>
           <li><strong>Your Next 3 Moves</strong></li>
         </ul>
-        <button class="tier-btn" onclick="trackTierClick('starter', 39); openModal('starter', 39)">Order Starter →</button>
+        <button class="tier-btn" onclick="trackTierClick('starter', 0); openModal('starter', 0)">Try Starter Free →</button>
       </div>
 
-      <!-- PROFESSIONAL: $89 — re-framed for investor/operator -->
+      <!-- PROFESSIONAL: $89 — re-framed for investor/operator (FREE during beta) -->
       <div class="price-card featured" data-tier="professional" id="card-professional">
         <div class="tier-name">Professional</div>
-        <div class="tier-price"><sup>$</sup>89</div>
+        <div class="tier-price">Free <span style="font-size:0.35em;text-decoration:line-through;opacity:0.4">$89</span></div>
         <div class="tier-delivery">⬤ Delivered in ~5 min</div>
         <div class="tier-divider"></div>
         <ul class="tier-features">
@@ -1323,13 +1323,13 @@ footer {
           <li>Financial Modeling Notes</li>
           <li><strong>Your Next 3 Moves</strong></li>
         </ul>
-        <button class="tier-btn" onclick="trackTierClick('professional', 89); openModal('professional', 89)">Order Professional →</button>
+        <button class="tier-btn" onclick="trackTierClick('professional', 0); openModal('professional', 0)">Try Professional Free →</button>
       </div>
 
-      <!-- STRATEGIC: $199 — board/investor framing -->
+      <!-- STRATEGIC: $199 — board/investor framing (FREE during beta) -->
       <div class="price-card" data-tier="strategic" id="card-strategic">
         <div class="tier-name">Strategic</div>
-        <div class="tier-price"><sup>$</sup>199</div>
+        <div class="tier-price">Free <span style="font-size:0.35em;text-decoration:line-through;opacity:0.4">$199</span></div>
         <div class="tier-delivery">⬤ Delivered in ~8 min</div>
         <div class="tier-divider"></div>
         <ul class="tier-features">
@@ -1343,7 +1343,7 @@ footer {
           <li>90-Day Action Plan</li>
           <li><strong>Board-ready formatting</strong></li>
         </ul>
-        <button class="tier-btn" onclick="trackTierClick('strategic', 199); openModal('strategic', 199)">Order Strategic →</button>
+        <button class="tier-btn" onclick="trackTierClick('strategic', 0); openModal('strategic', 0)">Try Strategic Free →</button>
       </div>
 
     </div><!-- /pricing-cards -->
@@ -1616,19 +1616,19 @@ footer {
           <textarea id="f-context" placeholder="What do you most need to know? What stage are you at? Any specific angles?"></textarea>
         </div>
         <div class="modal-price-bar">
-          <div class="modal-price-label">Total · One-time Payment</div>
-          <div class="modal-price-amount" id="modal-price">$89</div>
+          <div class="modal-price-label">Free · Beta Access</div>
+          <div class="modal-price-amount" id="modal-price" style="text-decoration:line-through;opacity:0.4">$89</div>
         </div>
-        <button class="modal-submit" id="submit-btn" onclick="submitOrder()">Proceed to Secure Payment →</button>
+        <button class="modal-submit" id="submit-btn" onclick="submitOrder()">Generate Report →</button>
         <div class="modal-note">
-          Secured by Stripe · TLS Encrypted · Instant receipt<br>
+          No payment required · Beta access<br>
           <span id="modal-delivery-note">Report delivered to your inbox in ~5 minutes</span>
         </div>
       </div>
       <div class="success-screen" id="success-screen">
         <span class="success-icon">✦</span>
-        <div class="success-title">Intelligence Ordered</div>
-        <p class="success-desc">Redirecting to secure payment. Your report arrives in minutes after checkout.<br><br>Thank you for choosing APERTURE.</p>
+        <div class="success-title">Report Generating</div>
+        <p class="success-desc">Your intelligence report is being generated now. Check your inbox shortly.<br><br>Thank you for choosing APERTURE.</p>
       </div>
     </div>
   </div>
@@ -1738,7 +1738,9 @@ function openModal(tier, price) {
   currentTier = tier; currentPrice = price;
   lastFocusedEl = document.activeElement;
   document.getElementById('modal-subtitle').textContent = tierNames[tier] || tier;
-  document.getElementById('modal-price').textContent = '$' + price;
+  document.getElementById('modal-price').textContent = price === 0 ? 'Free' : '$' + price;
+  document.getElementById('modal-price').style.textDecoration = price === 0 ? 'none' : 'line-through';
+  document.getElementById('modal-price').style.opacity = price === 0 ? '1' : '0.4';
   const noteEl = document.getElementById('modal-delivery-note');
   if (noteEl) noteEl.textContent = 'Report delivered to your inbox in ' + (tierDelivery[tier] || '~5 minutes');
   const pulseNotice = document.getElementById('pulse-notice');
@@ -1756,7 +1758,7 @@ function closeModal() {
   document.getElementById('success-screen').classList.remove('active');
   document.getElementById('modal-form').classList.remove('hidden');
   const btn = document.getElementById('submit-btn');
-  btn.disabled = false; btn.innerHTML = 'Proceed to Secure Payment →';
+  btn.disabled = false; btn.innerHTML = 'Generate Report →';
   if (lastFocusedEl) lastFocusedEl.focus();
 }
 
@@ -1796,23 +1798,26 @@ async function submitOrder() {
 
   const btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  btn.innerHTML = '<span class="loading-spinner"></span>Creating your session...';
+  btn.innerHTML = '<span class="loading-spinner"></span>Generating your report...';
 
   try {
-    const res = await fetch('/api/create-checkout', {
+    const res = await fetch('/api/research', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, business, geo, context, tier: currentTier })
+      body: JSON.stringify({ market: business, name, email, tier: currentTier, geo, context })
     });
     const data = await res.json();
-    if (data.url) {
+    if (data.reportId) {
       document.getElementById('modal-form').classList.add('hidden');
       document.getElementById('success-screen').classList.add('active');
-      setTimeout(() => { window.location.href = data.url; }, 1500);
+      // Redirect to success page after a moment
+      setTimeout(() => {
+        window.location.href = '/success.html?tier=' + currentTier + '&report=' + data.reportId;
+      }, 2000);
     } else { throw new Error(data.error || 'Something went wrong'); }
   } catch (err) {
     btn.disabled = false;
-    btn.innerHTML = 'Proceed to Secure Payment →';
+    btn.innerHTML = 'Generate Report →';
     alert('Error: ' + err.message + '\n\nPlease try again or email hello@aperturereports.ai');
   }
 }
