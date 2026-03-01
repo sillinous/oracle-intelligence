@@ -487,7 +487,15 @@ export default async (req, context) => {
     });
 
     const aiData = await aiRes.json();
+    if (!aiRes.ok) {
+      console.error("OpenRouter API error:", JSON.stringify(aiData));
+      return new Response(JSON.stringify({ error: "AI generation failed: " + (aiData.error?.message || aiRes.status) }), { status: 502, headers });
+    }
     const report = aiData.choices?.[0]?.message?.content || "";
+    if (!report) {
+      console.error("Empty AI response:", JSON.stringify(aiData));
+      return new Response(JSON.stringify({ error: "AI returned empty response" }), { status: 502, headers });
+    }
 
     // Store report
     const store = getStore("reports");
