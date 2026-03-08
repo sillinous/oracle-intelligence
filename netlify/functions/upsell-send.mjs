@@ -22,9 +22,13 @@ export default async (req) => {
           purchase.upsellSent = new Date().toISOString();
           await store.set(k.key, JSON.stringify(purchase));
           upsold++;
-        } catch {}
+        } catch (emailErr) {
+          console.error("Upsell email failed for", purchase.email, ":", emailErr.message);
+        }
       }
-    } catch {}
+    } catch (err) {
+      console.error("Upsell processing error for purchase", k.key, ":", err.message);
+    }
   }
   return Response.json({ processed: list.blobs.length, upsold });
 };

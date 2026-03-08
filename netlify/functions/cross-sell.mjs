@@ -46,6 +46,41 @@ export default async function handler(req, context) {
         { platform: 'ATLAS', url: 'https://unless-atlas-platform.netlify.app', reason: 'CPG unit economics modeling', priority: 2 },
         { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=aperture', reason: 'Small business grants', priority: 3 },
       ],
+      'edtech': [
+        { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=aperture', reason: 'Education innovation grants (IES, NSF)', priority: 1 },
+        { platform: 'ATLAS', url: 'https://unless-atlas-platform.netlify.app', reason: 'EdTech subscription revenue modeling', priority: 2 },
+        { platform: 'CLEAR', url: 'https://clear-platform.netlify.app', reason: 'K-12 and higher ed market intelligence', priority: 3 },
+      ],
+      'ai': [
+        { platform: 'CLEAR', url: 'https://clear-platform.netlify.app', reason: 'AI competitive landscape monitoring', priority: 1 },
+        { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=aperture', reason: 'NSF and DARPA AI research grants', priority: 2 },
+        { platform: 'ATLAS', url: 'https://unless-atlas-platform.netlify.app', reason: 'AI/ML startup financial modeling', priority: 3 },
+      ],
+      'realestate': [
+        { platform: 'ATLAS', url: 'https://unless-atlas-platform.netlify.app', reason: 'Real estate investment modeling', priority: 1 },
+        { platform: 'CLEAR', url: 'https://clear-platform.netlify.app', reason: 'PropTech market intelligence', priority: 2 },
+        { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=aperture', reason: 'HUD and community development grants', priority: 3 },
+      ],
+      'biotech': [
+        { platform: 'BioVentures', url: 'https://bioventures-platform.netlify.app', reason: 'Biotech pipeline and clinical trial intelligence', priority: 1 },
+        { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=aperture', reason: 'NIH SBIR and biotech research grants', priority: 2 },
+        { platform: 'ATLAS', url: 'https://unless-atlas-platform.netlify.app', reason: 'Biotech milestone-based financial modeling', priority: 3 },
+      ],
+      'cybersecurity': [
+        { platform: 'CLEAR', url: 'https://clear-platform.netlify.app', reason: 'Threat landscape and vendor intelligence', priority: 1 },
+        { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=aperture', reason: 'DHS and DoD cybersecurity grants', priority: 2 },
+        { platform: 'ATLAS', url: 'https://unless-atlas-platform.netlify.app', reason: 'Security SaaS financial projections', priority: 3 },
+      ],
+      'ecommerce': [
+        { platform: 'CLEAR', url: 'https://clear-platform.netlify.app', reason: 'E-commerce competitive and trend analysis', priority: 1 },
+        { platform: 'ATLAS', url: 'https://unless-atlas-platform.netlify.app', reason: 'D2C unit economics and marketplace modeling', priority: 2 },
+        { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=aperture', reason: 'Small business and export grants', priority: 3 },
+      ],
+      'logistics': [
+        { platform: 'ATLAS', url: 'https://unless-atlas-platform.netlify.app', reason: 'Supply chain and logistics financial modeling', priority: 1 },
+        { platform: 'CLEAR', url: 'https://clear-platform.netlify.app', reason: 'Logistics tech competitive intelligence', priority: 2 },
+        { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=aperture', reason: 'DOT and infrastructure innovation grants', priority: 3 },
+      ],
       'default': [
         { platform: 'Grant Platform', url: 'https://unless-fortuna-grants.netlify.app?ref=aperture', reason: 'Find grants in your industry', priority: 1 },
         { platform: 'CLEAR', url: 'https://clear-platform.netlify.app', reason: 'Ongoing AI intelligence', priority: 2 },

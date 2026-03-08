@@ -91,6 +91,24 @@ body{background:var(--void);color:var(--parchment);font-family:'Source Serif 4',
 .report-body .tag-med{background:rgba(212,170,80,0.15);color:var(--gold-bright);border:1px solid rgba(212,170,80,0.3);}
 .report-body .tag-low{background:rgba(42,110,63,0.15);color:#5ab87a;border:1px solid rgba(42,110,63,0.3);}
 
+/* Code blocks */
+.report-body pre.code-block{background:var(--ink-mid);border:1px solid var(--gold-line);padding:1.25rem 1.5rem;margin:1.5rem 0;overflow-x:auto;border-radius:4px;}
+.report-body pre.code-block code{background:none;border:none;padding:0;font-size:0.82rem;color:var(--parchment-dim);line-height:1.6;}
+.report-body pre.code-block[data-lang]::before{content:attr(data-lang);display:block;font-family:'Martian Mono',monospace;font-size:0.45rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+
+/* Links */
+.report-body a{color:var(--gold-bright);text-decoration:underline;text-underline-offset:2px;transition:color 0.2s;}
+.report-body a:hover{color:var(--gold);}
+
+/* Table of Contents */
+.report-toc{background:var(--ink-mid);border:1px solid var(--gold-line);padding:1.5rem 2rem;margin-bottom:2rem;}
+.report-toc-header{font-family:'Martian Mono',monospace;font-size:0.5rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.report-toc-list{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+.report-toc-list a{font-size:0.88rem;color:var(--parchment-dim);text-decoration:none;display:flex;align-items:center;gap:0.75rem;padding:0.35rem 0;transition:all 0.2s;}
+.report-toc-list a::before{content:'\2192';font-family:'Martian Mono',monospace;font-size:0.55rem;color:var(--gold);flex-shrink:0;opacity:0;transition:opacity 0.2s;}
+.report-toc-list a:hover{color:var(--gold-bright);padding-left:0.3rem;}
+.report-toc-list a:hover::before{opacity:1;}
+
 /* Referral */
 .referral-box{background:var(--ink);border:1px solid var(--gold-line);padding:2rem;margin-top:2.5rem;position:relative;overflow:hidden;}
 .referral-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 100% 0%,rgba(184,148,63,0.05),transparent);pointer-events:none;}
@@ -202,6 +220,11 @@ footer a{color:rgba(184,148,63,0.5);text-decoration:none;}
       <button class="toolbar-btn" onclick="window.print()">Print / PDF</button>
       <div class="toolbar-spacer"></div>
       <a href="/" class="toolbar-btn">Order Another Report</a>
+    </div>
+
+    <div class="report-toc" id="report-toc" style="display:none">
+      <div class="report-toc-header">Table of Contents</div>
+      <ol class="report-toc-list" id="toc-list"></ol>
     </div>
 
     <div class="report-body" id="r-body"></div>
@@ -374,8 +397,32 @@ function renderReport(data) {
   // Render report content
   document.getElementById('r-body').innerHTML = markdownToHtml(data.report || '');
 
+  // Build table of contents
+  buildTableOfContents();
+
   // Scroll to report
   document.getElementById('report-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function buildTableOfContents() {
+  var headings = document.querySelectorAll('#r-body h2');
+  if (headings.length < 2) return;
+  var tocList = document.getElementById('toc-list');
+  tocList.innerHTML = '';
+  headings.forEach(function(h, idx) {
+    if (!h.id) h.id = 'section-' + idx;
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+  document.getElementById('report-toc').style.display = 'block';
 }
 
 // markdownToHtml is loaded from /js/markdown-renderer.js above

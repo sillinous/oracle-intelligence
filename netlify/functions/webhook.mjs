@@ -1,6 +1,39 @@
 import { getStore } from "@netlify/blobs";
 
 
+/**
+ * Verify Stripe webhook signature using HMAC-SHA256.
+ * Falls back to unverified parsing if STRIPE_WEBHOOK_SECRET is not set.
+ */
+async function verifyStripeSignature(body, sigHeader, secret) {
+  if (!secret || !sigHeader) return null; // skip verification if not configured
+
+  const pairs = {};
+  for (const part of sigHeader.split(",")) {
+    const [k, v] = part.split("=");
+    pairs[k.trim()] = v;
+  }
+
+  const timestamp = pairs["t"];
+  const signature = pairs["v1"];
+  if (!timestamp || !signature) return null;
+
+  // Reject requests older than 5 minutes to prevent replay attacks
+  const age = Math.abs(Date.now() / 1000 - parseInt(timestamp, 10));
+  if (age > 300) throw new Error("Webhook timestamp too old");
+
+  const payload = `${timestamp}.${body}`;
+  const encoder = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    "raw", encoder.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]
+  );
+  const sig = await crypto.subtle.sign("HMAC", key, encoder.encode(payload));
+  const computed = Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, "0")).join("");
+
+  if (computed !== signature) throw new Error("Invalid webhook signature");
+  return true;
+}
+
 export default async (req, context) => {
   const headers = { "Content-Type": "application/json" };
   if (req.method === "OPTIONS") return new Response(null, { status: 204 });
@@ -12,9 +45,19 @@ export default async (req, context) => {
 
   try {
     const body = await req.text();
-    const sig = req.headers.get("stripe-signature");
+    const sigHeader = req.headers.get("stripe-signature");
 
-    // For now, parse the event directly (add signature verification later with stripe SDK)
+    // Verify Stripe webhook signature if secret is configured
+    try {
+      await verifyStripeSignature(body, sigHeader, STRIPE_WEBHOOK_SECRET);
+    } catch (sigErr) {
+      console.error("Stripe signature verification failed:", sigErr.message);
+      return new Response(JSON.stringify({ error: "Signature verification failed" }), { status: 401, headers });
+    }
+    if (!STRIPE_WEBHOOK_SECRET) {
+      console.warn("STRIPE_WEBHOOK_SECRET not set — skipping signature verification");
+    }
+
     const event = JSON.parse(body);
 
     if (event.type === "checkout.session.completed") {
@@ -80,7 +123,9 @@ export default async (req, context) => {
           headers: { "Content-Type": "application/json", "x-admin-key": process.env["ADMIN_KEY"] || "" },
           body: JSON.stringify({ market, tier, email, name, purchaseId }),
         });
-      } catch {}
+      } catch (triggerErr) {
+        console.error("Report generation trigger failed:", triggerErr.message);
+      }
     }
 
     return new Response(JSON.stringify({ received: true }), { status: 200, headers });

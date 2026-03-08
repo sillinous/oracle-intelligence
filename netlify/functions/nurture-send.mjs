@@ -20,9 +20,13 @@ export default async (req) => {
           lead.nurtureSent = new Date().toISOString();
           await store.set(k.key, JSON.stringify(lead));
           nurtured++;
-        } catch {}
+        } catch (emailErr) {
+          console.error("Nurture email failed for", lead.email, ":", emailErr.message);
+        }
       }
-    } catch {}
+    } catch (err) {
+      console.error("Nurture processing error for lead", k.key, ":", err.message);
+    }
   }
   return Response.json({ processed: list.blobs.length, nurtured });
 };

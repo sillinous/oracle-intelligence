@@ -16,6 +16,25 @@ function markdownToHtml(md) {
     // Blank lines
     if (line.trim() === '') { i++; continue; }
 
+    // Fenced code blocks (``` delimited)
+    if (/^```/.test(line.trim())) {
+      var lang = line.trim().replace(/^```\s*/, '');
+      var codeLines = [];
+      i++;
+      while (i < lines.length && !/^```\s*$/.test(lines[i].trim())) {
+        codeLines.push(lines[i]);
+        i++;
+      }
+      if (i < lines.length) i++; // skip closing ```
+      var escaped = codeLines.join('\n')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      var langAttr = lang ? ' data-lang="' + lang + '"' : '';
+      html.push('<pre class="code-block"' + langAttr + '><code>' + escaped + '</code></pre>');
+      continue;
+    }
+
     // Tables: collect all consecutive | lines
     if (/^\|.+\|/.test(line.trim())) {
       var tableLines = [];
@@ -43,7 +62,8 @@ function markdownToHtml(md) {
     if (headingMatch) {
       var level = headingMatch[1].length;
       var text = inlineFormat(headingMatch[2]);
-      html.push('<h' + level + '>' + text + '</h' + level + '>');
+      var slug = headingMatch[2].replace(/[^a-zA-Z0-9 ]/g, '').trim().toLowerCase().replace(/\s+/g, '-');
+      html.push('<h' + level + ' id="section-' + slug + '">' + text + '</h' + level + '>');
       i++;
       continue;
     }
@@ -55,14 +75,11 @@ function markdownToHtml(md) {
       continue;
     }
 
-    // Unordered list: collect consecutive - or * items
-    if (/^[\-\*]\s+/.test(line)) {
-      var listItems = [];
-      while (i < lines.length && /^[\-\*]\s+/.test(lines[i])) {
-        listItems.push(lines[i].replace(/^[\-\*]\s+/, ''));
-        i++;
-      }
-      html.push('<ul>' + listItems.map(function(li) { return '<li>' + inlineFormat(li) + '</li>'; }).join('') + '</ul>');
+    // Unordered list: collect consecutive - or * items (supports nesting via indentation)
+    if (/^(\s*)[\-\*]\s+/.test(line)) {
+      var result = parseNestedList(lines, i, 'ul');
+      html.push(result.html);
+      i = result.nextIndex;
       continue;
     }
 
@@ -83,6 +100,69 @@ function markdownToHtml(md) {
   }
 
   return html.join('\n');
+}
+
+/**
+ * Parse nested unordered lists with indentation support
+ */
+function parseNestedList(lines, startIndex, tag) {
+  var items = [];
+  var i = startIndex;
+
+  // Determine base indentation from the first line
+  var baseMatch = lines[i].match(/^(\s*)/);
+  var baseIndent = baseMatch ? baseMatch[1].length : 0;
+
+  while (i < lines.length) {
+    var line = lines[i];
+    // Stop if blank line or non-list content at base level
+    if (line.trim() === '') break;
+
+    var indentMatch = line.match(/^(\s*)/);
+    var currentIndent = indentMatch ? indentMatch[1].length : 0;
+
+    // If less indented than base, we've exited this list level
+    if (currentIndent < baseIndent) break;
+
+    // If this is a list item at the current level
+    if (currentIndent === baseIndent && /^\s*[\-\*]\s+/.test(line)) {
+      var itemText = line.replace(/^\s*[\-\*]\s+/, '');
+      var item = { text: itemText, children: null };
+
+      i++;
+
+      // Check for nested items (more indented)
+      if (i < lines.length && /^\s*[\-\*]\s+/.test(lines[i])) {
+        var nextIndentMatch = lines[i].match(/^(\s*)/);
+        var nextIndent = nextIndentMatch ? nextIndentMatch[1].length : 0;
+        if (nextIndent > baseIndent) {
+          var nested = parseNestedList(lines, i, 'ul');
+          item.children = nested.html;
+          i = nested.nextIndex;
+        }
+      }
+
+      items.push(item);
+    } else if (currentIndent > baseIndent && /^\s*[\-\*]\s+/.test(line)) {
+      // This is a nested item that belongs to the last item
+      var nested2 = parseNestedList(lines, i, 'ul');
+      if (items.length > 0) {
+        items[items.length - 1].children = nested2.html;
+      }
+      i = nested2.nextIndex;
+    } else {
+      break;
+    }
+  }
+
+  var html = '<' + tag + '>' + items.map(function(item) {
+    var li = '<li>' + inlineFormat(item.text);
+    if (item.children) li += item.children;
+    li += '</li>';
+    return li;
+  }).join('') + '</' + tag + '>';
+
+  return { html: html, nextIndex: i };
 }
 
 function renderTable(tableLines) {
@@ -144,6 +224,10 @@ function inlineFormat(text) {
       if (upper === 'LOW' || upper === 'LOW RISK') return '<span class="tag tag-low">LOW</span>';
       return '<code>' + code + '</code>';
     })
+    // Markdown links [text](url)
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+    // Auto-link bare URLs (not already inside an href or tag attribute)
+    .replace(/(^|[^"=])(\bhttps?:\/\/[^\s<)]+)/g, '$1<a href="$2" target="_blank" rel="noopener">$2</a>')
     // Bold + italic
     .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
     // Bold

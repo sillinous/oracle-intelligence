@@ -17,7 +17,9 @@ export default async (req) => {
       const daysSinceCapture = (Date.now() - new Date(lead.created || 0).getTime()) / 86400000;
       if (seq.step === 0 && daysSinceCapture >= 1) { seq.step = 1; seq.lastSent = new Date().toISOString(); await store.set(seqKey, JSON.stringify(seq)); sent++; }
       else if (seq.step === 1 && daysSinceCapture >= 3) { seq.step = 2; seq.lastSent = new Date().toISOString(); await store.set(seqKey, JSON.stringify(seq)); sent++; }
-    } catch {}
+    } catch (err) {
+      console.error("Email sequence processing error for lead", k.key, ":", err.message);
+    }
   }
   return Response.json({ processed: leadList.blobs.length, sent });
 };

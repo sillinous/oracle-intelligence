@@ -1,5 +1,9 @@
 import { getStore } from "@netlify/blobs";
 
+/** Basic email format validation */
+function isValidEmail(email) {
+  return typeof email === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
 
 const TIERS = {
   pulse:        { price: 1900,  name: "Pulse Report",        desc: "Quick market snapshot — TAM estimate, top 5 competitors, key trends" },
@@ -28,6 +32,9 @@ export default async (req, context) => {
 
     if (!email || !tier) {
       return new Response(JSON.stringify({ error: "email and tier required" }), { status: 400, headers });
+    }
+    if (!isValidEmail(email)) {
+      return new Response(JSON.stringify({ error: "Invalid email format" }), { status: 400, headers });
     }
 
     const selected = TIERS[tier];
@@ -72,7 +79,9 @@ export default async (req, context) => {
         sessionId: session.id, tier, email, name, market: market || business,
         geo, amount: selected.price, created: new Date().toISOString(),
       }));
-    } catch {}
+    } catch (storeErr) {
+      console.error("Failed to store order:", storeErr.message);
+    }
 
     return new Response(JSON.stringify({ url: session.url, sessionId: session.id }), { status: 200, headers });
   } catch (err) {

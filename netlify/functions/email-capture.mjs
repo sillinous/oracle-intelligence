@@ -1,5 +1,9 @@
 import { getStore } from "@netlify/blobs";
 
+/** Basic email format validation */
+function isValidEmail(email) {
+  return typeof email === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
 
 export default async (req) => {
   const h = {
@@ -14,7 +18,7 @@ export default async (req) => {
 
   try {
     const { email, source } = await req.json();
-    if (!email) return Response.json({ error: "Email required" }, { status: 400, headers: h });
+    if (!email || !isValidEmail(email)) return Response.json({ error: "Valid email required" }, { status: 400, headers: h });
 
     const store = getStore("email-subscribers");
     const key = `sub_${email.toLowerCase().replace(/[^a-z0-9]/g, "_")}`;

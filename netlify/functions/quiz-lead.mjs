@@ -41,14 +41,36 @@ export default async (req, context) => {
     // Also store by email for dedup
     await store.set(`email_${lead.email.replace(/[^a-z0-9]/g, '_')}`, JSON.stringify(lead));
 
-    // Determine recommended tier based on answers
-    let recommendedTier = "starter";
-    if (lead.researchFrequency === "weekly" || lead.companySize === "50+") {
-      recommendedTier = "professional";
+    // Determine recommended tier based on weighted scoring across multiple signals
+    let tierScore = 0;
+
+    // Research frequency scoring
+    const freqScores = { "rarely": 0, "monthly": 1, "weekly": 3, "daily": 4 };
+    tierScore += freqScores[lead.researchFrequency] || 0;
+
+    // Company size scoring
+    const sizeScores = { "solo": 0, "1-10": 1, "10-50": 2, "50+": 3, "50-200": 3, "200+": 5, "500+": 5 };
+    tierScore += sizeScores[lead.companySize] || 0;
+
+    // Primary need scoring — complex needs warrant deeper reports
+    const needScores = {
+      "market-sizing": 1, "trend-analysis": 1, "quick-snapshot": 0,
+      "competitor-tracking": 2, "competitive-intelligence": 3,
+      "investor-research": 3, "due-diligence": 4, "strategic-planning": 4,
+      "go-to-market": 2, "fundraising": 3,
+    };
+    tierScore += needScores[lead.primaryNeed] || 0;
+
+    // Industry complexity bonus — regulated/complex industries benefit from deeper analysis
+    const complexIndustries = ["healthtech", "biotech", "fintech", "cybersecurity", "cleantech"];
+    if (complexIndustries.includes((lead.industry || "").toLowerCase())) {
+      tierScore += 2;
     }
-    if (lead.companySize === "200+" || lead.primaryNeed === "competitive-intelligence") {
-      recommendedTier = "strategic";
-    }
+
+    let recommendedTier = "pulse";
+    if (tierScore >= 3) recommendedTier = "starter";
+    if (tierScore >= 6) recommendedTier = "professional";
+    if (tierScore >= 9) recommendedTier = "strategic";
 
     // Send welcome email via Resend (fire-and-forget)
     const RESEND_KEY = process.env.RESEND_API_KEY;
